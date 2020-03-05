@@ -95,46 +95,6 @@ namespace InputReaderNamespace
       this._buffer[this._cursor++] = ch;
     }
 
-    public int ReadInt()
-    {
-      Char ch;
-      int x = 0, sign = 1;
-
-      // Skip empty symbols
-      while ((ch = this.GetChar()).IsEmpty) ;
-
-      // Check for EOF
-      if (ch.EOF)
-      {
-        this._EOF = true;
-        return 0;
-      }
-
-      // Check for sign
-      if (ch == '+' || ch == '-')
-      {
-        if (ch == '-')
-          sign = -1;
-
-        ch = this.GetChar();
-      }
-
-      // Build the int
-      while (ch.IsNum)
-      {
-        x = 10 * x + ch.Value - '0';
-        ch = this.GetChar();
-      }
-
-      // Check for EOF
-      if (ch.EOF)
-        this._EOF = true;
-      else
-        this.ReturnChar(ch);
-
-      return sign * x;
-    }
-
     public string ReadWord()
     {
       Char ch;
@@ -219,6 +179,11 @@ namespace InputReaderNamespace
       return sign * x / div;
     }
 
+    public int ReadInt()
+    {
+      return (int)this.ReadFloat();
+    }
+
     public InputReader()
     {
       this._buffer = new Char[100];
@@ -232,17 +197,11 @@ namespace InputReaderNamespace
     {
       InputReader reader = new InputReader();
 
-      double a = reader.ReadFloat();
-      double b = reader.ReadFloat();
-      double c = reader.ReadFloat();
-      double d = reader.ReadFloat();
-      string e = reader.ReadWord();
+      int b = reader.ReadInt();
+      int c = reader.ReadInt();
 
-      Console.WriteLine(a);
       Console.WriteLine(b);
       Console.WriteLine(c);
-      Console.WriteLine(d);
-      Console.WriteLine(e);
     }
   }
 }
