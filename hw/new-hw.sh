@@ -4,6 +4,4 @@ if [ "$1" = "" ]; then
 else
   mkdir $1
   cat "./.templates/program.cs" > "$1/$1.cs"
-  echo "mcs -out:$1/$1.exe $1/$1.cs;
-mono $1/$1.exe;" > "$1/run.sh"
 fi
