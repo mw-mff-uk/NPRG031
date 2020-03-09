@@ -34,10 +34,48 @@ namespace MainNamespace
       get
       {
         return (
-          (symbol >= 'a' && symbol <= 'z') ||
-          (symbol >= 'A' && symbol <= 'A')
+          (this._value >= 'a' && this._value <= 'z') ||
+          (this._value >= 'A' && this._value <= 'A')
         );
       }
+    }
+
+    public bool EOF
+    {
+      get
+      {
+        return this._value == -1;
+      }
+    }
+
+    public static bool operator ==(Char ch1, Char ch2)
+    {
+      return ch1.Value == ch2.Value;
+    }
+
+    public static bool operator ==(Char ch1, int ch2)
+    {
+      return ch1.Value == ch2;
+    }
+
+    public static bool operator !=(Char ch1, Char ch2)
+    {
+      return ch1.Value != ch2.Value;
+    }
+
+    public static bool operator !=(Char ch1, int ch2)
+    {
+      return ch1.Value != ch2;
+    }
+
+    public override bool Equals(object obj)
+    {
+      return ((Char)obj).Value == this.Value;
+    }
+
+    public override int GetHashCode()
+    {
+      return this.Value;
     }
 
     public Char(int value)
@@ -48,44 +86,117 @@ namespace MainNamespace
 
   class InputReader
   {
-    private int[] _buffer;
+    private Char[] _buffer;
+    private int _cursor;
+    private bool _EOF;
+    public bool EOF { get { return this._EOF; } }
 
-
-    public static int ReadInt()
+    private Char GetChar()
     {
-      int factor = 1;
-      int s = Console.Read();
+      if (this._cursor > 0)
+        return this._buffer[--this._cursor];
 
-      while (this)
+      return new Char(Console.Read());
+    }
 
-        while ((z < '0') || (z > '9'))
-        {
-          if (z == '-')
-          {
+    private void ReturnChar(Char ch)
+    {
+      this._buffer[this._cursor++] = ch;
+    }
 
-            factor = -1;
-            z = Console.Read();
-            break;
-          }
-          z = Console.Read();
-        }
+    public string ReadWord()
+    {
+      Char ch;
+      StringBuilder sb = new StringBuilder();
 
-      if ((z < '0') || (z > '9'))
-        throw new Exception("Invalid character after minus sign");
+      // Skip empty symbols
+      while ((ch = this.GetChar()).IsEmpty) ;
 
-      int x = 0;
-      while ((z >= '0') && (z <= '9'))
+      // Check for EOF
+      if (ch.EOF)
       {
-        x = 10 * x + z - '0';
-        z = Console.Read();
+        this._EOF = true;
+        return "";
       }
 
-      return factor * x;
+      // Build the string
+      sb.Append((char)ch.Value);
+      while (ch.IsAlph || ch.IsNum)
+      {
+        sb.Append((char)ch.Value);
+        ch = this.GetChar();
+      }
+
+      // Check for EOF
+      if (ch.EOF)
+        this._EOF = true;
+      else
+        this.ReturnChar(ch);
+
+      return sb.ToString();
+    }
+
+    public double ReadFloat()
+    {
+      Char ch;
+      double x = 0.0;
+      int div = 1;
+      int sign = 1;
+
+      // Skip empty symbols
+      while ((ch = this.GetChar()).IsEmpty) ;
+
+      // Check for EOF
+      if (ch.EOF)
+      {
+        this._EOF = true;
+        return 0.0;
+      }
+
+      // Check for sign
+      if (ch == '+' || ch == '-')
+      {
+        if (ch == '-')
+          sign = -1;
+
+        ch = this.GetChar();
+      }
+
+      // Keep reading numbers
+      while (ch.IsNum)
+      {
+        x = x * 10 + ch.Value - '0';
+        ch = this.GetChar();
+      }
+
+      // Check for decimal symbol (dot, comma)
+      if (ch == '.' || ch == ',')
+      {
+        while ((ch = this.GetChar()).IsNum)
+        {
+          x = x * 10 + ch.Value - '0';
+          div *= 10;
+        }
+      }
+
+      // Check for EOF
+      if (ch.EOF)
+        this._EOF = true;
+      else
+        this.ReturnChar(ch);
+
+      return sign * x / div;
+    }
+
+    public int ReadInt()
+    {
+      return (int)this.ReadFloat();
     }
 
     public InputReader()
     {
-      this._buffer = new int[100];
+      this._buffer = new Char[100];
+      this._cursor = 0;
     }
   }
 

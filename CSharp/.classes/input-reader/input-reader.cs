@@ -69,6 +69,16 @@ namespace InputReaderNamespace
       return ch1.Value != ch2;
     }
 
+    public override bool Equals(object obj)
+    {
+      return ((Char)obj).Value == this.Value;
+    }
+
+    public override int GetHashCode()
+    {
+      return this.Value;
+    }
+
     public Char(int value)
     {
       this._value = value;
