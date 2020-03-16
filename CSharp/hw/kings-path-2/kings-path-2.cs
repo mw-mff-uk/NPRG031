@@ -162,122 +162,6 @@ namespace MainNamespace
     }
   }
 
-
-  class Board
-  {
-    // -1: not visited
-    // -2: obstacle
-    //  n: number of moves
-    private int[] _boxes;
-
-    public int rows;
-    public int cols;
-
-    public XY source;
-    public XY target;
-
-    public int Size
-    {
-      get
-      {
-        return this.rows * this.cols;
-      }
-    }
-
-    public bool ValidBox(XY xy)
-    {
-      return xy.x >= 0 && xy.y >= 0 && xy.x < this.cols && xy.y < this.rows;
-    }
-
-    public int GetBox(XY xy)
-    {
-      return this._boxes[xy.y * this.cols + xy.x];
-    }
-
-    public bool HasObstacle(XY xy)
-    {
-      return this._boxes[xy.y * this.cols + xy.x] == -2;
-    }
-
-    public bool WasVisited(XY xy)
-    {
-      return this._boxes[xy.y * this.cols + xy.x] >= 0;
-    }
-
-    public Board Visit(XY from, XY to)
-    {
-      int steps = this._boxes[from.y * this.cols + from.x];
-
-      if (steps < 0)
-        throw new Exception("Box cannot be visited");
-
-      this._boxes[to.y * this.cols + to.x] = steps + 1;
-      return this;
-    }
-
-    public Board SetObstacle(XY xy)
-    {
-      this._boxes[xy.y * this.cols + xy.x] = -2;
-      return this;
-    }
-
-    public Board SetSource(XY xy)
-    {
-      this.source = xy;
-      this._boxes[xy.y * this.cols + xy.x] = 0;
-      return this;
-    }
-
-    public Board SetTarget(XY xy)
-    {
-      this.target = xy;
-      return this;
-    }
-
-    public Board Print()
-    {
-      Printer.Repeat(this.cols + 2, "-");
-
-      for (int x = 0; x < this.cols; x++)
-      {
-        Console.Write("|");
-
-        for (int y = 0; y < this.rows; y++)
-        {
-          XY xy = new XY(x, y);
-
-          if (this.HasObstacle(xy))
-            Console.Write("x");
-          else if (XY.Compare(this.source, xy))
-            Console.Write("K");
-          else if (XY.Compare(this.target, xy))
-            Console.Write("o");
-          else if (this.WasVisited(xy))
-            Console.Write(this._boxes[y * this.cols + x]);
-          else
-            Console.Write(" ");
-        }
-
-        Console.WriteLine("|");
-      }
-
-      Printer.Repeat(this.cols + 2, "-");
-
-      return this;
-    }
-
-    public Board(int rows, int cols)
-    {
-      this.rows = rows;
-      this.cols = cols;
-
-      this._boxes = new int[this.Size];
-      for (int i = 0; i < _boxes.Length; i++)
-        this._boxes[i] = -1;
-    }
-  }
-
-
   class MainClass
   {
     static void Main()
@@ -291,13 +175,7 @@ namespace MainNamespace
           predecessors[x, y] = null;
         }
 
-      // int cols = 8;
-      // int rows = 8;
-      // Board board = new Board(rows, cols);
-
       int nObstacles = Reader.ReadInt();
-      // for (int i = 0; i < nObstacles; i++)
-      //   board.SetObstacle(Reader.ReadXY(-1));
 
       for (int i = 0; i < nObstacles; i++)
       {
