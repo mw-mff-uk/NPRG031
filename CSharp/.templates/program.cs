@@ -1,96 +1,33 @@
 using System;
+using System.Text;
 
 namespace MainNamespace
 {
-  class Char
-  {
-    private int _value;
-    public int Value { get { return this._value; } }
-
-    public bool IsEmpty
-    {
-      get
-      {
-        return (
-          this._value == ' ' ||
-          this._value == '\n' ||
-          this._value == '\t' ||
-          this._value == '\r' ||
-          this._value == '\v'
-        );
-      }
-    }
-
-    public bool IsNum
-    {
-      get
-      {
-        return (this._value >= '0' && this._value <= '9');
-      }
-    }
-
-    public bool IsAlph
-    {
-      get
-      {
-        return (
-          (this._value >= 'a' && this._value <= 'z') ||
-          (this._value >= 'A' && this._value <= 'A')
-        );
-      }
-    }
-
-    public bool EOF
-    {
-      get
-      {
-        return this._value == -1;
-      }
-    }
-
-    public static bool operator ==(Char ch1, Char ch2)
-    {
-      return ch1.Value == ch2.Value;
-    }
-
-    public static bool operator ==(Char ch1, int ch2)
-    {
-      return ch1.Value == ch2;
-    }
-
-    public static bool operator !=(Char ch1, Char ch2)
-    {
-      return ch1.Value != ch2.Value;
-    }
-
-    public static bool operator !=(Char ch1, int ch2)
-    {
-      return ch1.Value != ch2;
-    }
-
-    public override bool Equals(object obj)
-    {
-      return ((Char)obj).Value == this.Value;
-    }
-
-    public override int GetHashCode()
-    {
-      return this.Value;
-    }
-
-    public Char(int value)
-    {
-      this._value = value;
-    }
-  }
-
   class InputReader
   {
+    class Char
+    {
+      private int _value;
+      public int Value { get => this._value; }
+      public bool IsEmpty { get => (this._value == ' ' || this._value == '\n' || this._value == '\t' || this._value == '\r' || this._value == '\v'); }
+      public bool IsNum { get => (this._value >= '0' && this._value <= '9'); }
+      public bool IsAlph { get => ((this._value >= 'a' && this._value <= 'z') || (this._value >= 'A' && this._value <= 'A')); }
+      public bool EOF { get => this._value == -1; }
+      public static bool operator ==(Char ch1, Char ch2) => ch1.Value == ch2.Value;
+      public static bool operator ==(Char ch1, int ch2) => ch1.Value == ch2;
+      public static bool operator !=(Char ch1, Char ch2) => ch1.Value != ch2.Value;
+      public static bool operator !=(Char ch1, int ch2) => ch1.Value != ch2;
+      public override bool Equals(object obj) => (((Char)obj).Value == this.Value);
+      public override int GetHashCode() => this.Value;
+      public Char(int value)
+      {
+        this._value = value;
+      }
+    }
     private Char[] _buffer;
     private int _cursor;
     private bool _EOF;
     public bool EOF { get { return this._EOF; } }
-
     private Char GetChar()
     {
       if (this._cursor > 0)
@@ -98,12 +35,10 @@ namespace MainNamespace
 
       return new Char(Console.Read());
     }
-
     private void ReturnChar(Char ch)
     {
       this._buffer[this._cursor++] = ch;
     }
-
     public string ReadWord()
     {
       Char ch;
@@ -135,7 +70,6 @@ namespace MainNamespace
 
       return sb.ToString();
     }
-
     public double ReadFloat()
     {
       Char ch;
@@ -187,24 +121,21 @@ namespace MainNamespace
 
       return sign * x / div;
     }
-
     public int ReadInt()
     {
       return (int)this.ReadFloat();
     }
-
     public InputReader()
     {
       this._buffer = new Char[100];
       this._cursor = 0;
     }
   }
-
   class MainClass
   {
     static void Main()
     {
-      // Your code goes here...
+      InputReader inputReader = new InputReader();
     }
   }
 }
