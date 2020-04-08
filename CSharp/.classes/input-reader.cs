@@ -1,6 +1,3 @@
-using System;
-using System.Text;
-
 class InputReader
 {
   class Char
@@ -9,7 +6,7 @@ class InputReader
     public int Value { get => this._value; }
     public bool IsEmpty { get => (this._value == ' ' || this._value == '\n' || this._value == '\t' || this._value == '\r' || this._value == '\v'); }
     public bool IsNum { get => (this._value >= '0' && this._value <= '9'); }
-    public bool IsAlph { get => ((this._value >= 'a' && this._value <= 'z') || (this._value >= 'A' && this._value <= 'A')); }
+    public bool IsAlph { get => ((this._value >= 'a' && this._value <= 'z') || (this._value >= 'A' && this._value <= 'Z')); }
     public bool EOF { get => this._value == -1; }
     public static bool operator ==(Char ch1, Char ch2) => ch1.Value == ch2.Value;
     public static bool operator ==(Char ch1, int ch2) => ch1.Value == ch2;
@@ -29,7 +26,10 @@ class InputReader
   private Char GetChar()
   {
     if (this._cursor > 0)
-      return this._buffer[--this._cursor];
+    {
+      Char ch = this._buffer[--this._cursor];
+      return ch;
+    }
 
     return new Char(Console.Read());
   }
@@ -53,7 +53,6 @@ class InputReader
     }
 
     // Build the string
-    sb.Append((char)ch.Value);
     while (ch.IsAlph || ch.IsNum)
     {
       sb.Append((char)ch.Value);

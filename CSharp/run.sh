@@ -2,11 +2,11 @@ if [ "$1" = "" ]; then
   echo "No arguments provided"
   exit 1
 else
-  mcs -out:"./hw/$1/$1.exe" "./hw/$1/$1.cs"
+  mcs -out:"./projects/$1/$1.exe" "./projects/$1/$1.cs"
 
   if [ "$2" = "" ]; then
-    mono "./hw/$1/$1.exe"
+    mono "./projects/$1/$1.exe"
   else
-    cat $2 | mono "./hw/$1/$1.exe"
+    cat $2 | mono "./projects/$1/$1.exe"
   fi
 fi
