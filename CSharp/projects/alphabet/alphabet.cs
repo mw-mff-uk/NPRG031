@@ -1,9 +1,241 @@
 using System;
 using System.Text;
-using System.Collections;
+
 
 namespace MainNamespace
 {
+  class A
+  {
+    public static int[] Range(int low, int high)
+    {
+      int[] res = new int[high - low];
+
+      for (int i = low; i < high; i++)
+        res[i] = i;
+
+      return res;
+    }
+    public static int[] Range(int high)
+    {
+      return A.Range(0, high);
+    }
+    public static T[] Swap<T>(T[] arr, int i, int j)
+    {
+      T temp = arr[i];
+      arr[i] = arr[j];
+      arr[j] = temp;
+
+      return arr;
+    }
+    public static T[] Shuffle<T>(T[] arr, Random rnd)
+    {
+      for (int i = 0; i < arr.Length; i++)
+        A.Swap(arr, i, rnd.Next(0, arr.Length));
+
+      return arr;
+    }
+    public static T[] Rep<T>(T[] arr, int times)
+    {
+      T[] res = new T[arr.Length * times];
+
+      for (int i = 0; i < times; i++)
+        for (int j = 0; j < arr.Length; j++)
+          res[j + i * arr.Length] = arr[j];
+
+      return res;
+    }
+    public static T[] Print<T>(T[] arr, string delimiter = " ", string after = "\n")
+    {
+      for (int i = 0; i < arr.Length; i++)
+        Console.Write(arr[i].ToString() + (i == arr.Length - 1 ? after : delimiter));
+
+      return arr;
+    }
+    public static T[,] Print2D<T>(T[,] matrix, string colDelimiter = " ", string rowDelimiter = "\n", string after = "")
+    {
+      int rows = matrix.GetLength(0);
+      int cols = matrix.GetLength(1);
+
+      Console.WriteLine("rows: {0}", rows);
+      Console.WriteLine("cols: {0}", cols);
+
+      for (int row = 0; row < rows; row++)
+        for (int col = 0; col < cols; col++)
+          Console.Write(matrix[row, col].ToString() + (col == cols - 1 ? rowDelimiter : colDelimiter));
+
+      Console.Write(after);
+
+      return matrix;
+    }
+  }
+  class XY
+  {
+    public int x;
+    public int y;
+    override public string ToString() => "(" + this.x + "," + this.y + ")";
+    public static bool operator ==(XY a, XY b) => (a.x == b.x && a.y == b.y);
+    public static bool operator !=(XY a, XY b) => (a.x != b.x || a.y != b.y);
+    public XY(int x, int y)
+    {
+      this.x = x;
+      this.y = y;
+    }
+  }
+  class Stopwatch
+  {
+    static long MILLISECONDS_IN_TICK = 10000;
+    static long SECONDS_IN_TICK = Stopwatch.MILLISECONDS_IN_TICK * 1000;
+    static long MINUTES_IN_TICK = Stopwatch.SECONDS_IN_TICK * 60;
+    static long HOURS_IN_TICK = Stopwatch.MINUTES_IN_TICK * 60;
+    static long DAYS_IN_TICK = Stopwatch.HOURS_IN_TICK * 24;
+    private bool running;
+    public bool Running { get => this.running; }
+    private long ticks;
+    public long Ticks { get => this.ticks + (this.running ? (DateTime.Now - this.start).Ticks : 0); }
+    public double Milliseconds { get => (double)this.Ticks / (double)Stopwatch.MILLISECONDS_IN_TICK; }
+    public double Seconds { get => (double)this.Ticks / (double)Stopwatch.SECONDS_IN_TICK; }
+    public double Minutes { get => (double)this.Ticks / (double)Stopwatch.MINUTES_IN_TICK; }
+    public double Hours { get => (double)this.Ticks / (double)Stopwatch.HOURS_IN_TICK; }
+    public double Days { get => (double)this.Ticks / (double)Stopwatch.DAYS_IN_TICK; }
+
+    private DateTime start;
+    public Stopwatch Start()
+    {
+      if (!this.running)
+      {
+        this.running = true;
+        this.start = DateTime.Now;
+      }
+
+      return this;
+    }
+    public Stopwatch Stop()
+    {
+      if (this.running)
+      {
+        this.running = false;
+        this.ticks += (DateTime.Now - this.start).Ticks;
+      }
+
+      return this;
+    }
+    public Stopwatch Reset()
+    {
+      this.running = false;
+      this.ticks = 0;
+
+      return this;
+    }
+    public Stopwatch()
+    {
+      this.ticks = 0;
+      this.running = false;
+    }
+  }
+  class LinkedListItem<T>
+  {
+    private T value;
+    public T Value { get => this.value; }
+    public LinkedListItem<T> next;
+    public LinkedListItem(T value, LinkedListItem<T> next = null)
+    {
+      this.value = value;
+      this.next = next;
+    }
+  }
+  class LinkedList<T>
+  {
+    private LinkedListItem<T> first;
+    private LinkedListItem<T> last;
+    private int length = 0;
+    public int Length { get => this.length; }
+    public bool Empty { get => this.length == 0; }
+    public LinkedList<T> Append(T value)
+    {
+      LinkedListItem<T> item = new LinkedListItem<T>(value);
+
+      if (this.first == null)
+        this.first = item;
+
+      if (this.last != null)
+        this.last.next = item;
+
+      this.last = item;
+
+      this.length++;
+      return this;
+    }
+    public LinkedList<T> Preppend(T value)
+    {
+      this.first = new LinkedListItem<T>(value, this.first);
+
+      if (this.last == null)
+        this.last = this.first;
+
+      this.length++;
+      return this;
+    }
+    public T ExtractFirst()
+    {
+      if (this.Empty)
+        throw new Exception("The linked list is empty");
+
+      T value = this.first.Value;
+      this.first = this.first.next;
+
+      this.length--;
+      return value;
+    }
+    public T ExtractLast()
+    {
+      if (this.Empty)
+        throw new Exception("The linked list is empty");
+
+      T value = this.first.Value;
+
+      if (this.Length == 1)
+        this.first = this.last = null;
+      else
+        this.first = this.first.next;
+
+      this.length--;
+      return value;
+    }
+    public LinkedListIterator<T> Iterator() => new LinkedListIterator<T>(this.first);
+    public LinkedList(params T[] args)
+    {
+      for (int i = 0; i < args.Length; i++)
+        this.Append(args[i]);
+    }
+  }
+  class LinkedListIterator<T>
+  {
+    private LinkedListItem<T> cursor;
+    private LinkedListItem<T> first;
+    private int iterations;
+    public int Iterations { get => this.iterations; }
+    public bool Done { get => this.cursor == null; }
+    public T Next()
+    {
+      LinkedListItem<T> temp = this.cursor;
+      this.cursor = this.cursor.next;
+
+      this.iterations++;
+      return temp.Value;
+    }
+    public LinkedListIterator<T> Reset()
+    {
+      this.cursor = this.first;
+      this.iterations = 0;
+
+      return this;
+    }
+    public LinkedListIterator(LinkedListItem<T> first)
+    {
+      this.first = first;
+      this.Reset();
+    }
+  }
   class InputReader
   {
     class Char
@@ -181,153 +413,6 @@ namespace MainNamespace
       this._cursor = 0;
     }
   }
-  class LinkedListItem<T>
-  {
-    private T value;
-    public T Value { get => this.value; }
-    public LinkedListItem<T> next;
-    public LinkedListItem(T value, LinkedListItem<T> next = null)
-    {
-      this.value = value;
-      this.next = next;
-    }
-  }
-  class LinkedList<T>
-  {
-    private LinkedListItem<T> first;
-    private LinkedListItem<T> last;
-    private int length = 0;
-    public int Length { get => this.length; }
-    public bool Empty { get => this.length == 0; }
-    public LinkedList<T> Append(T value)
-    {
-      LinkedListItem<T> item = new LinkedListItem<T>(value);
-
-      if (this.first == null)
-        this.first = item;
-
-      if (this.last != null)
-        this.last.next = item;
-
-      this.last = item;
-
-      this.length++;
-      return this;
-    }
-    public LinkedList<T> Preppend(T value)
-    {
-      this.first = new LinkedListItem<T>(value, this.first);
-
-      if (this.last == null)
-        this.last = this.first;
-
-      this.length++;
-      return this;
-    }
-    public T ExtractFirst()
-    {
-      if (this.Empty)
-        throw new Exception("The linked list is empty");
-
-      T value = this.first.Value;
-      this.first = this.first.next;
-
-      this.length--;
-      return value;
-    }
-    public T ExtractLast()
-    {
-      if (this.Empty)
-        throw new Exception("The linked list is empty");
-
-      T value = this.first.Value;
-
-      if (this.Length == 1)
-        this.first = this.last = null;
-      else
-        this.first = this.first.next;
-
-      this.length--;
-      return value;
-    }
-    public LinkedListIterator<T> Iterator() => new LinkedListIterator<T>(this.first);
-    public LinkedList(params T[] args)
-    {
-      for (int i = 0; i < args.Length; i++)
-        this.Append(args[i]);
-    }
-  }
-  class LinkedListIterator<T>
-  {
-    private LinkedListItem<T> cursor;
-    private int iterations;
-    public int Iterations { get => this.iterations; }
-    public bool Done { get => this.cursor == null; }
-    public T Next()
-    {
-      LinkedListItem<T> temp = this.cursor;
-      this.cursor = this.cursor.next;
-
-      this.iterations++;
-      return temp.Value;
-    }
-    public LinkedListIterator(LinkedListItem<T> first)
-    {
-      this.cursor = first;
-      this.iterations = 0;
-    }
-  }
-  class Stopwatch
-  {
-    static long MILLISECONDS_IN_TICK = 10000;
-    static long SECONDS_IN_TICK = Stopwatch.MILLISECONDS_IN_TICK * 1000;
-    static long MINUTES_IN_TICK = Stopwatch.SECONDS_IN_TICK * 60;
-    static long HOURS_IN_TICK = Stopwatch.MINUTES_IN_TICK * 60;
-    static long DAYS_IN_TICK = Stopwatch.HOURS_IN_TICK * 24;
-    private bool running;
-    public bool Running { get => this.running; }
-    private long ticks;
-    public long Ticks { get => this.ticks + (this.running ? (DateTime.Now - this.start).Ticks : 0); }
-    public double Milliseconds { get => (double)this.Ticks / (double)Stopwatch.MILLISECONDS_IN_TICK; }
-    public double Seconds { get => (double)this.Ticks / (double)Stopwatch.SECONDS_IN_TICK; }
-    public double Minutes { get => (double)this.Ticks / (double)Stopwatch.MINUTES_IN_TICK; }
-    public double Hours { get => (double)this.Ticks / (double)Stopwatch.HOURS_IN_TICK; }
-    public double Days { get => (double)this.Ticks / (double)Stopwatch.DAYS_IN_TICK; }
-
-    private DateTime start;
-    public Stopwatch Start()
-    {
-      if (!this.running)
-      {
-        this.running = true;
-        this.start = DateTime.Now;
-      }
-
-      return this;
-    }
-    public Stopwatch Stop()
-    {
-      if (this.running)
-      {
-        this.running = false;
-        this.ticks += (DateTime.Now - this.start).Ticks;
-      }
-
-      return this;
-    }
-    public Stopwatch Reset()
-    {
-      this.running = false;
-      this.ticks = 0;
-
-      return this;
-    }
-    public Stopwatch()
-    {
-      this.ticks = 0;
-      this.running = false;
-    }
-  }
   class Keyboard
   {
     private int minChar;
@@ -337,13 +422,13 @@ namespace MainNamespace
     private int size;
     public int Size { get => this.size; }
     private LinkedList<int>[] alphabet;
+    public XY ToXY(int pos) => new XY(pos % this.cols, pos / this.cols);
     public int ManhattanDistance(int a, int b) => Math.Abs(
       // |ax - bx| + |ay - by|
       (a % this.cols) - (b % this.cols)) + Math.Abs((a / this.cols) - (b / this.cols)
     );
     public bool HasLetter(char letter)
     {
-      // Console.WriteLine("{0} ({1})", letter, (int)letter);
       int index = (int)letter - this.minChar;
 
       if (index < 0 || index >= this.alphabet.Length)
@@ -381,42 +466,23 @@ namespace MainNamespace
       // Fill the alphabet
       for (int i = 0; i < this.size; i++)
         this.alphabet[(int)content[i] - this.minChar].Append(i);
-
-      // Print the grid and alphabet
-      // A.Print2D(this.grid);
-      // for (int i = 0; i < this.alphabet.Length; i++)
-      //   Console.WriteLine("{0} --> {1}", (char)(i + this.minChar), this.alphabet[i].Length);
-    }
-  }
-  class Path
-  {
-    public int Pos;
-    public int Moves;
-    public int Next;
-    public Path Clone() => new Path(this.Pos, this.Moves, this.Next);
-    public Path(int pos, int moves, int next)
-    {
-      this.Pos = pos;
-      this.Moves = moves;
-      this.Next = next;
-    }
-    public Path()
-    {
-      this.Pos = 0;
-      this.Moves = 0;
-      this.Next = 0;
     }
   }
   class MainClass
   {
     static int Main(string[] args)
     {
+      // For Recodex
+      bool printToConsole = false;
+      foreach (string arg in args)
+        if (arg == "--print-to-console")
+          printToConsole = true;
+
       Stopwatch stopwatch = new Stopwatch();
       stopwatch.Start().Stop().Reset().Start();
 
       InputReader reader = new InputReader();
 
-      // Create the keyboard
       Keyboard keyboard = new Keyboard(
         reader.ReadInt(),    // cols
         reader.ReadInt(),    // rows
@@ -430,71 +496,95 @@ namespace MainNamespace
         if (keyboard.HasLetter(sequence[i]))
           sequence[letters++] = sequence[i];
 
-      // Initiate the optimal matrix [position of letter, number of moves]
-      int[,] optimal = new int[keyboard.Size, letters];
-      for (int pos = 0; pos < keyboard.Size; pos++)
-        for (int moves = 0; moves < letters; moves++)
-          optimal[pos, moves] = -1;
+      // One layer for each letter in sequence
+      const int POSITION_INDEX = 0;
+      const int MOVES_INDEX = 1;
+      int[] layerSizes = new int[letters + 1];
+      int[,,] layers = new int[letters + 1, 11, 2]; // [<layer>, <node> <path data>]
 
-      // The best path
-      int res = -1;
+      // First layer (no letters)
+      layerSizes[0] = 1;
+      layers[0, 0, POSITION_INDEX] = 0;
+      layers[0, 0, MOVES_INDEX] = 0;
 
-      // Start exploring possible paths
-      LinkedList<Path> explorer = new LinkedList<Path>(new Path());
-      while (!explorer.Empty)
+      // Initiate the layers
+      for (int layer = 0; layer < letters; layer++)
       {
-        Path path = explorer.ExtractFirst();
+        int nextlayer = layer + 1;
 
-        // Next letter
-        char letter = sequence[path.Next];
-        // Iterator for positions of this letter on the keyboard
-        LinkedListIterator<int> iterator = keyboard.GetLetter(letter).Iterator();
-        while (!iterator.Done)
+        char letter = sequence[layer];
+        LinkedListIterator<int> positions = keyboard.GetLetter(letter).Iterator();
+
+        while (!positions.Done)
         {
-          int letterPosition = iterator.Next();
+          int position = positions.Next();
+          int nextNode = positions.Iterations - 1;
 
-          Path newPath = new Path(
-            letterPosition,
-            path.Moves + keyboard.ManhattanDistance(path.Pos, letterPosition),
-            path.Next + 1
-          );
+          layers[nextlayer, nextNode, MOVES_INDEX] = -1;
+          layers[nextlayer, nextNode, POSITION_INDEX] = position;
+        }
 
-          // Console.WriteLine(
-          //   "Path [moves: {0}; next: {1}] | {2} --> {3} @ {4} in {5} moves",
-          //   newPath.Moves,
-          //   newPath.Next,
-          //   newPath.Pos,
-          //   letter,
-          //   letterPosition,
-          //   keyboard.ManhattanDistance(newPath.Pos, letterPosition)
-          // );
+        layerSizes[nextlayer] = positions.Iterations;
+      }
 
-          if (newPath.Next == letters)
+      // Compute the distances
+      for (int layer = 0; layer < letters; layer++)
+      {
+        int nextLayer = layer + 1;
+
+        // For each node in a layer
+        for (int node = 0; node < layerSizes[layer]; node++)
+        {
+          int currPos = layers[layer, node, POSITION_INDEX];
+          int currMoves = layers[layer, node, MOVES_INDEX];
+
+          for (int nextNode = 0; nextNode < layerSizes[nextLayer]; nextNode++)
           {
-            if (newPath.Moves < res || res == -1)
-              res = newPath.Moves;
-          }
-          else
-          {
-            int opt = optimal[newPath.Pos, newPath.Next];
+            int nextPos = layers[nextLayer, nextNode, POSITION_INDEX];
+            int nextMoves = layers[nextLayer, nextNode, MOVES_INDEX];
 
-            if (opt == -1 || opt > newPath.Moves)
-            {
-              optimal[newPath.Pos, newPath.Next] = newPath.Moves;
-              explorer.Append(newPath);
-            }
-            // else
-            // {
-            //   Console.WriteLine("Forgetting about path at {0} ({1})", newPath.Pos, newPath.Next);
-            // }
-          }
+            int distance = keyboard.ManhattanDistance(currPos, nextPos);
 
+            // Look for a faster way to get there
+            if (nextMoves == -1 || nextMoves > currMoves + distance)
+              layers[nextLayer, nextNode, MOVES_INDEX] = currMoves + distance;
+          }
         }
       }
 
-      Console.WriteLine(res + letters);
+      // Print the layers with moves
+      if (printToConsole)
+      {
+        for (int layer = 0; layer <= letters; layer++)
+        {
+          Console.WriteLine("--------------------------------------------- Layer [{0}]", layer);
 
-      Console.WriteLine("{0}ms", stopwatch.Stop().Milliseconds);
+          char letter = layer == 0 ? '-' : sequence[layer - 1];
+
+          for (int node = 0; node < layerSizes[layer]; node++)
+          {
+            Console.WriteLine(
+              "Node {0}: {1} @ {2} in {3} moves",
+              node,
+              letter,
+              keyboard.ToXY(layers[layer, node, POSITION_INDEX]).ToString(),
+              layers[layer, node, MOVES_INDEX]
+            );
+          }
+        }
+      }
+
+      // Find the optimal path
+      int optimal = -1;
+      int lastLayer = letters;
+      for (int node = 0; node < layerSizes[lastLayer]; node++)
+        if (layers[lastLayer, node, MOVES_INDEX] < optimal || optimal == -1)
+          optimal = layers[lastLayer, node, MOVES_INDEX];
+
+      Console.WriteLine(optimal + letters);
+
+      if (printToConsole)
+        Console.WriteLine("{0}ms", stopwatch.Stop().Milliseconds);
 
       return 0;
     }
