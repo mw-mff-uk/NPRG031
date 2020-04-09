@@ -77,6 +77,7 @@ class LinkedList<T>
 class LinkedListIterator<T>
 {
   private LinkedListItem<T> cursor;
+  private LinkedListItem<T> first;
   private int iterations;
   public int Iterations { get => this.iterations; }
   public bool Done { get => this.cursor == null; }
@@ -88,9 +89,16 @@ class LinkedListIterator<T>
     this.iterations++;
     return temp.Value;
   }
+  public LinkedListIterator<T> Reset()
+  {
+    this.cursor = this.first;
+    this.iterations = 0;
+
+    return this;
+  }
   public LinkedListIterator(LinkedListItem<T> first)
   {
-    this.cursor = first;
-    this.iterations = 0;
+    this.first = first;
+    this.Reset();
   }
 }

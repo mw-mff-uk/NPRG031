@@ -4,6 +4,7 @@ class InputReader
   {
     private int _value;
     public int Value { get => this._value; }
+    public bool NewLine { get => this._value == '\n'; }
     public bool IsEmpty { get => (this._value == ' ' || this._value == '\n' || this._value == '\t' || this._value == '\r' || this._value == '\v'); }
     public bool IsNum { get => (this._value >= '0' && this._value <= '9'); }
     public bool IsAlph { get => ((this._value >= 'a' && this._value <= 'z') || (this._value >= 'A' && this._value <= 'Z')); }
@@ -37,6 +38,34 @@ class InputReader
   {
     this._buffer[this._cursor++] = ch;
   }
+  public string ReadLine()
+  {
+    Char ch;
+    StringBuilder sb = new StringBuilder();
+
+    // Skip empty symbols
+    while ((ch = this.GetChar()).IsEmpty) ;
+
+    // Check for EOF
+    if (ch.EOF)
+    {
+      this._EOF = true;
+      return "";
+    }
+
+    while (!(ch.NewLine || ch.EOF))
+    {
+      sb.Append((char)ch.Value);
+      ch = this.GetChar();
+    }
+
+    if (ch.EOF)
+      this._EOF = true;
+    else
+      this.ReturnChar(ch);
+
+    return sb.ToString();
+  }
   public string ReadWord()
   {
     Char ch;
@@ -64,6 +93,24 @@ class InputReader
       this._EOF = true;
     else
       this.ReturnChar(ch);
+
+    return sb.ToString();
+  }
+  public string ReadRest()
+  {
+    Char ch;
+    StringBuilder sb = new StringBuilder();
+
+    while (true)
+    {
+      ch = this.GetChar();
+
+      if (ch.EOF)
+        break;
+
+      if (!ch.IsEmpty)
+        sb.Append((char)ch.Value);
+    }
 
     return sb.ToString();
   }
