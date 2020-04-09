@@ -1,16 +1,16 @@
+class LinkedListItem<T>
+{
+  private T value;
+  public T Value { get => this.value; }
+  public LinkedListItem<T> next;
+  public LinkedListItem(T value, LinkedListItem<T> next = null)
+  {
+    this.value = value;
+    this.next = next;
+  }
+}
 class LinkedList<T>
 {
-  class LinkedListItem<T>
-  {
-    private T value;
-    public T Value { get => this.value; }
-    public LinkedListItem<T> next;
-    public LinkedListItem(T value, LinkedListItem<T> next = null)
-    {
-      this.value = value;
-      this.next = next;
-    }
-  }
   private LinkedListItem<T> first;
   private LinkedListItem<T> last;
   private int length = 0;
@@ -67,15 +67,30 @@ class LinkedList<T>
     this.length--;
     return value;
   }
-  public LinkedList() { }
-  public LinkedList(T[] items)
-  {
-    for (int i = 0; i < items.Length; i++)
-      this.Enqueue(items[i]);
-  }
+  public LinkedListIterator<T> Iterator() => new LinkedListIterator<T>(this.first);
   public LinkedList(params T[] args)
   {
-    for (int i = 0; i < items.Length; i++)
-      this.Enqueue(items[i]);
+    for (int i = 0; i < args.Length; i++)
+      this.Append(args[i]);
+  }
+}
+class LinkedListIterator<T>
+{
+  private LinkedListItem<T> cursor;
+  private int iterations;
+  public int Iterations { get => this.iterations; }
+  public bool Done { get => this.cursor == null; }
+  public T Next()
+  {
+    LinkedListItem<T> temp = this.cursor;
+    this.cursor = this.cursor.next;
+
+    this.iterations++;
+    return temp.Value;
+  }
+  public LinkedListIterator(LinkedListItem<T> first)
+  {
+    this.cursor = first;
+    this.iterations = 0;
   }
 }

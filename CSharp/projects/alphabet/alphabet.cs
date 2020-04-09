@@ -10,6 +10,7 @@ namespace MainNamespace
     {
       private int _value;
       public int Value { get => this._value; }
+      public bool NewLine { get => this._value == '\n'; }
       public bool IsEmpty { get => (this._value == ' ' || this._value == '\n' || this._value == '\t' || this._value == '\r' || this._value == '\v'); }
       public bool IsNum { get => (this._value >= '0' && this._value <= '9'); }
       public bool IsAlph { get => ((this._value >= 'a' && this._value <= 'z') || (this._value >= 'A' && this._value <= 'Z')); }
@@ -43,6 +44,34 @@ namespace MainNamespace
     {
       this._buffer[this._cursor++] = ch;
     }
+    public string ReadLine()
+    {
+      Char ch;
+      StringBuilder sb = new StringBuilder();
+
+      // Skip empty symbols
+      while ((ch = this.GetChar()).IsEmpty) ;
+
+      // Check for EOF
+      if (ch.EOF)
+      {
+        this._EOF = true;
+        return "";
+      }
+
+      while (!(ch.NewLine || ch.EOF))
+      {
+        sb.Append((char)ch.Value);
+        ch = this.GetChar();
+      }
+
+      if (ch.EOF)
+        this._EOF = true;
+      else
+        this.ReturnChar(ch);
+
+      return sb.ToString();
+    }
     public string ReadWord()
     {
       Char ch;
@@ -70,6 +99,24 @@ namespace MainNamespace
         this._EOF = true;
       else
         this.ReturnChar(ch);
+
+      return sb.ToString();
+    }
+    public string ReadRest()
+    {
+      Char ch;
+      StringBuilder sb = new StringBuilder();
+
+      while (true)
+      {
+        ch = this.GetChar();
+
+        if (ch.EOF)
+          break;
+
+        if (!ch.IsEmpty)
+          sb.Append((char)ch.Value);
+      }
 
       return sb.ToString();
     }
@@ -134,93 +181,27 @@ namespace MainNamespace
       this._cursor = 0;
     }
   }
-  class A
+  class LinkedListItem<T>
   {
-    public static int[] Range(int low, int high)
+    private T value;
+    public T Value { get => this.value; }
+    public LinkedListItem<T> next;
+    public LinkedListItem(T value, LinkedListItem<T> next = null)
     {
-      int[] res = new int[high - low];
-
-      for (int i = low; i < high; i++)
-        res[i] = i;
-
-      return res;
-    }
-    public static int[] Range(int high)
-    {
-      return A.Range(0, high);
-    }
-    public static T[] Swap<T>(T[] arr, int i, int j)
-    {
-      T temp = arr[i];
-      arr[i] = arr[j];
-      arr[j] = temp;
-
-      return arr;
-    }
-    public static T[] Shuffle<T>(T[] arr, Random rnd)
-    {
-      for (int i = 0; i < arr.Length; i++)
-        A.Swap(arr, i, rnd.Next(0, arr.Length));
-
-      return arr;
-    }
-    public static T[] Rep<T>(T[] arr, int times)
-    {
-      T[] res = new T[arr.Length * times];
-
-      for (int i = 0; i < times; i++)
-        for (int j = 0; j < arr.Length; j++)
-          res[j + i * arr.Length] = arr[j];
-
-      return res;
-    }
-    public static T[] Print<T>(T[] arr, string delimiter = " ", string after = "\n")
-    {
-      for (int i = 0; i < arr.Length; i++)
-        Console.Write(arr[i].ToString() + (i == arr.Length - 1 ? "" : delimiter));
-
-      Console.Write(after);
-
-      return arr;
-    }
-    public static T[,] Print2D<T>(T[,] matrix, string colDelimiter = " ", string rowDelimiter = "\n", string after = "")
-    {
-      int rows = matrix.GetLength(0);
-      int cols = matrix.GetLength(1);
-
-      Console.WriteLine("rows: {0}", rows);
-      Console.WriteLine("cols: {0}", cols);
-
-      for (int row = 0; row < rows; row++)
-        for (int col = 0; col < cols; col++)
-          Console.Write(matrix[row, col].ToString() + (col == cols - 1 ? rowDelimiter : colDelimiter));
-
-      Console.Write(after);
-
-      return matrix;
+      this.value = value;
+      this.next = next;
     }
   }
-  class Queue<T>
+  class LinkedList<T>
   {
-    class QueueItem<TT>
-    {
-      private TT value;
-      public TT Value { get => this.value; }
-      public QueueItem<TT> next;
-      public QueueItem(TT value, QueueItem<TT> next = null)
-      {
-        this.value = value;
-        this.next = next;
-      }
-    }
-    private QueueItem<T> first;
-    private QueueItem<T> last;
+    private LinkedListItem<T> first;
+    private LinkedListItem<T> last;
     private int length = 0;
     public int Length { get => this.length; }
-    public bool CanDequeue { get => this.length > 0; }
-    public Queue<T> Enqueue(T value)
+    public bool Empty { get => this.length == 0; }
+    public LinkedList<T> Append(T value)
     {
-      QueueItem<T> item = new QueueItem<T>(value);
+      LinkedListItem<T> item = new LinkedListItem<T>(value);
 
       if (this.first == null)
         this.first = item;
@@ -233,10 +214,31 @@ namespace MainNamespace
       this.length++;
       return this;
     }
-    public T Dequeue()
+    public LinkedList<T> Preppend(T value)
     {
-      if (!this.CanDequeue)
-        throw new Exception("The queue is empty");
+      this.first = new LinkedListItem<T>(value, this.first);
+
+      if (this.last == null)
+        this.last = this.first;
+
+      this.length++;
+      return this;
+    }
+    public T ExtractFirst()
+    {
+      if (this.Empty)
+        throw new Exception("The linked list is empty");
+
+      T value = this.first.Value;
+      this.first = this.first.next;
+
+      this.length--;
+      return value;
+    }
+    public T ExtractLast()
+    {
+      if (this.Empty)
+        throw new Exception("The linked list is empty");
 
       T value = this.first.Value;
 
@@ -248,150 +250,196 @@ namespace MainNamespace
       this.length--;
       return value;
     }
-    public Queue(T[] items = null)
+    public LinkedListIterator<T> Iterator() => new LinkedListIterator<T>(this.first);
+    public LinkedList(params T[] args)
     {
-      if (items != null)
-        for (int i = 0; i < items.Length; i++)
-          this.Enqueue(items[i]);
+      for (int i = 0; i < args.Length; i++)
+        this.Append(args[i]);
     }
   }
-  class State
+  class LinkedListIterator<T>
   {
-    private int maxRow;
-    private int maxCol;
-    public int Moves;
-    public int Discovered;
-    public char Target;
-    public int Row;
-    public int Col;
-    public bool CanMoveUp { get => this.Row > 0; }
-    public bool CanMoveDown { get => this.Row < this.maxRow; }
-    public bool CanMoveLeft { get => this.Col > 0; }
-    public bool CanMoveRight { get => this.Col < this.maxCol; }
-    public State MoveUp(int steps = 1)
+    private LinkedListItem<T> cursor;
+    private int iterations;
+    public int Iterations { get => this.iterations; }
+    public bool Done { get => this.cursor == null; }
+    public T Next()
     {
-      this.Row -= steps;
-      this.Moves += steps;
-      return this;
-    }
-    public State MoveDown(int steps = 1)
-    {
-      this.Row += steps;
-      this.Moves += steps;
-      return this;
-    }
-    public State MoveLeft(int steps = 1)
-    {
-      this.Col -= steps;
-      this.Moves += steps;
-      return this;
-    }
-    public State MoveRight(int steps = 1)
-    {
-      this.Col += steps;
-      this.Moves += steps;
-      return this;
-    }
-    public State Clone() => new State(
-      this.maxRow,
-      this.maxCol,
-      this.Moves,
-      this.Discovered,
-      this.Target,
-      this.Row,
-      this.Col
-    );
-    public State(int maxRow, int maxCol, int moves, int discovered, char target, int row, int col)
-    {
-      this.maxRow = maxRow;
-      this.maxCol = maxCol;
+      LinkedListItem<T> temp = this.cursor;
+      this.cursor = this.cursor.next;
 
-      this.Discovered = discovered;
+      this.iterations++;
+      return temp.Value;
+    }
+    public LinkedListIterator(LinkedListItem<T> first)
+    {
+      this.cursor = first;
+      this.iterations = 0;
+    }
+  }
+  class Keyboard
+  {
+    private int minChar;
+    private int maxChar;
+    private int cols;
+    private int rows;
+    private int size;
+    public int Size { get => this.size; }
+    private LinkedList<int>[] alphabet;
+    public int ManhattanDistance(int a, int b) => Math.Abs(
+      // |ax - bx| + |ay - by|
+      (a % this.cols) - (b % this.cols)) + Math.Abs((a / this.cols) - (b / this.cols)
+    );
+    public bool HasLetter(char letter)
+    {
+      // Console.WriteLine("{0} ({1})", letter, (int)letter);
+      int index = (int)letter - this.minChar;
+
+      if (index < 0 || index >= this.alphabet.Length)
+        return false;
+
+      return this.alphabet[index].Length > 0;
+    }
+    public LinkedList<int> GetLetter(char letter) => this.alphabet[(int)letter - this.minChar];
+    public Keyboard(int cols, int rows, string content)
+    {
+      this.cols = cols;
+      this.rows = rows;
+
+      this.size = content.Length;
+
+      // Get min and max char value
+      this.maxChar = 0;
+      this.minChar = -1;
+      for (int i = 0; i < this.size; i++)
+      {
+        int ch = (int)content[i];
+
+        if (ch > this.maxChar)
+          this.maxChar = ch;
+
+        if (ch < this.minChar || this.minChar == -1)
+          this.minChar = ch;
+      }
+
+      // Initiate the alphabet
+      this.alphabet = new LinkedList<int>[this.maxChar - this.minChar + 1];
+      for (int i = 0; i < this.alphabet.Length; i++)
+        this.alphabet[i] = new LinkedList<int>();
+
+      // Fill the alphabet
+      for (int i = 0; i < this.size; i++)
+        this.alphabet[(int)content[i] - this.minChar].Append(i);
+
+      // Print the grid and alphabet
+      // A.Print2D(this.grid);
+      // for (int i = 0; i < this.alphabet.Length; i++)
+      //   Console.WriteLine("{0} --> {1}", (char)(i + this.minChar), this.alphabet[i].Length);
+    }
+  }
+  class Path
+  {
+    public int Pos;
+    public int Moves;
+    public int Next;
+    public Path Clone() => new Path(this.Pos, this.Moves, this.Next);
+    public Path(int pos, int moves, int next)
+    {
+      this.Pos = pos;
       this.Moves = moves;
-      this.Target = target;
-      this.Row = row;
-      this.Col = col;
+      this.Next = next;
+    }
+    public Path()
+    {
+      this.Pos = 0;
+      this.Moves = 0;
+      this.Next = 0;
     }
   }
   class MainClass
   {
-    static void Main()
+    static int Main(string[] args)
     {
-      InputReader inputReader = new InputReader();
+      InputReader reader = new InputReader();
 
-      int cols = inputReader.ReadInt();
-      int rows = inputReader.ReadInt();
+      // Create the keyboard
+      Keyboard keyboard = new Keyboard(
+        reader.ReadInt(),    // cols
+        reader.ReadInt(),    // rows
+        reader.ReadLine()    // content
+      );
 
-      // Build the grid
-      char[,] grid = new char[rows, cols];
-      string gridContent = inputReader.ReadWord();
-      for (int i = 0; i < rows; i++)
-        for (int j = 0; j < cols; j++)
-          grid[i, j] = gridContent[i * cols + j];
+      // Parse the input sequence
+      int letters = 0;
+      char[] sequence = reader.ReadRest().ToCharArray();
+      for (int i = 0; i < sequence.Length; i++)
+        if (keyboard.HasLetter(sequence[i]))
+          sequence[letters++] = sequence[i];
 
-      // A.Print2D(grid);
+      // Initiate the optimal matrix [position of letter, number of moves]
+      int[,] optimal = new int[keyboard.Size, letters];
+      for (int pos = 0; pos < keyboard.Size; pos++)
+        for (int moves = 0; moves < letters; moves++)
+          optimal[pos, moves] = -1;
 
-      // Build and fill the alphabet
-      bool[] alphabet = new bool[(int)'z' + 1];
+      // The best path
+      int res = -1;
 
-      for (int i = (int)'A'; i <= (int)'z'; i++)
-        alphabet[i] = false;
-
-      for (int i = 0; i < gridContent.Length; i++)
-        alphabet[(int)gridContent[i]] = true;
-
-      // for (int i = (int)'A'; i <= (int)'z'; i++)
-      //   Console.WriteLine("{0} --> {1}", (char)i, alphabet[i]);
-
-      // Read and split the target sequence
-      // Make sure no unknown letters are in the sequence
-      int nLetters = 0;
-      char[] inputSequence = inputReader.ReadWord().ToCharArray();
-      char[] sequence = new char[inputSequence.Length];
-      for (int i = 0; i < inputSequence.Length; i++)
-        if (alphabet[inputSequence[i]])
-          sequence[nLetters++] = inputSequence[i];
-
-      // Create the queue and start BFS
-      Queue<State> queue = new Queue<State>();
-      queue.Enqueue(new State(rows - 1, cols - 1, 0, 0, sequence[0], 0, 0));
-      while (queue.CanDequeue)
+      // Start exploring possible paths
+      LinkedList<Path> explorer = new LinkedList<Path>(new Path());
+      while (!explorer.Empty)
       {
-        State state = queue.Dequeue();
+        Path path = explorer.ExtractFirst();
 
-        // Cursor is on the target letter
-        if (state.Target == grid[state.Row, state.Col])
+        // Next letter
+        char letter = sequence[path.Next];
+        // Iterator for positions of this letter on the keyboard
+        LinkedListIterator<int> iterator = keyboard.GetLetter(letter).Iterator();
+        while (!iterator.Done)
         {
-          state.Discovered++;
-          state.Moves++;
+          int letterPosition = iterator.Next();
 
-          // All letters discovered
-          if (state.Discovered == nLetters)
+          Path newPath = new Path(
+            letterPosition,
+            path.Moves + keyboard.ManhattanDistance(path.Pos, letterPosition),
+            path.Next + 1
+          );
+
+          // Console.WriteLine(
+          //   "Path [moves: {0}; next: {1}] | {2} --> {3} @ {4} in {5} moves",
+          //   newPath.Moves,
+          //   newPath.Next,
+          //   newPath.Pos,
+          //   letter,
+          //   letterPosition,
+          //   keyboard.ManhattanDistance(newPath.Pos, letterPosition)
+          // );
+
+          if (newPath.Next == letters)
           {
-            Console.WriteLine(state.Moves);
-            Environment.Exit(0);
+            if (newPath.Moves < res || res == -1)
+              res = newPath.Moves;
+          }
+          else
+          {
+            int opt = optimal[newPath.Pos, newPath.Next];
+
+            if (opt == -1 || opt > newPath.Moves)
+            {
+              optimal[newPath.Pos, newPath.Next] = newPath.Moves;
+              explorer.Append(newPath);
+            }
+            // else
+            // {
+            //   Console.WriteLine("Forgetting about path at {0} ({1})", newPath.Pos, newPath.Next);
+            // }
           }
 
-          // Move to the next letter
-          state.Target = sequence[state.Discovered];
         }
-
-        // Move UP
-        if (state.CanMoveUp)
-          queue.Enqueue(state.Clone().MoveUp());
-
-        // Move DOWN
-        if (state.CanMoveDown)
-          queue.Enqueue(state.Clone().MoveDown());
-
-        // Move RIGHT
-        if (state.CanMoveRight)
-          queue.Enqueue(state.Clone().MoveRight());
-
-        // Move LEFT
-        if (state.CanMoveLeft)
-          queue.Enqueue(state.Clone().MoveLeft());
       }
+
+      Console.WriteLine(res + letters);
+      return 0;
     }
   }
 }

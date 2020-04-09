@@ -41,17 +41,21 @@ class A
   public static T[] Print<T>(T[] arr, string delimiter = " ", string after = "\n")
   {
     for (int i = 0; i < arr.Length; i++)
-      Console.Write(arr[i].ToString() + (i == arr.Length - 1 ? "" : delimiter));
-
-    Console.Write(after);
+      Console.Write(arr[i].ToString() + (i == arr.Length - 1 ? after : delimiter));
 
     return arr;
   }
-  public static T[,] Print2D(T[,] matrix, string colDelimiter = " ", string rowDelimiter = "\n", string after = "\n")
+  public static T[,] Print2D<T>(T[,] matrix, string colDelimiter = " ", string rowDelimiter = "\n", string after = "")
   {
-    for (int row = 0; row < matrix.Length; row++)
-      for (int col = 0; col < matrix[row].Length; col++)
-        Console.Write(arr[i, j].ToString() + (col == arr[row].Length - 1 ? rowDelimiter : colDelimiter));
+    int rows = matrix.GetLength(0);
+    int cols = matrix.GetLength(1);
+
+    Console.WriteLine("rows: {0}", rows);
+    Console.WriteLine("cols: {0}", cols);
+
+    for (int row = 0; row < rows; row++)
+      for (int col = 0; col < cols; col++)
+        Console.Write(matrix[row, col].ToString() + (col == cols - 1 ? rowDelimiter : colDelimiter));
 
     Console.Write(after);
 
