@@ -553,26 +553,26 @@ namespace MainNamespace
       }
 
       // Print the layers with moves
-      if (printToConsole)
-      {
-        for (int layer = 0; layer <= letters; layer++)
-        {
-          Console.WriteLine("--------------------------------------------- Layer [{0}]", layer);
+      // if (printToConsole)
+      // {
+      //   for (int layer = 0; layer <= letters; layer++)
+      //   {
+      //     Console.WriteLine("--------------------------------------------- Layer [{0}]", layer);
 
-          char letter = layer == 0 ? '-' : sequence[layer - 1];
+      //     char letter = layer == 0 ? '-' : sequence[layer - 1];
 
-          for (int node = 0; node < layerSizes[layer]; node++)
-          {
-            Console.WriteLine(
-              "Node {0}: {1} @ {2} in {3} moves",
-              node,
-              letter,
-              keyboard.ToXY(layers[layer, node, POSITION_INDEX]).ToString(),
-              layers[layer, node, MOVES_INDEX]
-            );
-          }
-        }
-      }
+      //     for (int node = 0; node < layerSizes[layer]; node++)
+      //     {
+      //       Console.WriteLine(
+      //         "Node {0}: {1} @ {2} in {3} moves",
+      //         node,
+      //         letter,
+      //         keyboard.ToXY(layers[layer, node, POSITION_INDEX]).ToString(),
+      //         layers[layer, node, MOVES_INDEX]
+      //       );
+      //     }
+      //   }
+      // }
 
       // Find the optimal path
       int optimal = -1;
