@@ -136,76 +136,140 @@ namespace MainNamespace
   {
     private T value;
     public T Value { get => this.value; }
-    public LinkedListItem<T> next;
-    public LinkedListItem(T value, LinkedListItem<T> next = null)
+    public LinkedListItem<T> Next;
+    public LinkedListItem<T> Prev;
+    public LinkedListItem(T value, LinkedListItem<T> next = null, LinkedListItem<T> prev = null)
     {
       this.value = value;
-      this.next = next;
+
+      this.Next = next;
+      this.Prev = prev;
     }
   }
   class LinkedList<T>
   {
     private LinkedListItem<T> first;
+    public LinkedListItem<T> First { get => this.first; }
     private LinkedListItem<T> last;
+    public LinkedListItem<T> Last { get => this.last; }
     private int length = 0;
     public int Length { get => this.length; }
     public bool Empty { get => this.length == 0; }
-    public LinkedList<T> Append(T value)
+    public T RemoveItem(LinkedListItem<T> item)
     {
-      LinkedListItem<T> item = new LinkedListItem<T>(value);
+      if (this.Empty)
+        throw new Exception("The linked list is empty");
 
-      if (this.first == null)
+      T value = item.Value;
+
+      // First item
+      if (item == this.first)
+      {
+        Console.WriteLine("Extracting first item: {0}", value.ToString());
+        this.first = this.first.Next;
+
+        if (this.first != null)
+          this.first.Prev = null;
+      }
+
+      // Last item
+      else if (item == this.last)
+      {
+        Console.WriteLine("Extracting last item: {0}", value.ToString());
+        this.last = this.last.Prev;
+
+        if (this.last != null)
+          this.last.Next = null;
+      }
+
+      // Middle item
+      else
+      {
+        Console.WriteLine("Extracting middle item: {0}", value.ToString());
+        item.Prev.Next = item.Next;
+        item.Next.Prev = item.Prev;
+      }
+
+      // Remove references
+      item.Prev = null;
+      item.Next = null;
+
+      // Adjust first and last items in special cases
+      this.length--;
+      if (this.length == 1)
+        this.last = this.first;
+      else if (this.length == 0)
+        this.last = this.first = null;
+
+      return value;
+    }
+    public T ExtractFirst() => this.RemoveItem(this.first);
+    public T ExtractLast() => this.RemoveItem(this.last);
+    public LinkedListItem<T> InsertLast(T value)
+    {
+      LinkedListItem<T> item = new LinkedListItem<T>(value, null, this.last);
+
+      if (this.Empty)
         this.first = item;
 
       if (this.last != null)
-        this.last.next = item;
+        this.last.Next = item;
 
       this.last = item;
 
       this.length++;
-      return this;
+      return item;
     }
-    public LinkedList<T> Preppend(T value)
+    public LinkedListItem<T> InsertFirst(T value)
     {
-      this.first = new LinkedListItem<T>(value, this.first);
+      this.first = new LinkedListItem<T>(value, this.first, null);
 
       if (this.last == null)
         this.last = this.first;
 
       this.length++;
-      return this;
-    }
-    public T ExtractFirst()
-    {
-      if (this.Empty)
-        throw new Exception("The linked list is empty");
-
-      T value = this.first.Value;
-      this.first = this.first.next;
-
-      this.length--;
-      return value;
-    }
-    public T ExtractLast()
-    {
-      if (this.Empty)
-        throw new Exception("The linked list is empty");
-
-      T value = this.first.Value;
-
-      if (this.Length == 1)
-        this.first = this.last = null;
-      else
-        this.first = this.first.next;
-
-      this.length--;
-      return value;
+      return this.first;
     }
     public LinkedListIterator<T> Iterator() => new LinkedListIterator<T>(this.first);
+    public void DetailedPrint()
+    {
+      var item = this.first;
+      while (item != null)
+      {
+        Console.WriteLine(
+          "{0} <-- {1} --> {2}",
+          item.Prev == null ? "-" : item.Prev.Value.ToString(),
+          item.Value.ToString(),
+          item.Next == null ? "-" : item.Next.Value.ToString()
+        );
+        item = item.Next;
+      }
+    }
+    public override string ToString()
+    {
+      var sb = new StringBuilder();
+      var iterator = this.Iterator();
+
+      sb.Append("{ ");
+      while (!iterator.Done)
+        sb.Append(iterator.Next().Value.ToString() + (iterator.Done ? "" : ", "));
+      sb.Append(" }");
+
+      return sb.ToString();
+    }
+    public bool ContainsValue(T value)
+    {
+      var iterator = this.Iterator();
+      while (!iterator.Done)
+        if (Object.Equals(iterator.Next().Value, value))
+          return true;
+
+      return false;
+    }
     public LinkedList(params T[] args)
     {
       for (int i = 0; i < args.Length; i++)
-        this.Append(args[i]);
+        this.InsertLast(args[i]);
     }
   }
   class LinkedListIterator<T>
@@ -215,13 +279,13 @@ namespace MainNamespace
     private int iterations;
     public int Iterations { get => this.iterations; }
     public bool Done { get => this.cursor == null; }
-    public T Next()
+    public LinkedListItem<T> Next()
     {
       LinkedListItem<T> temp = this.cursor;
-      this.cursor = this.cursor.next;
+      this.cursor = this.cursor.Next;
 
       this.iterations++;
-      return temp.Value;
+      return temp;
     }
     public LinkedListIterator<T> Reset()
     {
@@ -343,11 +407,10 @@ namespace MainNamespace
       {
         ch = this.GetChar();
 
-        if (ch.EOF)
-          break;
-
-        if (!ch.IsEmpty)
+        if (!ch.EOF)
           sb.Append((char)ch.Value);
+        else
+          break;
       }
 
       return sb.ToString();
@@ -437,6 +500,103 @@ namespace MainNamespace
       return this.alphabet[index].Length > 0;
     }
     public LinkedList<int> GetLetter(char letter) => this.alphabet[(int)letter - this.minChar];
+    public int GetStrokes(string text)
+    {
+      // Parse the input sequence
+      int letters = 0;
+      char[] sequence = text.ToCharArray();
+      for (int i = 0; i < sequence.Length; i++)
+        if (this.HasLetter(sequence[i]))
+          sequence[letters++] = sequence[i];
+
+
+      // One layer for each letter in sequence
+      const int POSITION_INDEX = 0;
+      const int MOVES_INDEX = 1;
+      int[] layerSizes = new int[letters + 1];
+      int[,,] layers = new int[letters + 1, 11, 2]; // [<layer>, <node> <path data>]
+
+      // First layer (no letters)
+      layerSizes[0] = 1;
+      layers[0, 0, POSITION_INDEX] = 0;
+      layers[0, 0, MOVES_INDEX] = 0;
+
+      // Initiate the layers
+      for (int layer = 0; layer < letters; layer++)
+      {
+        int nextlayer = layer + 1;
+
+        char letter = sequence[layer];
+        LinkedListIterator<int> positions = this.GetLetter(letter).Iterator();
+
+        while (!positions.Done)
+        {
+          int position = positions.Next().Value;
+          int nextNode = positions.Iterations - 1;
+
+          layers[nextlayer, nextNode, MOVES_INDEX] = -1;
+          layers[nextlayer, nextNode, POSITION_INDEX] = position;
+        }
+
+        layerSizes[nextlayer] = positions.Iterations;
+      }
+
+      // Compute the distances
+      for (int layer = 0; layer < letters; layer++)
+      {
+        int nextLayer = layer + 1;
+
+        // For each node in a layer
+        for (int node = 0; node < layerSizes[layer]; node++)
+        {
+          int currPos = layers[layer, node, POSITION_INDEX];
+          int currMoves = layers[layer, node, MOVES_INDEX];
+
+          for (int nextNode = 0; nextNode < layerSizes[nextLayer]; nextNode++)
+          {
+            int nextPos = layers[nextLayer, nextNode, POSITION_INDEX];
+            int nextMoves = layers[nextLayer, nextNode, MOVES_INDEX];
+
+            int distance = this.ManhattanDistance(currPos, nextPos);
+
+            // Look for a faster way to get there
+            if (nextMoves == -1 || nextMoves > currMoves + distance)
+              layers[nextLayer, nextNode, MOVES_INDEX] = currMoves + distance;
+          }
+        }
+      }
+
+      // Print the layers with moves
+      // if (printToConsole)
+      // {
+      //   for (int layer = 0; layer <= letters; layer++)
+      //   {
+      //     Console.WriteLine("--------------------------------------------- Layer [{0}]", layer);
+
+      //     char letter = layer == 0 ? '-' : sequence[layer - 1];
+
+      //     for (int node = 0; node < layerSizes[layer]; node++)
+      //     {
+      //       Console.WriteLine(
+      //         "Node {0}: {1} @ {2} in {3} moves",
+      //         node,
+      //         letter,
+      //         this.ToXY(layers[layer, node, POSITION_INDEX]).ToString(),
+      //         layers[layer, node, MOVES_INDEX]
+      //       );
+      //     }
+      //   }
+      // }
+
+      // Find the optimal path
+      int optimal = -1;
+      int lastLayer = letters;
+      for (int node = 0; node < layerSizes[lastLayer]; node++)
+        if (layers[lastLayer, node, MOVES_INDEX] < optimal || optimal == -1)
+          optimal = layers[lastLayer, node, MOVES_INDEX];
+
+      return optimal + letters;
+    }
     public Keyboard(int cols, int rows, string content)
     {
       this.cols = cols;
@@ -465,23 +625,18 @@ namespace MainNamespace
 
       // Fill the alphabet
       for (int i = 0; i < this.size; i++)
-        this.alphabet[(int)content[i] - this.minChar].Append(i);
+        this.alphabet[(int)content[i] - this.minChar].InsertLast(i);
     }
   }
   class MainClass
   {
-    static int Main(string[] args)
+    public static bool printToConsole = false;
+    public static InputReader reader = new InputReader();
+    public static Stopwatch stopwatch = new Stopwatch();
+    public static Random rnd = new Random();
+    private static void TaskOne()
     {
-      // For Recodex
-      bool printToConsole = false;
-      foreach (string arg in args)
-        if (arg == "--print-to-console")
-          printToConsole = true;
-
-      Stopwatch stopwatch = new Stopwatch();
-      stopwatch.Start().Stop().Reset().Start();
-
-      InputReader reader = new InputReader();
+      stopwatch.Start();
 
       Keyboard keyboard = new Keyboard(
         reader.ReadInt(),    // cols
@@ -489,102 +644,124 @@ namespace MainNamespace
         reader.ReadLine()    // content
       );
 
-      // Parse the input sequence
-      int letters = 0;
-      char[] sequence = reader.ReadRest().ToCharArray();
-      for (int i = 0; i < sequence.Length; i++)
-        if (keyboard.HasLetter(sequence[i]))
-          sequence[letters++] = sequence[i];
+      Console.WriteLine(keyboard.GetStrokes(reader.ReadRest()));
+      Console.WriteLine("{0}ms", stopwatch.Stop().Milliseconds);
+    }
+    private static void TaskTwo()
+    {
+      string text = reader.ReadRest();
 
-      // One layer for each letter in sequence
-      const int POSITION_INDEX = 0;
-      const int MOVES_INDEX = 1;
-      int[] layerSizes = new int[letters + 1];
-      int[,,] layers = new int[letters + 1, 11, 2]; // [<layer>, <node> <path data>]
+      const int MAX_CHAR = 122;
+      const int GRID_WIDTH = 8;
+      const int GRID_HEIGHT = 8;
+      const int GRID_SIZE = GRID_WIDTH * GRID_HEIGHT;
 
-      // First layer (no letters)
-      layerSizes[0] = 1;
-      layers[0, 0, POSITION_INDEX] = 0;
-      layers[0, 0, MOVES_INDEX] = 0;
-
-      // Initiate the layers
-      for (int layer = 0; layer < letters; layer++)
+      // Frequency of each letter in text
+      int[] frequency = new int[MAX_CHAR + 1];
+      // How many times will letter appear on the keyboard
+      int[] gridCount = new int[MAX_CHAR + 1];
+      for (int i = 0; i < MAX_CHAR; i++)
       {
-        int nextlayer = layer + 1;
-
-        char letter = sequence[layer];
-        LinkedListIterator<int> positions = keyboard.GetLetter(letter).Iterator();
-
-        while (!positions.Done)
-        {
-          int position = positions.Next();
-          int nextNode = positions.Iterations - 1;
-
-          layers[nextlayer, nextNode, MOVES_INDEX] = -1;
-          layers[nextlayer, nextNode, POSITION_INDEX] = position;
-        }
-
-        layerSizes[nextlayer] = positions.Iterations;
+        frequency[i] = 0;
+        gridCount[i] = 0;
       }
 
-      // Compute the distances
-      for (int layer = 0; layer < letters; layer++)
+      // Compute the letter frequency
+      int distinct = 0;
+      foreach (char ch in text)
       {
-        int nextLayer = layer + 1;
+        if (frequency[(int)ch] == 0)
+          distinct++;
 
-        // For each node in a layer
-        for (int node = 0; node < layerSizes[layer]; node++)
+        frequency[(int)ch]++;
+      }
+
+      // Each letter will appear at least once on the keyboard
+      int unitFrequency = text.Length / distinct;
+      for (int i = 0; i < MAX_CHAR; i++)
+        if (frequency[i] > 0)
+          gridCount[i] = 1;
+
+      // Make more frequent letter appear more times on the keyboard
+      int spare = GRID_SIZE - distinct;
+      int run = 2;
+      while (spare > 0)
+      {
+        for (int i = 0; i < MAX_CHAR; i++)
         {
-          int currPos = layers[layer, node, POSITION_INDEX];
-          int currMoves = layers[layer, node, MOVES_INDEX];
-
-          for (int nextNode = 0; nextNode < layerSizes[nextLayer]; nextNode++)
+          if (frequency[i] > unitFrequency * run)
           {
-            int nextPos = layers[nextLayer, nextNode, POSITION_INDEX];
-            int nextMoves = layers[nextLayer, nextNode, MOVES_INDEX];
+            gridCount[i]++;
+            spare--;
 
-            int distance = keyboard.ManhattanDistance(currPos, nextPos);
-
-            // Look for a faster way to get there
-            if (nextMoves == -1 || nextMoves > currMoves + distance)
-              layers[nextLayer, nextNode, MOVES_INDEX] = currMoves + distance;
+            if (spare == 0)
+              break;
           }
         }
+
+        run++;
       }
 
-      // Print the layers with moves
+      // Build the grid
+      string grid = "";
+      for (int i = 0; i < MAX_CHAR; i++)
+        for (int j = 0; j < gridCount[i]; j++)
+          if (grid.Length < GRID_SIZE)
+            grid += (char)i;
+
+      // Print the results
+      // Console.WriteLine("{0} distinct characters", distinct);
+      // Console.WriteLine("Int\tChar\tFreq\tGrid");
+      // for (int i = 0; i < MAX_CHAR; i++)
+      //   if (frequency[i] > 0)
+      //     Console.WriteLine(
+      //       "{0}\t{1}\t{2}\t{3}",
+      //       i, (char)i, frequency[i], gridCount[i]
+      //     );
+      // Console.WriteLine("Final grid:\n|{0}|", grid);
+      // Console.WriteLine("Of length {0}", grid.Length);
+
+      long iteration = 0;
+      int best = 999999;
+      while (true)
+      {
+        string shuffle = "";
+        foreach (int num in A.Shuffle(A.Range(GRID_SIZE), rnd))
+          shuffle += grid[num];
+
+        var keyboard = new Keyboard(GRID_WIDTH, GRID_HEIGHT, shuffle);
+        int strokes = keyboard.GetStrokes(text);
+
+        if (strokes < best)
+        {
+          Console.WriteLine("#{0}\t|{1}| in {2} strokes", iteration, shuffle, strokes);
+          best = strokes;
+        }
+
+        iteration++;
+        // Console.Write("{0}\r", iteration++);
+      }
+    }
+    static int Main(string[] args)
+    {
+      // Args parsing
+      int task = 1;
+      foreach (string arg in args)
+        if (arg == "--print-to-console")
+          printToConsole = true;
+        else if (arg.StartsWith("--task:"))
+          task = Convert.ToInt32(arg.Split(":")[1]);
+
+      stopwatch.Start().Stop().Reset();
+
       // if (printToConsole)
-      // {
-      //   for (int layer = 0; layer <= letters; layer++)
-      //   {
-      //     Console.WriteLine("--------------------------------------------- Layer [{0}]", layer);
+      //   Console.WriteLine("\nRunning task {0}\n", task);
 
-      //     char letter = layer == 0 ? '-' : sequence[layer - 1];
-
-      //     for (int node = 0; node < layerSizes[layer]; node++)
-      //     {
-      //       Console.WriteLine(
-      //         "Node {0}: {1} @ {2} in {3} moves",
-      //         node,
-      //         letter,
-      //         keyboard.ToXY(layers[layer, node, POSITION_INDEX]).ToString(),
-      //         layers[layer, node, MOVES_INDEX]
-      //       );
-      //     }
-      //   }
-      // }
-
-      // Find the optimal path
-      int optimal = -1;
-      int lastLayer = letters;
-      for (int node = 0; node < layerSizes[lastLayer]; node++)
-        if (layers[lastLayer, node, MOVES_INDEX] < optimal || optimal == -1)
-          optimal = layers[lastLayer, node, MOVES_INDEX];
-
-      Console.WriteLine(optimal + letters);
-
-      if (printToConsole)
-        Console.WriteLine("{0}ms", stopwatch.Stop().Milliseconds);
+      switch (task)
+      {
+        case 1: TaskOne(); break;
+        case 2: TaskTwo(); break;
+      }
 
       return 0;
     }
