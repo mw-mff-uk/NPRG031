@@ -482,6 +482,8 @@ namespace MainNamespace
     private int maxChar;
     private int cols;
     private int rows;
+    private char[] sequence;
+    public string Sequence { get => new string(this.sequence); }
     private int size;
     public int Size { get => this.size; }
     private LinkedList<int>[] alphabet;
@@ -500,15 +502,45 @@ namespace MainNamespace
       return this.alphabet[index].Length > 0;
     }
     public LinkedList<int> GetLetter(char letter) => this.alphabet[(int)letter - this.minChar];
-    public int GetStrokes(string text)
+    public Keyboard SetContent(string content)
+    {
+      // Get min and max char value
+      int maxChar = 0;
+      int minChar = -1;
+      for (int i = 0; i < content.Length; i++)
+      {
+        int ch = (int)content[i];
+
+        if (ch > maxChar)
+          maxChar = ch;
+
+        if (ch < minChar || minChar == -1)
+          minChar = ch;
+      }
+
+      return this.SetContent(content, minChar, maxChar);
+    }
+    public Keyboard SetContent(string content, int minChar, int maxChar)
+    {
+      this.minChar = minChar;
+      this.maxChar = maxChar;
+      this.size = content.Length;
+
+      // Initiate the alphabet
+      this.alphabet = new LinkedList<int>[this.maxChar - this.minChar + 1];
+      for (int i = 0; i < this.alphabet.Length; i++)
+        this.alphabet[i] = new LinkedList<int>();
+
+      // Fill the alphabet
+      for (int i = 0; i < this.size; i++)
+        this.alphabet[(int)content[i] - this.minChar].InsertLast(i);
+
+      return this;
+    }
+    public int GetStrokes()
     {
       // Parse the input sequence
-      int letters = 0;
-      char[] sequence = text.ToCharArray();
-      for (int i = 0; i < sequence.Length; i++)
-        if (this.HasLetter(sequence[i]))
-          sequence[letters++] = sequence[i];
-
+      int letters = this.sequence.Length;
 
       // One layer for each letter in sequence
       const int POSITION_INDEX = 0;
@@ -597,35 +629,11 @@ namespace MainNamespace
 
       return optimal + letters;
     }
-    public Keyboard(int cols, int rows, string content)
+    public Keyboard(int cols, int rows, string text)
     {
       this.cols = cols;
       this.rows = rows;
-
-      this.size = content.Length;
-
-      // Get min and max char value
-      this.maxChar = 0;
-      this.minChar = -1;
-      for (int i = 0; i < this.size; i++)
-      {
-        int ch = (int)content[i];
-
-        if (ch > this.maxChar)
-          this.maxChar = ch;
-
-        if (ch < this.minChar || this.minChar == -1)
-          this.minChar = ch;
-      }
-
-      // Initiate the alphabet
-      this.alphabet = new LinkedList<int>[this.maxChar - this.minChar + 1];
-      for (int i = 0; i < this.alphabet.Length; i++)
-        this.alphabet[i] = new LinkedList<int>();
-
-      // Fill the alphabet
-      for (int i = 0; i < this.size; i++)
-        this.alphabet[(int)content[i] - this.minChar].InsertLast(i);
+      this.sequence = text.ToCharArray();
     }
   }
   class MainClass
@@ -636,16 +644,16 @@ namespace MainNamespace
     public static Random rnd = new Random();
     private static void TaskOne()
     {
-      stopwatch.Start();
+      // stopwatch.Start();
 
-      Keyboard keyboard = new Keyboard(
-        reader.ReadInt(),    // cols
-        reader.ReadInt(),    // rows
-        reader.ReadLine()    // content
-      );
+      // Keyboard keyboard = new Keyboard(
+      //   reader.ReadInt(),    // cols
+      //   reader.ReadInt(),    // rows
+      //   reader.ReadLine()    // content
+      // );
 
-      Console.WriteLine(keyboard.GetStrokes(reader.ReadRest()));
-      Console.WriteLine("{0}ms", stopwatch.Stop().Milliseconds);
+      // Console.WriteLine(keyboard.GetStrokes(reader.ReadRest()));
+      // Console.WriteLine("{0}ms", stopwatch.Stop().Milliseconds);
     }
     private static void TaskTwo()
     {
@@ -710,36 +718,40 @@ namespace MainNamespace
             grid += (char)i;
 
       // Print the results
-      // Console.WriteLine("{0} distinct characters", distinct);
-      // Console.WriteLine("Int\tChar\tFreq\tGrid");
-      // for (int i = 0; i < MAX_CHAR; i++)
-      //   if (frequency[i] > 0)
-      //     Console.WriteLine(
-      //       "{0}\t{1}\t{2}\t{3}",
-      //       i, (char)i, frequency[i], gridCount[i]
-      //     );
-      // Console.WriteLine("Final grid:\n|{0}|", grid);
-      // Console.WriteLine("Of length {0}", grid.Length);
+      Console.WriteLine("{0} distinct characters", distinct);
+      Console.WriteLine("Int\tChar\tFreq\tGrid");
+      for (int i = 0; i < MAX_CHAR; i++)
+        if (frequency[i] > 0)
+          Console.WriteLine(
+            "{0}\t{1}\t{2}\t{3}",
+            i, (char)i, frequency[i], gridCount[i]
+          );
+      Console.WriteLine("Final grid:\n|{0}|", grid);
+      Console.WriteLine("Of length {0}", grid.Length);
+
+      var keyboard = new Keyboard(GRID_WIDTH, GRID_HEIGHT, text);
 
       long iteration = 0;
       int best = 999999;
       while (true)
       {
-        string shuffle = "";
+        string content = "";
         foreach (int num in A.Shuffle(A.Range(GRID_SIZE), rnd))
-          shuffle += grid[num];
+          content += grid[num];
 
-        var keyboard = new Keyboard(GRID_WIDTH, GRID_HEIGHT, shuffle);
-        int strokes = keyboard.GetStrokes(text);
+        int strokes = keyboard.SetContent(content, 0, 121).GetStrokes();
 
         if (strokes < best)
         {
-          Console.WriteLine("#{0}\t|{1}| in {2} strokes", iteration, shuffle, strokes);
+          Console.WriteLine(
+            "#{0}\t|{1}| in {2} strokes",
+            iteration, content, strokes
+          );
           best = strokes;
         }
 
         iteration++;
-        // Console.Write("{0}\r", iteration++);
+        Console.Write("{0}\r", iteration);
       }
     }
     static int Main(string[] args)
