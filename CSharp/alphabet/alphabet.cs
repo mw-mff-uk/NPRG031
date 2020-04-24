@@ -744,14 +744,17 @@ namespace MainNamespace
         if (strokes < best)
         {
           Console.WriteLine(
-            "#{0}\t|{1}| in {2} strokes",
+            "#{0}\t\t|{1}| in {2} strokes",
             iteration, content, strokes
           );
           best = strokes;
         }
 
+        if (iteration % 100000 == 0)
+          Console.WriteLine(iteration);
+
         iteration++;
-        Console.Write("{0}\r", iteration);
+        // Console.Write("{0}\r", iteration);
       }
     }
     static int Main(string[] args)
