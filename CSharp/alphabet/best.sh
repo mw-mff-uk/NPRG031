@@ -16,4 +16,4 @@ echo "Total iterations: ${iterations}"
 
 echo ""
 echo "Last results:"
-cat task-two.record.txt | tail -n 5
+cat task-two.record.txt | grep "Grid: |" | tail -n 5
