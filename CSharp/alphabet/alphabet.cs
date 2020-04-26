@@ -688,9 +688,7 @@ namespace MainNamespace
     }
     private static void TaskTwo()
     {
-      #region task-two-setup
       string text = reader.ReadLine();
-      // Console.WriteLine("\nThe text has {0} characters", text.Length);
 
       const int MIN_CHAR = 0;
       const int MAX_CHAR = 122;
@@ -698,83 +696,88 @@ namespace MainNamespace
       const int GRID_HEIGHT = 8;
       const int GRID_SIZE = GRID_WIDTH * GRID_HEIGHT;
 
-      // Frequency of each letter in text
-      int[] frequency = new int[MAX_CHAR + 1];
-      // How many times will letter appear on the keyboard
-      int[] gridCount = new int[MAX_CHAR + 1];
-      for (int i = 0; i < MAX_CHAR + 1; i++)
-      {
-        frequency[i] = 0;
-        gridCount[i] = 0;
-      }
-
-      // Compute the letter frequency
-      int distinct = 0;
-      foreach (char ch in text)
-      {
-        if ((int)ch == 0)
-          continue;
-
-        if (frequency[(int)ch] == 0)
-          distinct++;
-
-        frequency[(int)ch]++;
-      }
-
-      // Each letter will appear at least once on the keyboard
-      int unitFrequency = text.Length / distinct;
-      for (int i = 0; i < MAX_CHAR + 1; i++)
-        if (frequency[i] > 0)
-          gridCount[i] = 1;
-
-      // Make more frequent letter appear more times on the keyboard
-      int spare = GRID_SIZE - distinct;
-      int run = 2;
-      while (spare > 0)
-      {
-        for (int i = 0; i < MAX_CHAR + 1; i++)
-        {
-          if (gridCount[i] > 0 && frequency[i] > unitFrequency * (run - 0.5))
-          {
-            gridCount[i]++;
-            spare--;
-
-            if (spare == 0)
-              break;
-          }
-        }
-
-        run++;
-      }
-
-      // Build the grid
-      string gridText = "";
-      for (int i = 0; i < MAX_CHAR + 1; i++)
-        for (int j = 0; j < gridCount[i]; j++)
-          if (gridText.Length < GRID_SIZE)
-            gridText += (char)i;
-
-      // Print the results
-      // Console.WriteLine("{0} distinct characters were found\n", distinct);
-      // Console.WriteLine("Code\tChar\tFreq\tGrid");
-      // for (int i = 0; i < MAX_CHAR + 1; i++)
-      //   if (frequency[i] > 0)
-      //     Console.WriteLine(
-      //       "{0}\t{1}\t{2}\t{3}",
-      //       i, (char)i, frequency[i], gridCount[i]
-      //     );
-      Console.WriteLine("\nFinal grid: |{0}|", gridText);
-      #endregion
-
-      // Create keyboard
-      var grid = gridText.ToCharArray();
-      var keyboard = new Keyboard(GRID_WIDTH, GRID_HEIGHT, text);
-
       // Select the strategy
       const int STRATEGY = 1;
 
       while (true)
       {
+        #region task-two-setup
+        // Console.WriteLine("\nThe text has {0} characters", text.Length);
+        // Frequency of each letter in text
+        int[] frequency = new int[MAX_CHAR + 1];
+        // How many times will letter appear on the keyboard
+        int[] gridCount = new int[MAX_CHAR + 1];
+        for (int i = 0; i < MAX_CHAR + 1; i++)
+        {
+          frequency[i] = 0;
+          gridCount[i] = 0;
+        }
+
+        // Compute the letter frequency
+        int distinct = 0;
+        foreach (char ch in text)
+        {
+          if ((int)ch == 0)
+            continue;
+
+          if (frequency[(int)ch] == 0)
+            distinct++;
+
+          frequency[(int)ch]++;
+        }
+
+        // Each letter will appear at least once on the keyboard
+        int unitFrequency = text.Length / distinct;
+        for (int i = 0; i < MAX_CHAR + 1; i++)
+          if (frequency[i] > 0)
+            gridCount[i] = 1;
+
+        // Make more frequent letter appear more times on the keyboard
+        int spare = GRID_SIZE - distinct;
+        double run = 2;
+        double minus = rnd.NextDouble();
+        Console.WriteLine(minus);
+        while (spare > 0)
+        {
+          for (int i = 0; i < MAX_CHAR + 1; i++)
+          {
+            if (gridCount[i] > 0 && frequency[i] > unitFrequency * (run - minus))
+            {
+              gridCount[i]++;
+              spare--;
+
+              if (spare == 0)
+                break;
+            }
+          }
+
+          run++;
+        }
+
+        // Build the grid
+        string gridText = "";
+        for (int i = 0; i < MAX_CHAR + 1; i++)
+          for (int j = 0; j < gridCount[i]; j++)
+            if (gridText.Length < GRID_SIZE)
+              gridText += (char)i;
+
+        // Print the results
+        // Console.WriteLine("{0} distinct characters were found\n", distinct);
+        // Console.WriteLine("Code\tChar\tFreq\tGrid");
+        // for (int i = 0; i < MAX_CHAR + 1; i++)
+        //   if (frequency[i] > 0)
+        //     Console.WriteLine(
+        //       "{0}\t{1}\t{2}\t{3}",
+        //       i, (char)i, frequency[i], gridCount[i]
+        //     );
+        Console.WriteLine("\nFinal grid: |{0}|", gridText);
+        Console.WriteLine("Minus: {0}", minus);
+        #endregion
+
+        // Create keyboard
+        var grid = gridText.ToCharArray();
+        var keyboard = new Keyboard(GRID_WIDTH, GRID_HEIGHT, text);
+
         // Random shuffle
         A.Shuffle(grid, rnd);
         keyboard.SetContent(grid, MIN_CHAR, MAX_CHAR);
