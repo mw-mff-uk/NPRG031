@@ -734,7 +734,7 @@ namespace MainNamespace
       {
         for (int i = 0; i < MAX_CHAR + 1; i++)
         {
-          if (gridCount[i] > 0 && frequency[i] > unitFrequency * run)
+          if (gridCount[i] > 0 && frequency[i] > unitFrequency * (run - 0.5))
           {
             gridCount[i]++;
             spare--;
@@ -763,7 +763,7 @@ namespace MainNamespace
       //       "{0}\t{1}\t{2}\t{3}",
       //       i, (char)i, frequency[i], gridCount[i]
       //     );
-      // Console.WriteLine("\nFinal grid: |{0}|", gridText);
+      Console.WriteLine("\nFinal grid: |{0}|", gridText);
       #endregion
 
       // Create keyboard
