@@ -983,7 +983,10 @@ namespace MainNamespace
 
         // Best solution
         keyboard.SetContent(grid, MIN_CHAR, MAX_CHAR);
-        Console.WriteLine("Grid: |{0}| Strokes: {1}", new string(grid), keyboard.GetStrokes());
+        Console.WriteLine(
+          "Grid: |{0}| Strokes: {1} Minus: {2}",
+          new string(grid), keyboard.GetStrokes(), minus
+        );
       }
     }
     static int Main(string[] args)
