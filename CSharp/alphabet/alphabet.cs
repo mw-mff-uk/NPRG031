@@ -6,6 +6,8 @@ namespace MainNamespace
 {
   class A
   {
+    public static int ORDER_ASC = 0;
+    public static int ORDER_DESC = 1;
     public static int[] Range(int low, int high)
     {
       int[] res = new int[high - low];
@@ -66,6 +68,27 @@ namespace MainNamespace
       Console.Write(after);
 
       return matrix;
+    }
+    public static void SortParallel<T>(int[] keys, T[] values, int order = 0)
+    {
+      if (keys.Length != values.Length)
+        throw new Exception("keys and values have different length");
+
+      bool stop = false;
+      while (!stop)
+      {
+        stop = true;
+        for (int curr = 1; curr < keys.Length; curr++)
+        {
+          int prev = curr - 1;
+          if ((order == A.ORDER_ASC && keys[prev] > keys[curr]) || (order == A.ORDER_DESC && keys[prev] < keys[curr]))
+          {
+            A.Swap(keys, prev, curr);
+            A.Swap(values, prev, curr);
+            stop = false;
+          }
+        }
+      }
     }
   }
   class XY
@@ -345,8 +368,11 @@ namespace MainNamespace
       Char ch;
       StringBuilder sb = new StringBuilder();
 
-      // Skip empty symbols
-      while ((ch = this.GetChar()).IsEmpty) ;
+      ch = this.GetChar();
+
+      // In case of new line in stack
+      if (ch.NewLine)
+        ch = this.GetChar();
 
       // Check for EOF
       if (ch.EOF)
@@ -502,7 +528,7 @@ namespace MainNamespace
       return this.alphabet[index].Length > 0;
     }
     public LinkedList<int> GetLetter(char letter) => this.alphabet[(int)letter - this.minChar];
-    public Keyboard SetContent(string content)
+    public Keyboard SetContent(char[] content)
     {
       // Get min and max char value
       int maxChar = 0;
@@ -518,9 +544,9 @@ namespace MainNamespace
           minChar = ch;
       }
 
-      return this.SetContent(content, minChar, maxChar);
+      return this.SetContent(content, 0, maxChar);
     }
-    public Keyboard SetContent(string content, int minChar, int maxChar)
+    public Keyboard SetContent(char[] content, int minChar, int maxChar)
     {
       this.minChar = minChar;
       this.maxChar = maxChar;
@@ -644,21 +670,29 @@ namespace MainNamespace
     public static Random rnd = new Random();
     private static void TaskOne()
     {
-      // stopwatch.Start();
+      stopwatch.Start();
 
-      // Keyboard keyboard = new Keyboard(
-      //   reader.ReadInt(),    // cols
-      //   reader.ReadInt(),    // rows
-      //   reader.ReadLine()    // content
-      // );
+      int cols = reader.ReadInt();
+      int rows = reader.ReadInt();
+      string content = reader.ReadLine();
+      string text = reader.ReadRest().Substring(1);
 
-      // Console.WriteLine(keyboard.GetStrokes(reader.ReadRest()));
-      // Console.WriteLine("{0}ms", stopwatch.Stop().Milliseconds);
+      Console.WriteLine("\nSize: {0}x{1}", cols, rows);
+      Console.WriteLine("Grid: |{0}|\n", content);
+
+      Keyboard keyboard = new Keyboard(cols, rows, text);
+      keyboard.SetContent(content.ToCharArray());
+
+      Console.WriteLine("{0}", keyboard.GetStrokes());
+      Console.WriteLine("\nExecution time: {0}ms", stopwatch.Stop().Milliseconds);
     }
     private static void TaskTwo()
     {
-      string text = reader.ReadRest();
+      #region task-two-setup
+      string text = reader.ReadLine();
+      // Console.WriteLine("\nThe text has {0} characters", text.Length);
 
+      const int MIN_CHAR = 0;
       const int MAX_CHAR = 122;
       const int GRID_WIDTH = 8;
       const int GRID_HEIGHT = 8;
@@ -668,7 +702,7 @@ namespace MainNamespace
       int[] frequency = new int[MAX_CHAR + 1];
       // How many times will letter appear on the keyboard
       int[] gridCount = new int[MAX_CHAR + 1];
-      for (int i = 0; i < MAX_CHAR; i++)
+      for (int i = 0; i < MAX_CHAR + 1; i++)
       {
         frequency[i] = 0;
         gridCount[i] = 0;
@@ -678,6 +712,9 @@ namespace MainNamespace
       int distinct = 0;
       foreach (char ch in text)
       {
+        if ((int)ch == 0)
+          continue;
+
         if (frequency[(int)ch] == 0)
           distinct++;
 
@@ -686,7 +723,7 @@ namespace MainNamespace
 
       // Each letter will appear at least once on the keyboard
       int unitFrequency = text.Length / distinct;
-      for (int i = 0; i < MAX_CHAR; i++)
+      for (int i = 0; i < MAX_CHAR + 1; i++)
         if (frequency[i] > 0)
           gridCount[i] = 1;
 
@@ -695,9 +732,9 @@ namespace MainNamespace
       int run = 2;
       while (spare > 0)
       {
-        for (int i = 0; i < MAX_CHAR; i++)
+        for (int i = 0; i < MAX_CHAR + 1; i++)
         {
-          if (frequency[i] > unitFrequency * run)
+          if (gridCount[i] > 0 && frequency[i] > unitFrequency * run)
           {
             gridCount[i]++;
             spare--;
@@ -711,50 +748,239 @@ namespace MainNamespace
       }
 
       // Build the grid
-      string grid = "";
-      for (int i = 0; i < MAX_CHAR; i++)
+      string gridText = "";
+      for (int i = 0; i < MAX_CHAR + 1; i++)
         for (int j = 0; j < gridCount[i]; j++)
-          if (grid.Length < GRID_SIZE)
-            grid += (char)i;
+          if (gridText.Length < GRID_SIZE)
+            gridText += (char)i;
 
       // Print the results
-      Console.WriteLine("{0} distinct characters", distinct);
-      Console.WriteLine("Int\tChar\tFreq\tGrid");
-      for (int i = 0; i < MAX_CHAR; i++)
-        if (frequency[i] > 0)
-          Console.WriteLine(
-            "{0}\t{1}\t{2}\t{3}",
-            i, (char)i, frequency[i], gridCount[i]
-          );
-      Console.WriteLine("Final grid:\n|{0}|", grid);
-      Console.WriteLine("Of length {0}", grid.Length);
+      // Console.WriteLine("{0} distinct characters were found\n", distinct);
+      // Console.WriteLine("Code\tChar\tFreq\tGrid");
+      // for (int i = 0; i < MAX_CHAR + 1; i++)
+      //   if (frequency[i] > 0)
+      //     Console.WriteLine(
+      //       "{0}\t{1}\t{2}\t{3}",
+      //       i, (char)i, frequency[i], gridCount[i]
+      //     );
+      // Console.WriteLine("\nFinal grid: |{0}|", gridText);
+      #endregion
 
+      // Create keyboard
+      var grid = gridText.ToCharArray();
       var keyboard = new Keyboard(GRID_WIDTH, GRID_HEIGHT, text);
 
-      long iteration = 0;
-      int best = 999999;
+      // Select the strategy
+      const int STRATEGY = 1;
+
       while (true)
       {
-        string content = "";
-        foreach (int num in A.Shuffle(A.Range(GRID_SIZE), rnd))
-          content += grid[num];
+        // Random shuffle
+        A.Shuffle(grid, rnd);
+        keyboard.SetContent(grid, MIN_CHAR, MAX_CHAR);
+        int optimal = keyboard.GetStrokes();
 
-        int strokes = keyboard.SetContent(content, 0, 121).GetStrokes();
+        // Console.WriteLine(
+        //   "\n\n{0} Running strategy {1}",
+        //   new string(A.Rep(new char[] { '-' }, 110)), STRATEGY
+        // );
+        // Console.WriteLine(" Initial: |{0}|", new string(grid));
+        // Console.WriteLine("Baseline: {0}", optimal);
 
-        if (strokes < best)
+        // Start optimizing
+        int iterations = 1;
+        bool stop = false;
+        while (!stop)
         {
-          Console.WriteLine(
-            "#{0}\t\t|{1}| in {2} strokes",
-            iteration, content, strokes
-          );
-          best = strokes;
+          // Console.WriteLine("\n\n----- Iteration {0} -----", iterations++);
+          stopwatch.Reset().Start();
+
+          stop = true;
+          int swaps = 0;
+          int before = optimal;
+
+          // section [ONE]
+          if (STRATEGY == 1)
+          {
+            for (int i = 0; i < GRID_SIZE; i++)
+            {
+              for (int j = i + 1; j < GRID_SIZE; j++)
+              {
+                // Try swap i <--> j
+                A.Swap(grid, i, j);
+                keyboard.SetContent(grid, MIN_CHAR, MAX_CHAR);
+
+                // Compute the number of strokes
+                int strokes = keyboard.GetStrokes();
+                if (strokes < optimal)
+                {
+                  // Console.WriteLine(
+                  //   "Grid: |{0}| Strokes: {1}\t [-{2}]",
+                  //   new string(grid), strokes, optimal - strokes
+                  // );
+
+                  optimal = strokes;
+                  stop = false;
+
+                  break;
+                }
+                else
+                {
+                  // Get keyboard back to original state
+                  A.Swap(grid, i, j);
+                  keyboard.SetContent(grid, MIN_CHAR, MAX_CHAR);
+                }
+              }
+
+              // Progress log
+              if (i < GRID_SIZE - 1)
+              {
+                // Console.Write('[');
+                // for (int k = 0; k < GRID_SIZE; k++)
+                //   Console.Write(k < i ? '=' : k == i ? '>' : ' ');
+                // Console.Write(']');
+                // Console.Write(" {0}/{1}\r", i, GRID_SIZE);
+              }
+              else
+              {
+                // Console.WriteLine(new string(A.Rep(new char[] { ' ' }, 100)));
+              }
+            }
+
+            // Iteration log
+            // Console.WriteLine("        Time: {0}s", Math.Round(stopwatch.Stop().Seconds, 2));
+            // Console.WriteLine("       Swaps: {0}", swaps);
+            // Console.WriteLine(" Improvement: {0}", before - optimal);
+          }
+
+          // section [TWO]
+          // Only best swap in inner iteration
+          if (STRATEGY == 2)
+          {
+            for (int i = 0; i < GRID_SIZE; i++)
+            {
+              int optimalSwap = optimal;
+              int optimalSwapIndex = -1;
+
+              // Find optimal swap
+              for (int j = 0; j < GRID_SIZE; j++)
+              {
+                // Try swap i <--> j
+                A.Swap(grid, i, j);
+                keyboard.SetContent(grid, MIN_CHAR, MAX_CHAR);
+
+                // Compute the number of strokes
+                int strokes = keyboard.GetStrokes();
+                if (strokes < optimalSwap)
+                {
+                  optimalSwap = strokes;
+                  optimalSwapIndex = j;
+                }
+
+                // Get keyboard back to original state
+                A.Swap(grid, i, j);
+                keyboard.SetContent(grid, MIN_CHAR, MAX_CHAR);
+              }
+
+              // Swap
+              if (optimalSwap < optimal)
+              {
+                A.Swap(grid, i, optimalSwapIndex);
+                keyboard.SetContent(grid, MIN_CHAR, MAX_CHAR);
+
+                Console.WriteLine(
+                  "Grid: |{0}| Strokes: {1}\t[-{2}]",
+                  new string(grid), optimalSwap, optimal - optimalSwap
+                );
+
+                optimal = optimalSwap;
+                stop = false;
+              }
+
+              // Progress log
+              if (i < GRID_SIZE - 1)
+              {
+                Console.Write('[');
+                for (int k = 0; k < GRID_SIZE; k++)
+                  Console.Write(k < i ? '=' : k == i ? '>' : ' ');
+                Console.Write(']');
+                Console.Write(" {0}/{1}\r", i, GRID_SIZE);
+              }
+              else
+              {
+                Console.WriteLine(new string(A.Rep(new char[] { ' ' }, 100)));
+              }
+            }
+
+            // Iteration log
+            Console.WriteLine("        Time: {0}s", Math.Round(stopwatch.Stop().Seconds, 2));
+            Console.WriteLine("       Swaps: {0}", swaps);
+            Console.WriteLine(" Improvement: {0}", before - optimal);
+          }
+
+          // section [THREE]
+          // Only best swap in the whole grid
+          else if (STRATEGY == 3)
+          {
+            int optimalSwap = optimal;
+            int optimalSwapA = -1;
+            int optimalSwapB = -1;
+
+            // Find optimal swap
+            for (int i = 0; i < GRID_SIZE; i++)
+            {
+              for (int j = 0; j < GRID_SIZE; j++)
+              {
+                A.Swap(grid, i, j);
+                keyboard.SetContent(grid);
+                int strokes = keyboard.GetStrokes();
+
+                if (strokes < optimalSwap)
+                {
+                  optimalSwap = strokes;
+                  optimalSwapA = i;
+                  optimalSwapB = j;
+                }
+
+                A.Swap(grid, i, j);
+                keyboard.SetContent(grid);
+              }
+
+              // Progress log
+              if (i < GRID_SIZE - 1)
+              {
+                Console.Write('[');
+                for (int k = 0; k < GRID_SIZE; k++)
+                  Console.Write(k < i ? '=' : k == i ? '>' : ' ');
+                Console.Write(']');
+                Console.Write(" {0}/{1}\r", i, GRID_SIZE);
+              }
+              else
+              {
+                Console.WriteLine(new string(A.Rep(new char[] { ' ' }, 100)));
+              }
+            }
+
+            // Swap
+            if (optimalSwap < optimal)
+            {
+              A.Swap(grid, optimalSwapA, optimalSwapB);
+              keyboard.SetContent(grid);
+
+              Console.WriteLine(
+                "Grid: |{0}| Strokes: {1}\t[-{2}]\nTime: {3}s\n",
+                new string(grid), optimalSwap, optimal - optimalSwap, Math.Round(stopwatch.Stop().Seconds, 2)
+              );
+
+              optimal = optimalSwap;
+              stop = false;
+            }
+          }
         }
 
-        if (iteration % 100000 == 0)
-          Console.WriteLine(iteration);
-
-        iteration++;
-        // Console.Write("{0}\r", iteration);
+        // Best solution
+        keyboard.SetContent(grid, MIN_CHAR, MAX_CHAR);
+        Console.WriteLine("Grid: |{0}| Strokes: {1}", new string(grid), keyboard.GetStrokes());
       }
     }
     static int Main(string[] args)
@@ -768,9 +994,6 @@ namespace MainNamespace
           task = Convert.ToInt32(arg.Split(":")[1]);
 
       stopwatch.Start().Stop().Reset();
-
-      // if (printToConsole)
-      //   Console.WriteLine("\nRunning task {0}\n", task);
 
       switch (task)
       {
