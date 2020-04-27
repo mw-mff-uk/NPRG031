@@ -1,200 +1,674 @@
-Grid: |WLvel VyPbitaeN hgn msuj aocipqQsurude Siletn.AOtf CI FRwMDUETJH| Strokes: 68984
-Grid: |WU DOFRHw ACIMTJlfgunt Eiter ahPs nocibLumadte.SNplisu jyev eqVQ| Strokes: 69051
-Grid: |JQSIA ERjutne. T gemsiVwDdc atNMqisul CUunorevfFe tp POWlaibhLyH| Strokes: 69068
-Grid: |LSMf IEH elN.n Tgua seVFidntivAUtcoel Dwe mruCQOusipbPJRqta hjyW| Strokes: 69101
-Grid: |LM ibjyJ acnuhPeloetsg furd aneItpimlviwC sue tFDS.qNVUWOT QAERH| Strokes: 69558
-Compilation succeeded - 6 warning(s)
-Compilation succeeded - 6 warning(s)
-Compilation succeeded - 6 warning(s)
-Compilation succeeded - 6 warning(s)
-Compilation succeeded - 6 warning(s)
-Compilation succeeded - 6 warning(s)
-Grid: |y aIMUFHjsliteEOCuen gLTP roc. DSdpatuNQeim se AntuliqVJ hbvfwRW| Strokes: 69812
-Grid: |JTDL IEOyUfA.n FNV tegaMseporil ulmacuqCti n se jbedtivwHQhuSPRW| Strokes: 69867
-Grid: |HyhP tURWfbeliQJn ipusqLjedra uCDtuomegSIacn t. w sivN TFMelVAEO| Strokes: 69181
-Grid: |wineVF Wfp shujJletibPTR rmu. EOvoalNCDLtn cSAIyeiset UHgduqaMQ | Strokes: 70009
-Grid: |yODjIUFH su nt TMipdehPSC malb.Qucreut Aano siNLgeitqVERf lvewJW| Strokes: 69339
-Grid: | elSqjyWadibuNQJv tse VTfnoalhPMCur m. EDgecusiwOLpit AUH tneIFR| Strokes: 68901
-Grid: |WweVjeSOR lipt PFCasurdhLMv coibT .emangUI nt euHEANulsq yJQDfit| Strokes: 68810
-Grid: | InfwRHWequaitJ Ppt sCQybierugjFhdloc DLm anieVTuset. AElNv SMUO| Strokes: 70388
-Grid: |WywSfIQ JVip netjusetigsNm caluqDdirobeL anu.h TFlv CPER AetMUOH| Strokes: 70039
-Grid: |Ut NCAEOwsl.u MT iacrovLVdm en PequstaihS pilubDyfen gQRWJjIteFH| Strokes: 68786
-Grid: |undivVyeloc tef tpraulNj sems aMqiungePFDC tibh wLS. ATJWOQIEURH| Strokes: 70393
-Grid: |witVDRW  sel fFHhbupeSAOParonCITvc id. Llitsa MUeneumNEtug qjQyJ| Strokes: 69587
-Grid: |uDjCqs lQeidunotUSv terfOMpailc T .msuaPJAVe gbhWF NntiwHREyIeL | Strokes: 69476
-Grid: |WJFw VQyOSevluqRT .dis IEfs tenPjCuramphDAtoc tUL enluibHMagiNe | Strokes: 69542
-Grid: |RThPCI Eel aug. FiterneSObps idVyDqumatNwjiloc AJusenvfUWQ t MLH| Strokes: 69529
-Compilation succeeded - 6 warning(s)
 
-Final grid: |    .ACDEFHIJLMNOPQRSTUVWaaabcdeeeefghiiijllmnnopqrrssstttuuuvwy|
-Compilation succeeded - 6 warning(s)
-
-Final grid: |    .ACDEFHIJLMNOPQRSTUVWaaabcdeeeefghiiijllmnnopqrrssstttuuuvwy|
-Compilation succeeded - 6 warning(s)
-
-Final grid: |    .ACDEFHIJLMNOPQRSTUVWaaabcdeeeefghiiijllmnnopqrrssstttuuuvwy|
-Compilation succeeded - 6 warning(s)
-
-Final grid: |    .ACDEFHIJLMNOPQRSTUVWaaabcdeeeefghiiijllmnnopqrrssstttuuuvwy|
-Compilation succeeded - 6 warning(s)
-
-Final grid: |    .ACDEFHIJLMNOPQRSTUVWaaabcdeeeefghiiijllmnnopqrrssstttuuuvwy|
-Compilation succeeded - 6 warning(s)
-
-Final grid: |    .ACDEFHIJLMNOPQRSTUVWaaabcdeeeefghiiijllmnnopqrrssstttuuuvwy|
-Grid: |HOLDSEQRPhb. arTesidtpiVl uresuqtanom vCUMgcaleAFfe tinIWJjNuswy| Strokes: 69046
-Grid: |FP aNeAEwbip. VLUhtmulviSae saegOMdrcinuRInuot qtyTClesQsHJjDrfW| Strokes: 69789
-Grid: |HWsySjQJRweVfeiThbap rtIPitmsunCvel id. LronctaMDgaes AEOuluqNUF| Strokes: 69868
-Grid: |FaequjQJMtnsitwWDoc deSOCrumpr yileangIUNus tefEL .bilAsTPVhvaRH| Strokes: 69342
-Grid: |yIjMUJHWFfnaNLERA et.ilTCmus peStrocadgDbalinuqQhvet esOP surViw| Strokes: 69290
-Grid: |HOrivtLUWVugelAESedn a MDsioct.IjutreinawC pms NyfbalueTsRhPFqQJ| Strokes: 69337
-Grid: |QNInCEsHiuqt AURlase.PTFSe mphLygdiurabOetncotiwr al suJMfveVDjW| Strokes: 68618
-Grid: |WyLQafwHOMNqg ses aumnitUrolecbPAInt adhlevisuijEV .prtJTDCuSeFR| Strokes: 69461
-Grid: |sfPDwhRWi ptibLyVleusaCTvamr gSUe conetIutida. EqsnulNAJjerQMFOH| Strokes: 68962
-Grid: |siTwFJRWt CNjPyHMaluarhOV.e mpbUD rsutiQLtoc elAISniansfEegdvuqe| Strokes: 69280
-Grid: |LaMSDTORs re. EJudotNCPUlic mphyevnaurqFAtgesibasiVl tuQHwIfnejW| Strokes: 69441
-Grid: |OUNVqFyWiSgeuEQRLta s.PrIemnibhTCpurta Msi celvAedaonujJwflt sDH| Strokes: 69045
-Grid: |wOadiIARPf eclSLternoa Mivus m.NhblituCDt aperVFseugsqTJHjQnEUyW| Strokes: 69485
-Grid: |TQuCDLEJUhb .NjOnaits qAt roenuIelucmagFsPps idfyMaetlerWRwVivSH| Strokes: 69185
-Grid: |HFiVQleseSvgqjPWrpteuahJdin st Eumalibwys et.ALUncor aMOIfNuCDTR| Strokes: 69325
-Grid: |wsngtiyWVilesuajMvam pfDN rodleSetucibhRL.sn arPU qetCuJFETAIOQH| Strokes: 69552
-Grid: |OrEQaeHlI NqvtUWntsip fygemulesDSd aoruCLi.cnt PTAVesiawJFMjubhR| Strokes: 68987
-Grid: |tfrgeEOHN untIUWladisADwumec VSTqsno.MLye tas jFlpiruCQJavbehPRi| Strokes: 69362
-Compilation succeeded - 6 warning(s)
+Grid: |niljOJRHPtroQLFWv eqCSEyhadum.MTbnisp VAlc tenaIeorulgcUDfmaNisw| Strokes: 69306 Minus: 0.929333355710531
+0.502209481551409
 
 Final grid: |   .ACDEFHIJLMNOPQRSTUVWaaabcdeeefghiiijllmmnnoopqrrssstttuuuvwy|
-Compilation succeeded - 6 warning(s)
+Minus: 0.502209481551409
+Grid: |WmSfwADQOMlad qtLoepicunPrt sergCuimanoIJhb.ut NHaselivEsRyVjUTF| Strokes: 69388 Minus: 0.569206836898442
+0.460082361688876
 
 Final grid: |   .ACDEFHIJLMNOPQRSTUVWaaabcdeeefghiiijllmmnnoopqrrssstttuuuvwy|
-Compilation succeeded - 6 warning(s)
-
-Final grid: |   .ACDEFHIJLMNOPQRSTUVWaaabcdeeefghiiijllmmnnoopqrrssstttuuuvwy|
-Compilation succeeded - 6 warning(s)
-
-Final grid: |   .ACDEFHIJLMNOPQRSTUVWaaabcdeeefghiiijllmmnnoopqrrssstttuuuvwy|
-Compilation succeeded - 6 warning(s)
-
-Final grid: |   .ACDEFHIJLMNOPQRSTUVWaaabcdeeefghiiijllmmnnoopqrrssstttuuuvwy|
-Compilation succeeded - 6 warning(s)
-
-Final grid: |   .ACDEFHIJLMNOPQRSTUVWaaabcdeeefghiiijllmmnnoopqrrssstttuuuvwy|
-Grid: |HUitnaEJyCuorgLOfvm epSjstalduNQeibcis wlquentaMVrs o.mDFPhAITRW| Strokes: 69889
-Grid: |HPhbiIURsurntfLOCp am.NFSedus VjJliteroTaencugqQMvo liswyDAmatEW| Strokes: 69865
-Grid: |JTUVitrWFEtPvhoON .mablujqus ipnAgletresLsinouCQwIc mdayRMafSeDH| Strokes: 69976
-Grid: |TFIqsilwLfgu.aARorne mSEpaitduQJm sorCDOeluc NjystinaMUtVvbehPHW| Strokes: 69317
-Grid: |tOLrPSyHRDofheuWFlismdnUNuca otaIgnelrivAC tus jwE.ibepVJTMsqamQ| Strokes: 69706
-Grid: |RTEUIFJHw SPCjLMi.shegtoAVetnurayNm asibQudicluqODfroepsWlavnt m| Strokes: 70395
-Grid: |sefSVujJInotisDwQca mv ygurelaoMtidsuqrFECp tibAOLm.anelWRTNhPUH| Strokes: 69639
-Grid: |WRwjQfDsJFqulmoiUbise vVEhatnartP.p ciuLS erodCOMmaugneHyAlNTIts| Strokes: 69027
-Grid: |FTeEIOUtLaqgnrilN sumotDw.it csASbleaneVCuordiujQhs pvmyWaMPfRJH| Strokes: 68946
-Grid: |tQyfUFHJWqNPhbajDuamerluovl tipsniesuorCItganc mEV .ediwRTAMSLsO| Strokes: 69421
-Grid: |asCuVIOtm orviPHudclanhUgine tfjsqtusibwQe.mpreyES aNolRJTAMLDFW| Strokes: 68893
-Grid: |HRPSTLUtJihba MEVvtel.AOunadroCsqe sumajulcit NwimpnegfysQoIrDFW| Strokes: 68777
-Grid: |QsVTEURWjqvitAFiNuelg PLam sa.hDputinebosrocuraOlend fMJHSIwCmyt| Strokes: 68964
-Grid: |sWRFLlOHmyDetoraJCgurpenjMocidbhuvna maPsitesuqNAV l.it TEISfwQU| Strokes: 69146
-Grid: |sjuCmyOHWPspeDTRhar olALnbdineSIFgutac Mfve si.wQalmurtUtiVNqoEJ| Strokes: 69151
-Grid: |RMFjsuimroVPDQJyabh CETHule.tILOvisconaWnt ureqSgeamd sfwNlpitAU| Strokes: 70004
-Grid: |TInqseVQoreut ChSpmdicubM. anoraLitle sPwsNugmifRFDAvatlHJEjOyUW| Strokes: 68478
-Grid: |RJOjUMEtitlsuvNTLPo ma fsarpel.AehuntirISbdi seVHwCcaugQWyDomqnF| Strokes: 68451
-Grid: |yUfPhvJHmta nebaOMdropitsquemlusQgit arCDoncsuilRLI .NVeWTESAjwF| Strokes: 69070
-Grid: |HMfojVJRPrbiletUha tusnEquecm NIignsa.ATLloidvwODCr peSyWQutamFs| Strokes: 69637
-Grid: |HyVvinsWUfeltLEJMuroaNATSat m. QmpesuqtjocnilbisIg dahwRDCurePFO| Strokes: 69512
-Grid: |ijMLmATODClor.EFNuacn PIfs tesVUSrmiuqQJtepdathRugn libWyaoveswH| Strokes: 69180
-Grid: |jMsuCrFJhaelbaTyfc tinIwPoruspemtnem .SAugladNVOqistiEUHQD voLRW| Strokes: 69287
-Grid: |LjDSEJRWsun.IFmyoto CMATrecluNVOp marbeUtsintisiaude vfwQqlgPhaH| Strokes: 69590
-Grid: |IntcbolDipe druQjqusingE mlateaSfero mNAsTPh.vMOyFuCVitUaWJLwsRH| Strokes: 70433
-Grid: |OTQDUJRsS uiIAFHfert.VMEaldo maNspinsuqjtmc elhPeuratibwyCovngLW| Strokes: 69034
-Grid: |JLMAaFtsnoC.leTWeru vVERpatsiqUOPm eurSQhbincotDIfdla myHjguNsiw| Strokes: 69726
-Grid: |tjIyQFWsLCAaNeJHfs mvSDRgueluqMTirtaidownones VEac mp.tUluibhPrO| Strokes: 69977
-Grid: |RJjCelwTnituropLFE.m disUVvsaemSAfe tnguQqluic aOsarboIMtHPNhDyW| Strokes: 69764
-Grid: |sJuQiqDWRhacsurjybit noImorleavMTepumgCFLPd siNwtnea.t EHOSfVlAU| Strokes: 69784
-Grid: |HRPtosljJhbpruefFadi tnaQqusmegMS elaciAUt. noILwiVvurDyWsTNCEOm| Strokes: 68757
-Grid: |ymDVqUHWsovpenlRwli stiQMadmuaurf criNbatenotPhOsuge. CFjAISTLEJ| Strokes: 70090
-Grid: |ROwVvinoUrPh tesFef.aclDLAN msuqtiladiobTgune raHEQSptuCWJyImsjM| Strokes: 70183
-Grid: |ujUIfFJWstinaMLHE.vgrPhOA le obDNmautniwSe srcatTVdipesRQCuqomly| Strokes: 69691
-Grid: |tFILTOJHEM DPCQoAq.bhsuRluairpiSgenco deNs temvnamsulatywVirjfUW| Strokes: 69378
-Grid: |HODfMAERFroi. tUgunadeSTVec maNyblisulCjhateroLJPv upmQswInqistW| Strokes: 68595
-Grid: |yfmacouDUA etnrewPvli dpQCqusauljhb. mNSJLaregiTRiMotntOsWFEVIsH| Strokes: 69921
-Grid: |sWLUQAwOHSangeVFyedor qljpicusitfm tenvaCusal.oTtrNim MEJPhbuIDR| Strokes: 69114
-Grid: |hbaIjDLJPinos.MFN tru CUqlepamATucsiltERma deVSytonuviwWerfgQsOH| Strokes: 68970
-Grid: |HLtfQwRWisoruDjUlac diptugnems eEbitaurNahs lqCMFPv.enomJTAVSIOy| Strokes: 68795
-Grid: |tyUwevfrojqil aIQNustcinFma endgDPlromuEJCup. eSWRtisAVTsHhbaMLO| Strokes: 69779
-Grid: |yifjwETRsnavbhPFem liseVCocut rUugren.oDqps aNlMuaimdALHQJtSIOWt| Strokes: 69253
-Grid: |wjilpsotQCquemafP srt diehboinuvDmuaclgaLN. seSryIntVAFOWJUMETRH| Strokes: 69499
-Grid: |JjOLwqQHTAVamuloS .piseDCuerd tfEstocanvIni elisyMbmaugrWRhPNFUt| Strokes: 68352
-Grid: |RitVMLyssvamptaWehl ronwPquesigjUbit cuNDomnadlQTA .ureSJOEICfFH| Strokes: 68523
-Grid: |OFLrVestJQmauqnowA visibEI.dt chTSgnealNDluormuPHaCt pseWRUMfijy| Strokes: 69553
-Grid: |QDonpemwCudcit Pfra sroMSgneulajIi.tqihUEv mabLyOVluNTRsHeAsFJWt| Strokes: 69342
-Grid: |whl mPyiuaorgCMLtbcnusAFpidel aSrs ti.nIeumavNEOjqfoVURHJQDseTWt| Strokes: 69303
-Grid: |JLySPhRWorfvabwHnilepimtNma dsujqutnoilDQsecr eVE .gutsUFAMICaTO| Strokes: 69240
-Grid: |RsitnIEJyhbm.VATP la vNMjCruselQDeontiguUSdc saqHLirepuwWOtomfaF| Strokes: 69847
-Grid: |HLSmIwDsPreagdlWhot niotabisucsCMvler pfFqu.amujTQN teiUROEVAnyJ| Strokes: 69108
-Grid: |rUVjatsHwsquNiTJitengeSFom alvAMbusid. LaprconIOhlet mEyWPfuCDQR| Strokes: 68565
-Grid: |wVvafLFOtis reSUagnmotDEquelc. Ais aduNjMptinsIQlmurePTHyoCbhJRW| Strokes: 69254
-Grid: |sFLCurOJSea ntURjudsi.EwDiorc NMIpnelafTPm tumAQhasibvlyHVegqtoW| Strokes: 69151
-Grid: |stFPIERHJUjhSAeTLfN. sqQC maniuworutelgaVes comMtlpidrDOiavbnuyW| Strokes: 68875
-Grid: |SPhbCQRoeqadruOjms iptsuguncoleTalermanyNit. vVFMs fAtiJEwIDLUWH| Strokes: 69190
-Grid: |RODgInEWFLim.aSUMCde tNAaqrusilwhtoncpeTbila mrfus etuoyjQPvVsJH| Strokes: 69229
-Grid: |OtsfjURWTeudatwHLrpicnIyASm soilPgneurmC .atl aMEhbisvNFDouqeVQJ| Strokes: 69210
-Grid: |ODUfmtRWLor piswintseuqQhveal.VTabcid SAPrt neuIjsumogEJyClaNMFH| Strokes: 70712
-Grid: |DMprojQyeasiluqwVc temsiCouna fIL.ridvtnS ebhPURFmagTEJWOANulsHt| Strokes: 69689
-Compilation succeeded - 6 warning(s)
-0.835363806614356
-
-Final grid: |   .ACDEFHIJLMNOPQRSTUVWaaabccdeeefghiiijllmmnnnoopqrrsssttuuvwy|
-Minus: 0.835363806614356
-Compilation succeeded - 6 warning(s)
-0.609121176232175
-
-Final grid: |   .ACDEFHIJLMNOPQRSTUVWaaabccdeeefghiiijllmmnnoopqrrssstttuuvwy|
-Minus: 0.609121176232175
-Compilation succeeded - 6 warning(s)
-0.574912327143788
-
-Final grid: |   .ACDEFHIJLMNOPQRSTUVWaaabcdeeefghiiijllmmnnoopqrrssstttuuuvwy|
-Minus: 0.574912327143788
-Compilation succeeded - 6 warning(s)
-0.510236745006515
-
-Final grid: |   .ACDEFHIJLMNOPQRSTUVWaaabcdeeefghiiijllmmnnoopqrrssstttuuuvwy|
-Minus: 0.510236745006515
-Compilation succeeded - 6 warning(s)
-0.471522039487735
-
-Final grid: |   .ACDEFHIJLMNOPQRSTUVWaaabcdeeefghiiijllmmnnoopqrrssstttuuuvwy|
-Minus: 0.471522039487735
-Compilation succeeded - 6 warning(s)
-0.699301489954489
-
-Final grid: |   .ACDEFHIJLMNOPQRSTUVWaaabccdeeefghiiijllmmnnnoopqrrsssttuuvwy|
-Minus: 0.699301489954489
-Grid: |lujCfLOWyms aIURQtucniDFSeprodMThbima .APn eltvEatsugisJroeqNVwH| Strokes: 69294
-0.816801789131389
-
-Final grid: |   .ACDEFHIJLMNOPQRSTUVWaaabccdeeefghiiijllmmnnnoopqrrsssttuuvwy|
-Minus: 0.816801789131389
-Grid: |RwNAMeFWjbulapsJris moCtqutedruShanci vIP o.tagnDmVsileEyQLTUfOH| Strokes: 69544
-0.151693708333975
+Minus: 0.460082361688876
+Grid: |yuNlitssIdagqeSQVn murnjvites aADocliptUebra.oLOPhuf MEJHmCTwFRW| Strokes: 69615 Minus: 0.458666809582462
+0.0591197759188338
 
 Final grid: |     .ACDEFHIJLMNOPQRSTUVWaabcdeeeefghiiijllmnnopqrrssstttuuuvwy|
-Minus: 0.151693708333975
-Grid: |ROPrhesFUDocbaMAIv til. VinesumCwfma rpSQlgudoeTysiqNtnEWcnjLaJH| Strokes: 69458
-0.345519969400726
+Minus: 0.0591197759188338
+Grid: |RLfPoratFbhpi twNuamdeSygle suqQnitnivjmucroleAWs .IaVOHECUDMTJs| Strokes: 69858 Minus: 0.502209481551409
+0.0278976946267754
 
-Final grid: |    .ACDEFHIJLMNOPQRSTUVWaaabcdeeefghiiijllmmnnopqrrssstttuuuvwy|
-Minus: 0.345519969400726
-Grid: |WJjNEuQOFelubqATwvasis VUhm te.SyPecnroIRfliaugMtnopd mDaHrtsCLi| Strokes: 69435
-0.742628605916458
+Final grid: |      .ACDEFHIJLMNOPQRSTUVWaabcdeeeefghiiijllmnnopqrssstttuuuvwy|
+Minus: 0.0278976946267754
+Grid: |TEensqQyL.rog CDA cilumMNsutearnIam ndocUfpsibhaOSlevPRHJFjVwWti| Strokes: 70312 Minus: 0.78796586244738
+0.288244559098149
 
-Final grid: |   .ACDEFHIJLMNOPQRSTUVWaaabccdeeefghiiijllmmnnnoopqrrsssttuuvwy|
-Minus: 0.742628605916458
-Grid: |yMNIALEHsalgi tUimuncoDRf dea.SFPort mCjhlaisuqQsevbpeTJtncwVrOW| Strokes: 68944
-0.643491438889639
+Final grid: |    .ACDEFHIJLMNOPQRSTUVWaaabcdeeeefghiiijllmnnopqrrssstttuuuvwy|
+Minus: 0.288244559098149
+Grid: |stSALEyHIngimVTRvela fMF suc.ePOdinorthUate sibwrupmulDJQqCaNjoW| Strokes: 69167 Minus: 0.460082361688876
+0.612725925917144
 
 Final grid: |   .ACDEFHIJLMNOPQRSTUVWaaabccdeeefghiiijllmmnnoopqrrssstttuuvwy|
-Minus: 0.643491438889639
-Grid: |QSImgolyVe andcPjqsutibhwvile sfUntarmpaOE. ocurRJDNMnCFHWTALesi| Strokes: 68617
-0.779360494939313
+Minus: 0.612725925917144
+Grid: |yLDjlUEJPh ustMFrbpma. Tsit enNIelorugCQVacideAOv ns fSRiteuqwWH| Strokes: 68623 Minus: 0.0591197759188338
+0.440196322016509
+
+Final grid: |    .ACDEFHIJLMNOPQRSTUVWaaabcdeeefghiiijllmmnnopqrrssstttuuuvwy|
+Minus: 0.440196322016509
+Grid: |HReFDMPwOALVCuahSelnor tv idcesia.st albQguemnuNE qrpisyJTjUfItW| Strokes: 68853 Minus: 0.288244559098149
+0.893185178699524
+
+Final grid: |   .ACDEFHIJLMNOPQRSTUVWaaabccdeeefghiiijlllmmnnnoopqrrssttuuvwy|
+Minus: 0.893185178699524
+Grid: |t SDwQOWegqNitLJVeu suCjsdnor. M icteaPTvla mphUfeniubER AIslFyH| Strokes: 69388 Minus: 0.0278976946267754
+0.354423077942069
+
+Final grid: |    .ACDEFHIJLMNOPQRSTUVWaaabcdeeefghiiijllmmnnopqrrssstttuuuvwy|
+Minus: 0.354423077942069
+Grid: |TEIAPOjWL bShCNwM.ilausiognemr trat copeDmusidalFUqevnfcJyQVRtHs| Strokes: 68847 Minus: 0.612725925917144
+0.325495027157243
+
+Final grid: |    .ACDEFHIJLMNOPQRSTUVWaaabcdeeeefghiiijllmnnopqrrssstttuuuvwy|
+Minus: 0.325495027157243
+Grid: |JTDNusijFM.am pSLA olerIECrcutanOhbis dfUPangivwt seqleRymtuQVHW| Strokes: 69781 Minus: 0.440196322016509
+0.628846481735281
+
+Final grid: |   .ACDEFHIJLMNOPQRSTUVWaaabccdeeefghiiijllmmnnoopqrrssstttuuvwy|
+Minus: 0.628846481735281
+Grid: |Wocqefynwraum jQngislaVHIvt ehPFSpenobDRMmacriLOAid utEUTlN.CslJ| Strokes: 70540 Minus: 0.893185178699524
+0.00481872400493302
+Grid: |nruCSQOWems qNwJa teuliTbpidrasLIgnco tDhus m.AEPleatfUyFjVviMRH| Strokes: 68768 Minus: 0.354423077942069
+0.580045206742382
+
+Final grid: |   .ACDEFHIJLMNOPQRSTUVWaaabccdeeefghiiijllmmnnoopqrrssstttuuvwy|
+Minus: 0.580045206742382
+Grid: |cHFQCEAJWOTNqs LUDgmui.wtrnaelVPSodc tvheliusnibsfteroIayj mpaMR| Strokes: 69886 Minus: 0.628846481735281
+0.719973764251905
 
 Final grid: |   .ACDEFHIJLMNOPQRSTUVWaaabccdeeefghiiijllmmnnnoopqrrsssttuuvwy|
-Minus: 0.779360494939313
+Minus: 0.719973764251905
+Grid: |tRODLEroyQfvmtaUCuNdi eSPirao.lMpme ncIT sutseVJhaligAwHjcqbnFWs| Strokes: 70200 Minus: 0.580045206742382
+0.936327521659586
+
+Final grid: |   .ACDEFHIJLMNOPQRSTUVWaaabccdeeefghiiijlllmmnnnoopqrrssttuuvwy|
+Minus: 0.936327521659586
+Grid: |WeQjqVfUwbisuetNInt mr ayapelocsOhrdaniuJPuiteglTE s. vAHRCDMSLF| Strokes: 69166 Minus: 0.325495027157243
+0.332305618716546
+
+Final grid: |    .ACDEFHIJLMNOPQRSTUVWaaabcdeeeefghiiijllmnnopqrrssstttuuuvwy|
+Minus: 0.332305618716546
+Grid: |TSfIMcWnle.gasORmt ndiDwapercoAyNqsu mVQUPbiteniJEhla vjHFLorsCu| Strokes: 70217 Minus: 0.719973764251905
+0.991163515481708
+
+Final grid: |   .ACDEFHIJLMNOPQRSTUVWaaabccddeeefghiiijlllmmnnoopqrrssttuuvwy|
+Minus: 0.991163515481708
+Grid: |ersuCFJHha tNPwWbicegfiRIln uqstLdoralenjuipmvAODste .EUQ aVSMTy| Strokes: 70115 Minus: 0.332305618716546
+0.175823386374779
+
+Final grid: |     .ACDEFHIJLMNOPQRSTUVWaabcdeeeefghiiijllmnnopqrrssstttuuuvwy|
+Minus: 0.175823386374779
+Grid: |LShaPnRclpbrifOWom usgCyretaleDJ dinovMTNusc nIFaqme.tEUQjwAVilH| Strokes: 69748 Minus: 0.936327521659586
+0.0640791724734377
+
+Final grid: |     .ACDEFHIJLMNOPQRSTUVWaabcdeeeefghiiijllmnnopqrrssstttuuuvwy|
+Minus: 0.0640791724734377
+Grid: |WAlISjFJdmenagrOf pisuqQlort eNUMacumlvyLhbd.aiwTPin tsERDCoceVH| Strokes: 68307 Minus: 0.991163515481708
+0.0267917253201789
+
+Final grid: |      .ACDEFHIJLMNOPQRSTUVWaabcdeeeefghiiijllmnnopqrssstttuuuvwy|
+Minus: 0.0267917253201789
+Grid: |QDsqNjJHC eulsEyutni tAUeroca. MP dumeSTwpis nILfaletgrOWhbviVFR| Strokes: 69090 Minus: 0.0640791724734377
+0.798379169217487
+
+Final grid: |   .ACDEFHIJLMNOPQRSTUVWaaabccdeeefghiiijllmmnnnoopqrrsssttuuvwy|
+Minus: 0.798379169217487
+Grid: |nJyTEUFWHOLDIVQwRMS ANqehav.e usPb intgiCurocalr tedm efsilpustj| Strokes: 69230 Minus: 0.175823386374779
+0.580037032989802
+
+Final grid: |   .ACDEFHIJLMNOPQRSTUVWaaabccdeeefghiiijllmmnnoopqrrssstttuuvwy|
+Minus: 0.580037032989802
+Grid: |HyDeLfRWwj nibhO sucta PtidorelMvlam suCVegnpiNQA uet. TJSqsIUEF| Strokes: 68609 Minus: 0.0267917253201789
+0.97453987364403
+
+Final grid: |   .ACDEFHIJLMNOPQRSTUVWaaabccddeeefghiiijlllmmnnoopqrrssttuuvwy|
+Minus: 0.97453987364403
+Grid: |senqafQWcrtiduNwMpos maljmruecgiC altnoDyhvbi.SUOPnes ELHJFAVITR| Strokes: 68956 Minus: 0.798379169217487
+0.314184959192846
+
+Final grid: |    .ACDEFHIJLMNOPQRSTUVWaaabcdeeeefghiiijllmnnopqrrssstttuuuvwy|
+Minus: 0.314184959192846
+Grid: |TjmlAEUOSepadiwr .is cIDCuretnoFMqo maNfLcalugVeJnvsitQsHRhPbyWt| Strokes: 70199 Minus: 0.580037032989802
+0.885060807636502
+
+Final grid: |   .ACDEFHIJLMNOPQRSTUVWaaabccdeeefghiiijlllmmnnnoopqrrssttuuvwy|
+Minus: 0.885060807636502
+Grid: |RcVSQTOWbi. CELJarsuqljFhtemproUIn adtiwPolci sfDevunemldAMNgayH| Strokes: 69309 Minus: 0.97453987364403
+0.547877447469103
+
+Final grid: |   .ACDEFHIJLMNOPQRSTUVWaaabcdeeefghiiijllmmnnoopqrrssstttuuuvwy|
+Minus: 0.547877447469103
+Grid: |JQjNqsDyFng maefTueputrlwCris oaA .lencuUEta dibRLiMvIPhHOWVSets| Strokes: 69274 Minus: 0.314184959192846
+0.51052630111134
+
+Final grid: |   .ACDEFHIJLMNOPQRSTUVWaaabcdeeefghiiijllmmnnoopqrrssstttuuuvwy|
+Minus: 0.51052630111134
+Grid: |QNCDLOHlPa mfMFnquro.ATJsetca SEbginelIRhas tvVUolumdicnjrepiwyW| Strokes: 69246 Minus: 0.885060807636502
+0.803061558773304
+
+Final grid: |   .ACDEFHIJLMNOPQRSTUVWaaabccdeeefghiiijllmmnnnoopqrrsssttuuvwy|
+Minus: 0.803061558773304
+Grid: |WUODQwsHytCnuvNfa rodlaejmuci mpPlesteurhba ngqsFit.SAoiREMVITLJ| Strokes: 69063 Minus: 0.547877447469103
+0.803084403184747
+
+Final grid: |   .ACDEFHIJLMNOPQRSTUVWaaabccdeeefghiiijllmmnnnoopqrrsssttuuvwy|
+Minus: 0.803084403184747
+Grid: |JcQADEOWFmq. ILTNauergniSls opVwevitncisPhdas efnybrumlaHRUjCotM| Strokes: 69636 Minus: 0.803061558773304
+0.812918817537333
+
+Final grid: |   .ACDEFHIJLMNOPQRSTUVWaaabccdeeefghiiijllmmnnnoopqrrsssttuuvwy|
+Minus: 0.812918817537333
+Grid: |QuICaOHsDrodbMJlicntihPRSse mvAyqulau.Ntngisr jEa pteVFUwfmeoLTW| Strokes: 69553 Minus: 0.51052630111134
+0.0128997606285381
+
+Final grid: |      .ACDEFHIJLMNOPQRSTUVWaabcdeeeefghiiijllmnnopqrssstttuuuvwy|
+Minus: 0.0128997606285381
+Grid: |WwjJLoTRQPChMrUOf qbitsEesula .AcironceVntedumSFva mgNDyIlpisanH| Strokes: 69497 Minus: 0.803084403184747
+0.894936284932744
+
+Final grid: |   .ACDEFHIJLMNOPQRSTUVWaaabccdeeefghiiijlllmmnnnoopqrrssttuuvwy|
+Minus: 0.894936284932744
+Grid: |HPbhaLRW tivelwUSencot DVgd risufluapNCj esm. MTIn teAEFyQiuqsOJ| Strokes: 69321 Minus: 0.0128997606285381
+0.70159406247623
+
+Final grid: |   .ACDEFHIJLMNOPQRSTUVWaaabccdeeefghiiijllmmnnnoopqrrsssttuuvwy|
+Minus: 0.70159406247623
+Grid: |FUMCAlJHEfNabiLTS. rcoqDatsuenuQgpim tijnedlaesmIr ohvVyOwcsPnRW| Strokes: 69367 Minus: 0.812918817537333
+0.134007735705938
+
+Final grid: |     .ACDEFHIJLMNOPQRSTUVWaabcdeeeefghiiijllmnnopqrrssstttuuuvwy|
+Minus: 0.134007735705938
+Grid: |JEUnIOnHFjCfPLhRM.ug raSA tecoblNsamnidewilu tavTcorselVWDQqipmy| Strokes: 69665 Minus: 0.894936284932744
+0.0294186715173622
+
+Final grid: |      .ACDEFHIJLMNOPQRSTUVWaabcdeeeefghiiijllmnnopqrssstttuuuvwy|
+Minus: 0.0294186715173622
+Grid: |RLFDvmSyTAVidcesI .saonlPnem tuCEitlergQhbausinUro qpcwOJMNjfaWH| Strokes: 69316 Minus: 0.70159406247623
+0.00394523889010085
+Grid: |HWwfs etyJhPinIRQqbetgEUjus ruCOvliacNLT etno. Drp melSAVidusaMF| Strokes: 69120 Minus: 0.134007735705938
+0.723294517827823
+
+Final grid: |   .ACDEFHIJLMNOPQRSTUVWaaabccdeeefghiiijllmmnnnoopqrrsssttuuvwy|
+Minus: 0.723294517827823
+Grid: |eOPAQyRnahlpfUJHsre mNMFtonta. EDbciurCTud seqVSjmanloLcwivIgisW| Strokes: 69728 Minus: 0.723294517827823
+0.570556262773721
+
+Final grid: |   .ACDEFHIJLMNOPQRSTUVWaaabcdeeefghiiijllmmnnoopqrrssstttuuuvwy|
+Minus: 0.570556262773721
+Grid: |HUSMLvetOte dalfwDiroip FCsunceVnN at sAI .lemujTPhbisqWREQug yJ| Strokes: 68985 Minus: 0.0294186715173622
+0.0538958674547709
+
+Final grid: |     .ACDEFHIJLMNOPQRSTUVWaabcdeeeefghiiijllmnnopqrrssstttuuuvwy|
+Minus: 0.0538958674547709
+Grid: |Ojro mDyQqucduNTUSetingEIns aelAwvimproMJalsu. CWfeVitPLHRstbahF| Strokes: 69438 Minus: 0.570556262773721
+0.593295454323895
+
+Final grid: |   .ACDEFHIJLMNOPQRSTUVWaaabccdeeefghiiijllmmnnoopqrrssstttuuvwy|
+Minus: 0.593295454323895
+Grid: |JTEILwRWFCA .NMOUletiaSHQugns eVPterouqDhpm cdtjbiuali sy snevfr| Strokes: 69809 Minus: 0.0538958674547709
+0.210006666001867
+
+Final grid: |     .ACDEFHIJLMNOPQRSTUVWaabcdeeeefghiiijllmnnopqrrssstttuuuvwy|
+Minus: 0.210006666001867
+Grid: |OhabofDQUtric msFsednegijPluatuqASCm sepJwVN.ir WTLavlotHRyMIncE| Strokes: 69809 Minus: 0.593295454323895
+0.0650825952482794
+
+Final grid: |     .ACDEFHIJLMNOPQRSTUVWaabcdeeeefghiiijllmnnopqrrssstttuuuvwy|
+Minus: 0.0650825952482794
+Grid: |HInvleLyFDgdiorPSNe tc fjqusenahA lam ubUt.iprtiTE sueswRJQMCVOW| Strokes: 69069 Minus: 0.210006666001867
+0.114174346027046
+
+Final grid: |     .ACDEFHIJLMNOPQRSTUVWaabcdeeeefghiiijllmnnopqrrssstttuuuvwy|
+Minus: 0.114174346027046
+Grid: |DCuthLWHM orbPOyatni peFgecduslTVs amerSwilv.ti queN nsUJQjfAIER| Strokes: 69533 Minus: 0.0650825952482794
+0.420021693883474
+
+Final grid: |    .ACDEFHIJLMNOPQRSTUVWaaabcdeeefghiiijllmmnnopqrrssstttuuuvwy|
+Minus: 0.420021693883474
+Grid: |HwIhPeWsf nbiVRtreta vjypsiumlqUd cr euQlanotsiDugeN.ALOFMSC ETJ| Strokes: 69258 Minus: 0.114174346027046
+0.993759443049207
+
+Final grid: |   .ACDEFHIJLMNOPQRSTUVWaaabccddeeefghiiijlllmmnnoopqrrssttuuvwy|
+Minus: 0.993759443049207
+Grid: |RTUDLFJHPh. NAEOS btamMyVpisulCjnedor vwIm cneaftlauitsiQesqgurW| Strokes: 69037 Minus: 0.420021693883474
+0.812597538257296
+
+Final grid: |   .ACDEFHIJLMNOPQRSTUVWaaabccdeeefghiiijllmmnnnoopqrrsssttuuvwy|
+Minus: 0.812597538257296
+Grid: |HTEScfFJUsteladMIa .m NAQingusqCldoreipmjucat loODVinverWRLbhPwy| Strokes: 69515 Minus: 0.993759443049207
+0.651118248538635
+
+Final grid: |   .ACDEFHIJLMNOPQRSTUVWaaabccdeeefghiiijllmmnnoopqrrssstttuuvwy|
+Minus: 0.651118248538635
+Grid: |RwFQATJWUisq.VEOolte mSMrbiudpganeascinNPhm ret yfvnoluscHDILaCj| Strokes: 69735 Minus: 0.812597538257296
+0.442926674821846
+
+Final grid: |    .ACDEFHIJLMNOPQRSTUVWaaabcdeeefghiiijllmmnnopqrrssstttuuuvwy|
+Minus: 0.442926674821846
+Grid: |RTPUhaMOES .broDAvetincVQNla seljqudmutCJsgipocaHyLner fmWFItisw| Strokes: 69676 Minus: 0.651118248538635
+0.781188891167375
+
+Final grid: |   .ACDEFHIJLMNOPQRSTUVWaaabccdeeefghiiijllmmnnnoopqrrsssttuuvwy|
+Minus: 0.781188891167375
+Grid: |WcIeNfMHsint roFQbgualenREqsmipASh.e taVTP cnivwOLarodDUymlCusjJ| Strokes: 70032 Minus: 0.781188891167375
+0.436328629234959
+
+Final grid: |    .ACDEFHIJLMNOPQRSTUVWaaabcdeeefghiiijllmmnnopqrrssstttuuuvwy|
+Minus: 0.436328629234959
+Grid: |tJLPwOHWiNahbmyRVus i.TUvlent AEaomcurCDnr dalMFItpis fjsegqueSQ| Strokes: 69149 Minus: 0.442926674821846
+0.519488342348248
+
+Final grid: |   .ACDEFHIJLMNOPQRSTUVWaaabcdeeefghiiijllmmnnoopqrrssstttuuuvwy|
+Minus: 0.519488342348248
+Grid: |WHPLUsEROihbVmAFutaplu Crv reg.TMnoitnIDfacs diwjleumasQy tqNeSJ| Strokes: 69029 Minus: 0.436328629234959
+0.372352470817209
+
+Final grid: |    .ACDEFHIJLMNOPQRSTUVWaaabcdeeefghiiijllmmnnopqrrssstttuuuvwy|
+Minus: 0.372352470817209
+Grid: |WMjPUQJRLahvVmtyDbi na.EColteuqsurusid Agea mpNwitncorSFHsIfleTO| Strokes: 69216 Minus: 0.519488342348248
+0.257637525562959
+
+Final grid: |    .ACDEFHIJLMNOPQRSTUVWaaabcdeeeefghiiijllmnnopqrrssstttuuuvwy|
+Minus: 0.257637525562959
+Grid: |RwsIEFOJubin LQTlhta.qjSAp esumeUPcrti VCmuondafMa legvryNsitDWH| Strokes: 69476 Minus: 0.372352470817209
+0.648730550729078
+
+Final grid: |   .ACDEFHIJLMNOPQRSTUVWaaabccdeeefghiiijllmmnnoopqrrssstttuuvwy|
+Minus: 0.648730550729078
+Grid: |JLMUfTrFAs.a NnESe mlgiwIunteuqQvdci sty aorpaPOsltuChDReVibjeWH| Strokes: 69287 Minus: 0.257637525562959
+0.674340603255825
+
+Final grid: |   .ACDEFHIJLMNOPQRSTUVWaaabccdeeefghiiijllmmnnoopqrrssstttuuvwy|
+Minus: 0.674340603255825
+Grid: |WOFwTELRJSemA.PMDadip shCruscroaIon etiblcmalunQU tvigstyjfNVqeH| Strokes: 69042 Minus: 0.648730550729078
+0.872689437061869
+
+Final grid: |   .ACDEFHIJLMNOPQRSTUVWaaabccdeeefghiiijlllmmnnnoopqrrssttuuvwy|
+Minus: 0.872689437061869
+Grid: |RcQATwyHtiqsnVfWilu evmabortlipshaesud gPNm anerLMC.cotSJFEDjIUO| Strokes: 69855 Minus: 0.674340603255825
+0.228491025617575
+
+Final grid: |    .ACDEFHIJLMNOPQRSTUVWaaabcdeeeefghiiijllmnnopqrrssstttuuuvwy|
+Minus: 0.228491025617575
+Grid: |cjVvDOTRQatioaNEquenc. Mfis mpsLwdlauroCnrgitelUHeSb nAJlmyhPIFW| Strokes: 69811 Minus: 0.872689437061869
+0.0992162069767789
+
+Final grid: |     .ACDEFHIJLMNOPQRSTUVWaabcdeeeefghiiijllmnnopqrrssstttuuuvwy|
+Minus: 0.0992162069767789
+Grid: |tHQDsujJOLMa insUE.ctoqeTA leruCFSNunm IVeds agfwP itperWRhbvliy| Strokes: 70222 Minus: 0.0992162069767789
+0.00876520760765542
+Grid: |OnrSCNAUTa.s alhV demuqbEIitncitwvs or eFelaepsuRDufgiPQWJjMLtyH| Strokes: 69737 Minus: 0.228491025617575
+0.797075177914032
+
+Final grid: |   .ACDEFHIJLMNOPQRSTUVWaaabccdeeefghiiijllmmnnnoopqrrsssttuuvwy|
+Minus: 0.797075177914032
+Grid: |ywVvefsWSeidlcinQqs aotmAluenr UNamtgpPLIn cibhEMo.sraORFDCujTJH| Strokes: 69206 Minus: 0.797075177914032
+0.674006337613802
+
+Final grid: |   .ACDEFHIJLMNOPQRSTUVWaaabccdeeefghiiijllmmnnoopqrrssstttuuvwy|
+Minus: 0.674006337613802
+Grid: |DAvmIyHsSea fMwiolntcortVdierpPOC su mhjL.tqaleTUENgnusJRFQcibaW| Strokes: 70232 Minus: 0.674006337613802
+0.355503422373675
+
+Final grid: |    .ACDEFHIJLMNOPQRSTUVWaaabcdeeefghiiijllmmnnopqrrssstttuuuvwy|
+Minus: 0.355503422373675
+Grid: |tselIFRWrahb fQHwvpinauOPm stegSjqeur dATilaocisUtC .mnLJEVNDMuy| Strokes: 68944 Minus: 0.355503422373675
+0.0399858001805776
+
+Final grid: |      .ACDEFHIJLMNOPQRSTUVWaabcdeeeefghiiijllmnnopqrssstttuuuvwy|
+Minus: 0.0399858001805776
+Grid: | atM UyHsvifsVOWDlept LFP rcuiCTunoamdSehgt enNIjbisu. QRwelqAEJ| Strokes: 69787 Minus: 0.0399858001805776
+0.475689390895744
+
+Final grid: |   .ACDEFHIJLMNOPQRSTUVWaaabcdeeefghiiijllmmnnoopqrrssstttuuuvwy|
+Minus: 0.475689390895744
+Grid: |HWjowDOJymCngrEFasutiqfUbireul Nhpm satMPtonce.SLalvid TRseIVuAQ| Strokes: 69085 Minus: 0.475689390895744
+0.360491230320414
+
+Final grid: |    .ACDEFHIJLMNOPQRSTUVWaaabcdeeefghiiijllmmnnopqrrssstttuuuvwy|
+Minus: 0.360491230320414
+Grid: |wisnetmyMl opsujNamrc afCuetidbJDqs nuhQTS.aelPREL vgArHtUViIFOW| Strokes: 68759 Minus: 0.360491230320414
+0.0769039169312007
+
+Final grid: |     .ACDEFHIJLMNOPQRSTUVWaabcdeeeefghiiijllmnnopqrrssstttuuuvwy|
+Minus: 0.0769039169312007
+Grid: | DujQUJWelqfMtERtis NAwOrcue.i To masnILdnit eVSPeplugCyhvbarsFH| Strokes: 70295 Minus: 0.0769039169312007
+0.937824556575075
+
+Final grid: |   .ACDEFHIJLMNOPQRSTUVWaaabccdeeefghiiijlllmmnnnoopqrrssttuuvwy|
+Minus: 0.937824556575075
+Grid: |UENCSTRHhamuegOyP. dincLbitaroMlvsel mpfV nusiraDAoqctenJFIQjwlW| Strokes: 69511 Minus: 0.937824556575075
+0.690656623193369
+
+Final grid: |   .ACDEFHIJLMNOPQRSTUVWaaabccdeeefghiiijllmmnnnoopqrrsssttuuvwy|
+Minus: 0.690656623193369
+Grid: |JQnrOEHWjfceASTRqvilV MFumdpg.ILs tenaPUeaoribhwilcus NDsnoCtmay| Strokes: 70290 Minus: 0.690656623193369
+0.151076586987393
+
+Final grid: |     .ACDEFHIJLMNOPQRSTUVWaabcdeeeefghiiijllmnnopqrrssstttuuuvwy|
+Minus: 0.151076586987393
+Grid: |OUSVelTJIv dp. EentisuCFAaer mNPf locahMrsuntibytiqgesLRjuQD wWH| Strokes: 68396 Minus: 0.151076586987393
+0.147155236987004
+
+Final grid: |     .ACDEFHIJLMNOPQRSTUVWaabcdeeeefghiiijllmnnopqrrssstttuuuvwy|
+Minus: 0.147155236987004
+Grid: |wfVeQOTHerilugARn pvdeSEtqsain Iiue tc.UbalmroLFshPNusDJt MjC yW| Strokes: 69326 Minus: 0.147155236987004
+0.945056476139024
+
+Final grid: |   .ACDEFHIJLMNOPQRSTUVWaaabccdeeefghiiijlllmmnnnoopqrrssttuuvwy|
+Minus: 0.945056476139024
+Grid: |liv.tLTJVen siDwAcorauCQN supqhjgalembPFndit orUeScnaflyHWREIMOm| Strokes: 70585 Minus: 0.945056476139024
+0.290816074838311
+
+Final grid: |    .ACDEFHIJLMNOPQRSTUVWaaabcdeeeefghiiijllmnnopqrrssstttuuuvwy|
+Minus: 0.290816074838311
+Grid: |eyDnwFWsfNugrqOH alviuQJpme seVTiurtdaSUtson. IEC cailMtjPhebALR| Strokes: 69183 Minus: 0.290816074838311
+0.498477052663675
+
+Final grid: |   .ACDEFHIJLMNOPQRSTUVWaaabcdeeefghiiijllmmnnoopqrrssstttuuuvwy|
+Minus: 0.498477052663675
+Grid: |eWjIUAJHsCurtVEOLovne fTtidal.NFmc sumaQgnetibhyaorup PDMlSqsiwR| Strokes: 68720 Minus: 0.498477052663675
+0.0336341103695492
+
+Final grid: |      .ACDEFHIJLMNOPQRSTUVWaabcdeeeefghiiijllmnnopqrssstttuuuvwy|
+Minus: 0.0336341103695492
+Grid: |WtPDjLwHsh gnitsubaroc eevleudiqf its nuFVp maelyUMC.NSQROTE AIJ| Strokes: 69298 Minus: 0.0336341103695492
+0.544847020667441
+
+Final grid: |   .ACDEFHIJLMNOPQRSTUVWaaabcdeeefghiiijllmmnnoopqrrssstttuuuvwy|
+Minus: 0.544847020667441
+Grid: |WHRQuCEFJwhIrPtUjbNas .AVignumeTqustiplLmle roaM avcdefytinoDSOs| Strokes: 68990 Minus: 0.544847020667441
+0.403244899773619
+
+Final grid: |    .ACDEFHIJLMNOPQRSTUVWaaabcdeeefghiiijllmmnnopqrrssstttuuuvwy|
+Minus: 0.403244899773619
+Grid: |ruCajJtsVeqNSTORps bhPQydium AID ton.fMLelreagiFmac sulHwvnitEUW| Strokes: 71180 Minus: 0.403244899773619
+0.766492680072082
+
+Final grid: |   .ACDEFHIJLMNOPQRSTUVWaaabccdeeefghiiijllmmnnnoopqrrsssttuuvwy|
+Minus: 0.766492680072082
+Grid: |WJESULayRsnCVDmOMig.roIQNam ecnAclust uqoerpidsiTfv anelHFjhbPtw| Strokes: 69353 Minus: 0.766492680072082
+0.608429323233864
+
+Final grid: |   .ACDEFHIJLMNOPQRSTUVWaaabccdeeefghiiijllmmnnoopqrrssstttuuvwy|
+Minus: 0.608429323233864
+Grid: |DtSyPfjWnivpm hwodaletisce sruaQgntiocbLaum. CMJlqsANEURHIeVTFOr| Strokes: 69088 Minus: 0.608429323233864
+0.391119058891721
+
+Final grid: |    .ACDEFHIJLMNOPQRSTUVWaaabcdeeefghiiijllmmnnopqrrssstttuuuvwy|
+Minus: 0.391119058891721
+Grid: |HLMVitURyNugSAEOm le. PTsiandIrFtco svhDCurtiabwf meuleJjapsqQWn| Strokes: 68992 Minus: 0.391119058891721
+0.974623362987593
+
+Final grid: |   .ACDEFHIJLMNOPQRSTUVWaaabccddeeefghiiijlllmmnnoopqrrssttuuvwy|
+Minus: 0.974623362987593
+Grid: |yTVeACSLDI op. llancmurowvis tedFfdeangMmrNulibaiOjqhsEUtHJQPcRW| Strokes: 69132 Minus: 0.974623362987593
+0.337318509042877
+
+Final grid: |    .ACDEFHIJLMNOPQRSTUVWaaabcdeeefghiiijllmmnnopqrrssstttuuuvwy|
+Minus: 0.337318509042877
+Grid: |sUEjIJtiSAVCnPRWftN .hTOe muralFgalsibuQudentvwyqico aMLs premDH| Strokes: 69622 Minus: 0.337318509042877
+0.504736771110788
+
+Final grid: |   .ACDEFHIJLMNOPQRSTUVWaaabcdeeefghiiijllmmnnoopqrrssstttuuuvwy|
+Minus: 0.504736771110788
+Grid: |TEAUFORsiq IMLJWgu.naPhHrlet vVwopsiceibNa dontaDCmursujQfSetlym| Strokes: 69344 Minus: 0.504736771110788
+0.792834304642321
+
+Final grid: |   .ACDEFHIJLMNOPQRSTUVWaaabccdeeefghiiijllmmnnnoopqrrsssttuuvwy|
+Minus: 0.792834304642321
+Grid: |TESVLFJWIcn.oCDOPit rujQhbesipmwNluadcMRs qm osUAegniltHyfravean| Strokes: 70000 Minus: 0.792834304642321
+0.999556228518279
+
+Final grid: |   .ACDEFHIJLMNOPQRSTUVWaaabccddeeefghiiijlllmmnnoopqrrssttuuvwy|
+Minus: 0.999556228518279
+Grid: |JUQjyRWlFtCqsViHPa mpeadhbruilvELloetngo .cs amMSeniduNDTAIrfcwO| Strokes: 69316 Minus: 0.999556228518279
+0.908090095458594
+
+Final grid: |   .ACDEFHIJLMNOPQRSTUVWaaabccdeeefghiiijlllmmnnnoopqrrssttuuvwy|
+Minus: 0.908090095458594
+Grid: |cwriqNTJojpsulQFAlmea VMCu tn.IESerocevingdi latHfabsmyUnOhLPDRW| Strokes: 69558 Minus: 0.908090095458594
+0.267657165540223
+
+Final grid: |    .ACDEFHIJLMNOPQRSTUVWaaabcdeeeefghiiijllmnnopqrrssstttuuuvwy|
+Minus: 0.267657165540223
+Grid: |HJVeCfjWRP suq QUhtrasiwOMvocelADbin tnILNadmugyEulesiatTS .preF| Strokes: 69270 Minus: 0.267657165540223
+0.102504210128684
+
+Final grid: |     .ACDEFHIJLMNOPQRSTUVWaabcdeeeefghiiijllmnnopqrrssstttuuuvwy|
+Minus: 0.102504210128684
+Grid: |jQ tLTURusenvA EDilocitMCqus d.VP aremafwhbitn lWyepguseHJFOSrNI| Strokes: 69489 Minus: 0.102504210128684
+0.420049523664661
+
+Final grid: |    .ACDEFHIJLMNOPQRSTUVWaaabcdeeefghiiijllmmnnopqrrssstttuuuvwy|
+Minus: 0.420049523664661
+Grid: |WfrIagEHleisnutFUNt ceSOjqvaidMLQumlo. AVs erpmTbintu DywhasCPJR| Strokes: 69095 Minus: 0.420049523664661
+0.266611775507504
+
+Final grid: |    .ACDEFHIJLMNOPQRSTUVWaaabcdeeeefghiiijllmnnopqrrssstttuuuvwy|
+Minus: 0.266611775507504
+Grid: |ijTMSLRHVq. hPEOlubae tUesitruCJv cnodDyAmle sawNaugpitnFQsIfreW| Strokes: 68783 Minus: 0.266611775507504
+0.522112061047047
+
+Final grid: |   .ACDEFHIJLMNOPQRSTUVWaaabcdeeefghiiijllmmnnoopqrrssstttuuuvwy|
+Minus: 0.522112061047047
+Grid: |JyjPqhbQTVelusiuUNtma tvMA prenlwD.idcoaRECsut mHFSegnaIWOLorifs| Strokes: 69046 Minus: 0.522112061047047
+0.136747694172313
+
+Final grid: |     .ACDEFHIJLMNOPQRSTUVWaabcdeeeefghiiijllmnnopqrrssstttuuuvwy|
+Minus: 0.136747694172313
+Grid: |yUMjI FHfitrntEJelaugNSTvm se. VpuciduqQsent esA roilPLOwCabhDRW| Strokes: 68936 Minus: 0.136747694172313
+0.974316720373145
+
+Final grid: |   .ACDEFHIJLMNOPQRSTUVWaaabccddeeefghiiijlllmmnnoopqrrssttuuvwy|
+Minus: 0.974316720373145
+Grid: |lLMAIVicDtorn vewgcmepalNna tidouilusbjmCdreahFyQs q.PORTEfSUJWH| Strokes: 70324 Minus: 0.974316720373145
+0.0428075716098806
+
+Final grid: |     .ACDEFHIJLMNOPQRSTUVWaabcdeeeefghiiijllmnnopqrrssstttuuuvwy|
+Minus: 0.0428075716098806
+Grid: |HUELnIyWOTt AifwFVe.gs MDP rluaNJstonemvQhbcit pjeu daruRiqselSC| Strokes: 70109 Minus: 0.0428075716098806
+0.0606939308627946
+
+Final grid: |     .ACDEFHIJLMNOPQRSTUVWaabcdeeeefghiiijllmnnopqrrssstttuuuvwy|
+Minus: 0.0606939308627946
+Grid: |ySeVrUHWt spegfRibditn Ihum aelAalocruqjsenvtsiwLP .N CFOTDEMQuJ| Strokes: 69071 Minus: 0.0606939308627946
+0.441734082736882
+
+Final grid: |    .ACDEFHIJLMNOPQRSTUVWaaabcdeeefghiiijllmmnnopqrrssstttuuuvwy|
+Minus: 0.441734082736882
+Grid: |mLEATURHSIM CjFOeip.rnaJad suthWgntemibwuoca sNylrileuPtD vfVqQs| Strokes: 69547 Minus: 0.441734082736882
+0.384793998387081
+
+Final grid: |    .ACDEFHIJLMNOPQRSTUVWaaabcdeeefghiiijllmmnnopqrrssstttuuuvwy|
+Minus: 0.384793998387081
+Grid: |WwfveATRHQsilNEUSg ta nIquenm.ChDsi curaLadoltibtMpres PJyOVmujF| Strokes: 68896 Minus: 0.384793998387081
+0.581055841679245
+
+Final grid: |   .ACDEFHIJLMNOPQRSTUVWaaabccdeeefghiiijllmmnnoopqrrssstttuuvwy|
+Minus: 0.581055841679245
+Grid: |HjVJFLtRcguqahPyliesbo Man trmefIvdiualQDopcs .COmrentAEWswSiNTU| Strokes: 69647 Minus: 0.581055841679245
+0.687082859541794
+
+Final grid: |   .ACDEFHIJLMNOPQRSTUVWaaabccdeeefghiiijllmmnnnoopqrrsssttuuvwy|
+Minus: 0.687082859541794
+Grid: |WJanUERHQVviDsTrA ltc.LOfqeno NPSduarmaMeis tulCwmpceghFyojInibs| Strokes: 69469 Minus: 0.687082859541794
+0.80818671398246
+
+Final grid: |   .ACDEFHIJLMNOPQRSTUVWaaabccdeeefghiiijllmmnnnoopqrrsssttuuvwy|
+Minus: 0.80818671398246
+Grid: |EI PLVTRcg.bheFJinsiorDwlta tCMUuemrusjQs pcnafyqidoeSHmNvalAOWn| Strokes: 70785 Minus: 0.80818671398246
+0.591854771874777
+
+Final grid: |   .ACDEFHIJLMNOPQRSTUVWaaabccdeeefghiiijllmmnnoopqrrssstttuuvwy|
+Minus: 0.591854771874777
+Grid: |WOwVlUHtRDiveSAJPMd st.ELCconamfhaurle Nbi tiusqonmepgcQyIsarjTF| Strokes: 69464 Minus: 0.591854771874777
+0.0320425448157091
+
+Final grid: |      .ACDEFHIJLMNOPQRSTUVWaabcdeeeefghiiijllmnnopqrssstttuuuvwy|
+Minus: 0.0320425448157091
+Grid: |t DjyTWsSiNqQEFiedmul Awva se.VUlpcit PL nornaIOtuebghMResf uCJH| Strokes: 69318 Minus: 0.0320425448157091
+0.328299746535858
+
+Final grid: |    .ACDEFHIJLMNOPQRSTUVWaaabcdeeeefghiiijllmnnopqrrssstttuuuvwy|
+Minus: 0.328299746535858
+Grid: |WQRwATtsJqlveVEHbusia SLa etn.IOCdurotMUhim c NDyPpaesfFengilujr| Strokes: 69574 Minus: 0.328299746535858
+0.913590928033735
+
+Final grid: |   .ACDEFHIJLMNOPQRSTUVWaaabccdeeefghiiijlllmmnnnoopqrrssttuuvwy|
+Minus: 0.913590928033735
+Grid: |HOLUTRJsFMCSIVyWAa .nemwElrodipQceut suqrgniaelNafbcmnoDlPh vtji| Strokes: 69283 Minus: 0.913590928033735
+0.936788159393141
+
+Final grid: |   .ACDEFHIJLMNOPQRSTUVWaaabccdeeefghiiijlllmmnnnoopqrrssttuuvwy|
+Minus: 0.936788159393141
+Grid: |cnqeSjFnigud hPwVlsiapmRve tnesIfamcor.EMNrulC AyotibLTOlUaQDJWH| Strokes: 68822 Minus: 0.936788159393141
+0.760511412173748
+
+Final grid: |   .ACDEFHIJLMNOPQRSTUVWaaabccdeeefghiiijllmmnnnoopqrrsssttuuvwy|
+Minus: 0.760511412173748
+Grid: |yPhbicinwfpastOsrVmeruljoc tonCUenildaILgas. vMTN ueSQFWDmqAEJRH| Strokes: 70250 Minus: 0.760511412173748
+0.824315164622066
+
+Final grid: |   .ACDEFHIJLMNOPQRSTUVWaaabccdeeefghiiijllmmnnnoopqrrsssttuuvwy|
+Minus: 0.824315164622066
+Grid: |RVeNyFHswbmahIUWDis nCPOorutc.AEndlei STc amporLMfvgsnelQjiuqtaJ| Strokes: 69696 Minus: 0.824315164622066
+0.699367862986106
+
+Final grid: |   .ACDEFHIJLMNOPQRSTUVWaaabccdeeefghiiijllmmnnnoopqrrsssttuuvwy|
+Minus: 0.699367862986106
+Grid: |JCMvpmayTqc selfNuaritnVSemou cIt anldijE.sebAQWUPhgiDoHOFrLswRn| Strokes: 71022 Minus: 0.699367862986106
+0.559770267717433
+
+Final grid: |   .ACDEFHIJLMNOPQRSTUVWaaabcdeeefghiiijllmmnnoopqrrssstttuuuvwy|
+Minus: 0.559770267717433
+Grid: |FwSeUtRlDM.NAEOHsi dvVTJurcainILCotl efygneumproa sitsuQmPqbhajW| Strokes: 69469 Minus: 0.559770267717433
+0.800483839027809
+
+Final grid: |   .ACDEFHIJLMNOPQRSTUVWaaabccdeeefghiiijllmmnnnoopqrrsssttuuvwy|
+Minus: 0.800483839027809
+Grid: |HyTIMCoLJQA muraOE.lenvPRDsoctibwNina shjadrueqVFm plignUStesfcW| Strokes: 69984 Minus: 0.800483839027809
+0.605496504626002
+
+Final grid: |   .ACDEFHIJLMNOPQRSTUVWaaabccdeeefghiiijllmmnnoopqrrssstttuuvwy|
+Minus: 0.605496504626002
+Grid: |UjCfILwHts agmsycquenieAo.rt clPnvdisoaMV meprhDENalubQJOTFStiRW| Strokes: 69276 Minus: 0.605496504626002
+0.863684554986509
+
+Final grid: |   .ACDEFHIJLMNOPQRSTUVWaaabccdeeefghiiijlllmmnnnoopqrrssttuuvwy|
+Minus: 0.863684554986509
+Grid: |cPorMFRlehbaNLyJnliumCjQiasc .DEd tnoAIUpeurl SOgmqseVTHfvaitnwW| Strokes: 69940 Minus: 0.863684554986509
+0.353932089337116
+
+Final grid: |    .ACDEFHIJLMNOPQRSTUVWaaabcdeeefghiiijllmmnnopqrrssstttuuuvwy|
+Minus: 0.353932089337116
+Grid: |reVfmyRWtsqNujFJiluabhQOget sPAEancmi. Lv orudCTMlsetnSUwIip aDH| Strokes: 69001 Minus: 0.353932089337116
+0.216598599784355
+
+Final grid: |    .ACDEFHIJLMNOPQRSTUVWaaabcdeeeefghiiijllmnnopqrrssstttuuuvwy|
+Minus: 0.216598599784355
+Grid: |wInUEyaHf teATFWsiurgLDJplmo .COteancrulis ditsequNvba VQjPMheSR| Strokes: 69120 Minus: 0.216598599784355
+0.54831860286571
+
+Final grid: |   .ACDEFHIJLMNOPQRSTUVWaaabcdeeefghiiijllmmnnoopqrrssstttuuuvwy|
+Minus: 0.54831860286571
+Grid: |UQMTELstsC .SoPFqutelreaiNamut nAvd sipIlricabhwymonegfRHODVujJW| Strokes: 69380 Minus: 0.54831860286571
+0.70159123078994
+
+Final grid: |   .ACDEFHIJLMNOPQRSTUVWaaabccdeeefghiiijllmmnnnoopqrrsssttuuvwy|
+Minus: 0.70159123078994
+Grid: |QMvcomlyNan reaPuletipbhqisudn jVm acoCDwf.ertLUJASgnisWRFETIOHs| Strokes: 69825 Minus: 0.70159123078994
+0.334012054062454
+
+Final grid: |    .ACDEFHIJLMNOPQRSTUVWaaabcdeeeefghiiijllmnnopqrrssstttuuuvwy|
+Minus: 0.334012054062454
+Grid: |HRMAESFJOIN. eQTynaltsujrgmudiqLPs encafhapro tDblituseUWev CiVw| Strokes: 69044 Minus: 0.334012054062454
+0.695091889097864
+
+Final grid: |   .ACDEFHIJLMNOPQRSTUVWaaabccdeeefghiiijllmmnnnoopqrrsssttuuvwy|
+Minus: 0.695091889097864
+Grid: |RLnacMUyODorvsNiTS.pe mAE sditalQVqgncuFItueloCJnis areHwbjmhPfW| Strokes: 70700 Minus: 0.695091889097864
+0.931134904237061
+
+Final grid: |   .ACDEFHIJLMNOPQRSTUVWaaabccdeeefghiiijlllmmnnnoopqrrssttuuvwy|
+Minus: 0.931134904237061
+Grid: |ymsjqNQwfaelumatrc is piIondtevVODgburolEPha .MUHFSencLJnlRACTiW| Strokes: 69118 Minus: 0.931134904237061
+0.412474869476852
+
+Final grid: |    .ACDEFHIJLMNOPQRSTUVWaaabcdeeefghiiijllmmnnopqrrssstttuuuvwy|
+Minus: 0.412474869476852
+Grid: |HOLCuFjJTEN gAusUiv.retiVealo sDft mncaMSqsuitbQInerd hwylmpaPRW| Strokes: 69493 Minus: 0.412474869476852
+0.376983026218127
+
+Final grid: |    .ACDEFHIJLMNOPQRSTUVWaaabcdeeefghiiijllmmnnopqrrssstttuuuvwy|
+Minus: 0.376983026218127
+Grid: |ywmipCtUQqus lafTiterumNDP noc sLhabdiaeRMv. tngHOSlesurWJFAVEIj| Strokes: 68784 Minus: 0.376983026218127
+0.508800385756791
+
+Final grid: |   .ACDEFHIJLMNOPQRSTUVWaaabcdeeefghiiijllmmnnoopqrrssstttuuuvwy|
+Minus: 0.508800385756791
+Grid: |RUOLwymHEivntIujVtaro sPA lecnahQ.usitibMNam eglTSepduroWJFfCqsD| Strokes: 68497 Minus: 0.508800385756791
+0.157467598634524
+
+Final grid: |     .ACDEFHIJLMNOPQRSTUVWaabcdeeeefghiiijllmnnopqrrssstttuuuvwy|
+Minus: 0.157467598634524
+Grid: |yjviuqQJfeansITHNl te AU pmor.DLtuncg VEisditseOb aruCMRhPelwSFW| Strokes: 69966 Minus: 0.157467598634524
+0.804406677747335
+
+Final grid: |   .ACDEFHIJLMNOPQRSTUVWaaabccdeeefghiiijllmmnnnoopqrrsssttuuvwy|
+Minus: 0.804406677747335
+Grid: |HRLAcSEFOsMpi ITJNord.CDQuametnoVql sucmisetir aWwvangefnUPhbjly| Strokes: 69331 Minus: 0.804406677747335
+0.571572126621181
+
+Final grid: |   .ACDEFHIJLMNOPQRSTUVWaaabcdeeefghiiijllmmnnoopqrrssstttuuuvwy|
+Minus: 0.571572126621181
+Grid: |tsmshPiHju ebguDJloracorOLdtinefQCaus lATN metaMyE.qpivURFInSVwW| Strokes: 69470 Minus: 0.571572126621181
+0.503754327773933
+
+Final grid: |   .ACDEFHIJLMNOPQRSTUVWaaabcdeeefghiiijllmmnnoopqrrssstttuuuvwy|
+Minus: 0.503754327773933
+Grid: |HywAfvntsDm aleVUetodi POlicrusqjusnetibQNa maphFEI.gSMRJTLCuroW| Strokes: 68899 Minus: 0.503754327773933
+0.457365465563426
+
+Final grid: |    .ACDEFHIJLMNOPQRSTUVWaaabcdeeefghiiijllmmnnopqrrssstttuuuvwy|
+Minus: 0.457365465563426
+Grid: |WrfjDURHyve tIhangamc sPtiluonelLd sribAVquetauEQsip NCTJwSm.MFO| Strokes: 69447 Minus: 0.457365465563426
+0.388338910130942
+
+Final grid: |    .ACDEFHIJLMNOPQRSTUVWaaabcdeeefghiiijllmmnnopqrrssstttuuuvwy|
+Minus: 0.388338910130942
+Grid: |sWwSefmyRhrpd atjbusiluqFPm tesgDCeronciM a.v alOEtiVNAuHTUnLIQJ| Strokes: 69302 Minus: 0.388338910130942
+0.729768680748422
+
+Final grid: |   .ACDEFHIJLMNOPQRSTUVWaaabccdeeefghiiijllmmnnnoopqrrsssttuuvwy|
+Minus: 0.729768680748422
+Grid: |RLMIfCeOTlA.gurmSod ancoeriset Pp mulivDitaqVbahnscNjFwyWUEQJHns| Strokes: 68670 Minus: 0.729768680748422
+0.568203859295791
+
+Final grid: |   .ACDEFHIJLMNOPQRSTUVWaaabcdeeefghiiijllmmnnoopqrrssstttuuuvwy|
+Minus: 0.568203859295791
+Grid: |HDCodiMRierncaIePqus mNShgatep.Twbnilu Atf orstUsumvVQEJyljaLFOW| Strokes: 69901 Minus: 0.568203859295791
+0.15259882954536
+
+Final grid: |     .ACDEFHIJLMNOPQRSTUVWaabcdeeeefghiiijllmnnopqrrssstttuuuvwy|
+Minus: 0.15259882954536
+Grid: |WsQjtFJRwiulaNTOHnge dAeyqpumi SPC ser.EhbitnoVLrula cMD sevfIUt| Strokes: 69400 Minus: 0.15259882954536
+0.591710245977952
+
+Final grid: |   .ACDEFHIJLMNOPQRSTUVWaaabccdeeefghiiijllmmnnoopqrrssstttuuvwy|
+Minus: 0.591710245977952
+Grid: |toCegSmyIn cidfDarsunerlhbita ocP. lmpNAFavesitLRMVjuqUJWOTEQwHs| Strokes: 69759 Minus: 0.591710245977952
+0.719689728561644
+
+Final grid: |   .ACDEFHIJLMNOPQRSTUVWaaabccdeeefghiiijllmmnnnoopqrrsssttuuvwy|
+Minus: 0.719689728561644
+Grid: |FEClrMonINsuipbhna mtavPT.cre lVUtionsieDA dguqwOLmafjcRysSeJQWH| Strokes: 69094 Minus: 0.719689728561644
+0.497208934043166
+
+Final grid: |   .ACDEFHIJLMNOPQRSTUVWaaabcdeeefghiiijllmmnnoopqrrssstttuuuvwy|
+Minus: 0.497208934043166
+Grid: |yTjCADUniMv lorItapmecisPorutnd hbis almLet.eugNRFwQVqfauWJESsOH| Strokes: 69740 Minus: 0.497208934043166
+0.867056027458541
+
+Final grid: |   .ACDEFHIJLMNOPQRSTUVWaaabccdeeefghiiijlllmmnnnoopqrrssttuuvwy|
+Minus: 0.867056027458541
+Grid: |RMalCwJlLboudNjOnirs ivUSpmeactTh. tunorPasile fAengqVmDWcIEQFyH| Strokes: 69811 Minus: 0.867056027458541
+0.229339745002491
+
+Final grid: |    .ACDEFHIJLMNOPQRSTUVWaaabcdeeeefghiiijllmnnopqrrssstttuuuvwy|
+Minus: 0.229339745002491
+Grid: |OTIwVSeRFenbahPLAp.is diCr tenuDsumclor ElavugaeUtN sitfJyMQqjWH| Strokes: 69748 Minus: 0.229339745002491
+0.231060654498199
+
+Final grid: |    .ACDEFHIJLMNOPQRSTUVWaaabcdeeeefghiiijllmnnopqrrssstttuuuvwy|
+Minus: 0.231060654498199
+Grid: |TCqeALFyQ uroaNDU.tn mpsEbisluerVhaecit iPv dngfROMtausjWHwSeIJl| Strokes: 70137 Minus: 0.231060654498199
+0.000622440129808355
