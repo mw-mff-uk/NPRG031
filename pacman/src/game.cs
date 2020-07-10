@@ -7,11 +7,9 @@ namespace MainNamespace
 {
   class Game
   {
-    private const int TICKS_PER_SECOND = 20;
-    public const int WIDTH = 400;
-    public const int HEIGHT = 534;
-    public const int CORRIDOR_SIZE = 28;
-    public const int CORRIDOR_GAP = 2;
+    public const int WIDTH = 763;
+    public const int HEIGHT = 843;
+    public const int AVATAR_SIZE = 32;
     private const int N_STATES = 3;
     private const int STATE_BEFORE_START = 0;
     private const int STATE_PLAYING = 1;
@@ -20,10 +18,13 @@ namespace MainNamespace
     private Form board;
     private LinkedList<Control> toDispose;
     private Pacman pacman;
+    private PictureBox background;
     private Timer timer;
     private TextBox keyboardHandler;
     private int gapVertical;
     private int gapHorizontal;
+    private DirectedPoint[] stoppingPoints;
+    private DirectedPoint[] turningPoints;
     private void NextState(object sender = null, EventArgs e = null)
     {
       while (!this.toDispose.Empty)
@@ -46,6 +47,16 @@ namespace MainNamespace
       this.pacman.Spawn(this.board);
       this.toDispose.InsertLast(this.pacman);
 
+      this.background = new PictureBox();
+      this.background.Width = Game.WIDTH;
+      this.background.Height = Game.HEIGHT;
+      this.background.Top = this.gapVertical;
+      this.background.Left = this.gapHorizontal;
+      this.background.Parent = this.board;
+      this.background.Image = Image.FromFile("/home/wiki/School/NPRG031/pacman/src/images/background.jpg");
+      this.background.SizeMode = PictureBoxSizeMode.StretchImage;
+      this.toDispose.InsertLast(this.background);
+
       timer.Enabled = true;
     }
     private void WelcomeScreen()
@@ -61,7 +72,6 @@ namespace MainNamespace
       btn.Parent = this.board;
       btn.Click += this.NextState;
 
-      // Fill toDispose Queue
       this.toDispose.InsertLast(btn);
     }
     private void GameOverScreen()
@@ -72,40 +82,51 @@ namespace MainNamespace
     {
       if (this.state == Game.STATE_PLAYING)
       {
-        this.pacman.Move();
+        if (this.pacman.CanMove(this.stoppingPoints))
+          this.pacman.Move();
       }
     }
     private void OnKeyDown(object sender, System.Windows.Forms.KeyEventArgs e)
     {
       if (this.state == Game.STATE_PLAYING)
       {
-        switch (e.KeyCode)
-        {
-          case Keys.Right:
-            this.pacman.TurnRight();
-            break;
+        int direction = Direction.FromKeyCode(e.KeyCode);
 
-          case Keys.Left:
-            this.pacman.TurnLeft();
-            break;
-
-          case Keys.Up:
-            this.pacman.TurnUp();
-            break;
-
-          case Keys.Down:
-            this.pacman.TurnDown();
-            break;
-        }
+        if (this.pacman.CanTurn(direction, this.stoppingPoints))
+          this.pacman.Turn(direction);
       }
+    }
+    private void ConfigureDirectedPoints()
+    {
+      int gh = this.gapHorizontal = (this.board.ClientRectangle.Height - Game.HEIGHT) / 2;
+      int gv = this.gapVertical = (this.board.ClientRectangle.Width - Game.WIDTH) / 2;
+
+      var dpf = new DirectedPointFactory(gh, gv);
+
+      int r = Direction.RIGHT;
+      int l = Direction.LEFT;
+      int u = Direction.UP;
+      int d = Direction.DOWN;
+      int all = r | l | u | d;
+
+      this.stoppingPoints = new DirectedPoint[] {
+        dpf.Point( 0, 0, l | u ), // 1
+        dpf.Point( 2, 0, u ),     // 2 
+        dpf.Point( 3, 0, r | u ), // 3
+        dpf.Point( 0, 1, l ),     // 7
+        dpf.Point( 3, 1, u ),     // 8
+        dpf.Point( 4, 1, d ),     // 9
+        dpf.Point( 0, 2, d | l ), // 13
+        //dpf.Point( 9, 1, r ),     // 12
+        //dpf.Point( 2, 2, r )      // 14
+      };
     }
     public void Run()
     {
-      this.board.Width = Game.WIDTH + 100;
-      this.board.Height = Game.HEIGHT + 100;
+      this.board.Width = Game.WIDTH + 60;
+      this.board.Height = Game.HEIGHT + 60;
 
-      this.gapHorizontal = (this.board.ClientRectangle.Height - Game.HEIGHT) / 2;
-      this.gapVertical = (this.board.ClientRectangle.Width - Game.WIDTH) / 2;
+      this.ConfigureDirectedPoints();
 
       Console.WriteLine("H: {0} | {1}", this.board.ClientRectangle.Width, this.gapHorizontal);
       Console.WriteLine("V: {0} | {1}", this.board.ClientRectangle.Height, this.gapVertical);
@@ -126,7 +147,7 @@ namespace MainNamespace
       this.keyboardHandler.KeyDown += this.OnKeyDown;
 
       this.timer = new Timer();
-      timer.Interval = 1000 / Game.TICKS_PER_SECOND;
+      timer.Interval = 20;
       timer.Tick += new System.EventHandler(this.Tick);
       timer.Enabled = false;
     }
