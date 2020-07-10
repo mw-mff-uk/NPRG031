@@ -1,8 +1,5 @@
 using System;
 using System.Text;
-using System.Windows;
-using System.Windows.Forms;
-using System.Drawing;
 
 namespace MainNamespace
 {
@@ -12,7 +9,8 @@ namespace MainNamespace
     [STAThread]
     static void Main()
     {
-      Console.WriteLine("Setup");
+      Game game = new Game();
+      game.Run();
     }
   }
 }
