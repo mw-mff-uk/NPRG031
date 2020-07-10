@@ -66,7 +66,13 @@ namespace MainNamespace
           break;
       }
 
-      return xCollision && yCollision;
+      if (xCollision && yCollision)
+      {
+        Console.WriteLine("{0}-{1} {2}", this.row, this.col, this.direction);
+        return true;
+      }
+
+      return false;
     }
     public DirectedPoint(int row, int col, int left, int top, int direction)
     {

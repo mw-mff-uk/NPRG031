@@ -111,14 +111,14 @@ namespace MainNamespace
 
       this.stoppingPoints = new DirectedPoint[] {
         dpf.Point( 0, 0, l | u ), // 1
-        dpf.Point( 2, 0, u ),     // 2 
-        dpf.Point( 3, 0, r | u ), // 3
-        dpf.Point( 0, 1, l ),     // 7
-        dpf.Point( 3, 1, u ),     // 8
-        dpf.Point( 4, 1, d ),     // 9
-        dpf.Point( 0, 2, d | l ), // 13
-        //dpf.Point( 9, 1, r ),     // 12
-        //dpf.Point( 2, 2, r )      // 14
+        dpf.Point( 0, 2, u ),     // 2 
+        dpf.Point( 0, 4, r | u ), // 3
+        dpf.Point( 1, 0, l ),     // 7
+        dpf.Point( 1, 3, u ),     // 8
+        dpf.Point( 1, 4, d ),     // 9
+        dpf.Point( 2, 0, d | l ), // 13
+        dpf.Point( 1, 9, r ),     // 12
+        dpf.Point( 2, 2, r )      // 14 
       };
     }
     public void Run()
