@@ -30,7 +30,7 @@ namespace MainNamespace
     {
       return dir1 == Direction.GetOpposite(dir2);
     }
-    public static int FromKeyCode(System.Windows.Forms.Keys keyCode)
+    public static int FromKeyCode(Keys keyCode)
     {
       switch (keyCode)
       {

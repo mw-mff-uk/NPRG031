@@ -7,7 +7,7 @@ namespace MainNamespace
 {
   class Pacman : PictureBox
   {
-    private int direction = Direction.RIGHT;
+    private int direction;
     private int stepSize = 5;
     public Box GetBox()
     {
@@ -66,13 +66,15 @@ namespace MainNamespace
     {
       this.Parent = parent;
     }
-    public Pacman(int left = 20, int top = 54)
+    public Pacman(int left, int top, int direction)
     {
       this.Image = Image.FromFile("/home/wiki/School/NPRG031/pacman/src/images/pacman.jpg");
       this.SizeMode = PictureBoxSizeMode.StretchImage;
 
       this.Left = left;
       this.Top = top;
+      this.direction = direction;
+
       this.Width = Game.AVATAR_SIZE;
       this.Height = Game.AVATAR_SIZE;
     }

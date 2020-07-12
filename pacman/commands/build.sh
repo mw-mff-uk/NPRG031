@@ -7,6 +7,7 @@ csc \
   "$root/src/utils/*.cs" \
   "$root/src/avatars/*.cs" \
   "$root/src/points/*.cs" \
+  "$root/src/keyboard-handler.cs" \
   "$root/src/game.cs" \
   "$root/src/main.cs" \
   -r:System.Windows.Forms.dll \

@@ -9,8 +9,8 @@ namespace MainNamespace
   {
     private int gapHorizontal;
     private int gapVertical;
-    static int[] COLS = new int[] { 44, 0, 175, 220, 340, 0, 0, 0, 0, 720 };
-    static int[] ROWS = new int[] { 44, 148, 228, 0, 0, 0, 0, 0, 0, 0 };
+    static int[] COLS = new int[] { 44, 95, 176, 258, 340, 423, 504, 588, 666, 720 };
+    static int[] ROWS = new int[] { 44, 148, 228, 312, 392, 474, 556, 636, 716, 798 };
     public DirectedPoint Point(int row, int col, int direction)
     {
       int top = DirectedPointFactory.ROWS[row] + this.gapVertical;
@@ -47,28 +47,28 @@ namespace MainNamespace
       {
         case Direction.RIGHT:
           yCollision = this.top >= box.Top && this.top <= box.Top + box.Height;
-          xCollision = box.XCenter >= this.left;
+          xCollision = box.XCenter >= this.left && box.Left <= this.left;
           break;
 
         case Direction.LEFT:
           yCollision = this.top >= box.Top && this.top <= box.Top + box.Height;
-          xCollision = box.XCenter <= this.left;
+          xCollision = box.XCenter <= this.left && box.Left + box.Width >= this.left;
           break;
 
         case Direction.DOWN:
-          yCollision = this.top <= box.YCenter;
+          yCollision = this.top <= box.YCenter && this.top >= box.Top;
           xCollision = this.left >= box.Left && this.left <= box.Left + box.Width;
           break;
 
         case Direction.UP:
-          yCollision = this.top >= box.YCenter;
+          yCollision = this.top >= box.YCenter && this.top <= box.Top + box.Width;
           xCollision = this.left >= box.Left && this.left <= box.Left + box.Width;
           break;
       }
 
       if (xCollision && yCollision)
       {
-        Console.WriteLine("{0}-{1} {2}", this.row, this.col, this.direction);
+        // Console.WriteLine("{0}-{1} {2}", this.row, this.col, this.direction);
         return true;
       }
 
