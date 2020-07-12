@@ -22,23 +22,24 @@ namespace MainNamespace
     private Monster[] monsters;
     private Map map;
     private ScoreBoard scoreBoard;
+    private LivesTracker livesTracker;
     private Timer timer;
     private KeyboardHandler keyboardHandler;
     private int gapVertical;
     private int gapHorizontal;
-    private void InitMap()
-    {
-      this.map = new Map(this.gapHorizontal, this.gapVertical);
-
-      this.map.Spawn(this.board);
-      this.toDispose.InsertLast(this.map);
-    }
     private void InitScoreBoard()
     {
       this.scoreBoard = new ScoreBoard(this.gapHorizontal, 5);
 
       this.scoreBoard.Spawn(this.board);
       this.toDispose.InsertLast(this.scoreBoard);
+    }
+    private void InitLivesTracker()
+    {
+      this.livesTracker = new LivesTracker(this.gapHorizontal, Game.HEIGHT + this.gapVertical);
+
+      this.livesTracker.Spawn(this.board);
+      this.toDispose.InsertLast(this.livesTracker);
     }
     private void InitPacman()
     {
@@ -94,10 +95,14 @@ namespace MainNamespace
     }
     private void GameScreen()
     {
+      this.map = new Map(this.gapHorizontal, this.gapVertical);
+
       this.InitScoreBoard();
-      this.InitMap();
       this.InitPacman();
       this.InitMonsters();
+
+      this.map.Spawn(this.board);
+      this.toDispose.InsertLast(this.map);
 
       this.keyboardHandler.Focus();
 
