@@ -9,38 +9,49 @@ namespace MainNamespace
   {
     private int direction;
     private int stepSize = 5;
+    private int col = -1;
+    public int Col { get => this.col; }
+    private int row = -1;
+    public int Row { get => this.row; }
     public Box GetBox()
     {
       return new Box(this.Width, this.Height, this.Left, this.Top);
     }
-    public bool CanMove(DirectedPoint[] stoppingPoints)
+    public int GetEmptyDistance(DirectedPoint[] stoppingPoints)
     {
-      Box box = this.GetBox();
+      for (int d = 0; d < this.stepSize; d++)
+      {
+        Box box = this.GetBox();
+        box.Left += d;
 
-      foreach (var point in stoppingPoints)
-        if (point.HasCollision(this.direction, box))
-          return false;
+        foreach (var point in stoppingPoints)
+          if (point.HasCollision(this.direction, box))
+            return d;
+      }
 
-      return true;
+      return this.stepSize;
     }
-    public new void Move()
+    public new void Move(int step = -1)
     {
+      if (step <= -1)
+        step = this.stepSize;
+
       switch (this.direction)
       {
         case Direction.LEFT:
-          this.Left -= this.stepSize;
+          this.Left -= step;
           break;
 
         case Direction.RIGHT:
-          this.Left += this.stepSize;
+          this.Left += step;
           break;
 
         case Direction.UP:
-          this.Top -= this.stepSize;
+          this.Top -= step;
           break;
 
         case Direction.DOWN:
-          this.Top += this.stepSize;
+          this.Top += step;
           break;
       }
     }
@@ -55,7 +66,7 @@ namespace MainNamespace
       Box box = this.GetBox();
 
       foreach (var point in turningPoints)
-        if (point.HasCollision(this.direction, box))
+        if (point.HasDirection(Direction.GetOpposite(direction)) && point.HasCollision(this.direction, box))
           return true;
 
       return false;
@@ -68,13 +79,15 @@ namespace MainNamespace
     {
       this.Parent = parent;
     }
-    public Pacman(int left, int top, int direction)
+    public Pacman(int left, int top, int row, int col, int direction)
     {
       this.Image = Image.FromFile("/home/wiki/School/NPRG031/pacman/src/images/pacman.jpg");
       this.SizeMode = PictureBoxSizeMode.StretchImage;
 
       this.Left = left;
       this.Top = top;
+      this.row = row;
+      this.col = col;
       this.direction = direction;
 
       this.Width = Game.AVATAR_SIZE;

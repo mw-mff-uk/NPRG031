@@ -9,7 +9,7 @@ namespace MainNamespace
   {
     public const int WIDTH = 763;
     public const int HEIGHT = 843;
-    public const int AVATAR_SIZE = 38;
+    public const int AVATAR_SIZE = 40;
     private const int N_STATES = 3;
     private const int STATE_BEFORE_START = 0;
     private const int STATE_PLAYING = 1;
@@ -42,7 +42,13 @@ namespace MainNamespace
     private void GameScreen()
     {
       this.map = new Map(this.gapHorizontal, this.gapVertical);
-      this.pacman = new Pacman(this.map.PacmanInitialLeft, this.map.PacmanInitialTop, this.map.PacmanInitialDirection);
+      this.pacman = new Pacman(
+        this.map.PacmanInitialLeft,
+        this.map.PacmanInitialTop,
+        this.map.PacmanInitialRow,
+        this.map.PacmanInitialCol,
+        this.map.PacmanInitialDirection
+      );
 
       this.pacman.Spawn(this.board);
       this.map.Spawn(this.board);
@@ -79,13 +85,13 @@ namespace MainNamespace
       {
         MainClass.stopwatch.Reset().Start();
 
-        if (this.pacman.CanMove(this.map.StoppingPoints))
-          this.pacman.Move();
+        int step = this.pacman.GetEmptyDistance(this.map.StoppingPoints);
+        this.pacman.Move(step);
 
         if (this.keyboardHandler.IsPressed)
         {
           int direction = Direction.FromKeyCode(this.keyboardHandler.ActiveKey);
-          if (this.pacman.CanTurn(direction, this.map.StoppingPoints))
+          if (this.pacman.CanTurn(direction, this.map.TurningPoints))
             this.pacman.Turn(direction);
         }
 

@@ -14,9 +14,13 @@ namespace MainNamespace
     private int left;
     private int top;
     private int direction;
+    public bool HasDirection(int direction)
+    {
+      return (this.direction & direction) > 0;
+    }
     public bool HasCollision(int direction, Box box)
     {
-      if ((this.direction & direction) == 0)
+      if (!this.HasDirection(direction))
         return false;
 
       bool yCollision = false;
