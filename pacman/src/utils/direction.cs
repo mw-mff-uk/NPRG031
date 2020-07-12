@@ -30,6 +30,10 @@ namespace MainNamespace
     {
       return dir1 == Direction.GetOpposite(dir2);
     }
+    public static bool IsInvalid(int dir)
+    {
+      return dir == Direction.INVALID;
+    }
     public static int FromKeyCode(Keys keyCode)
     {
       switch (keyCode)

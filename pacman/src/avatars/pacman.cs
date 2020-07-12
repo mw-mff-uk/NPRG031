@@ -47,6 +47,9 @@ namespace MainNamespace
     }
     public bool CanTurn(int direction, DirectedPoint[] turningPoints)
     {
+      if (Direction.IsInvalid(direction))
+        return false;
+
       if (Direction.IsOpposite(this.direction, direction))
         return true;
 

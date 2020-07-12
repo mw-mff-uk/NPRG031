@@ -5,27 +5,6 @@ using System.Drawing;
 
 namespace MainNamespace
 {
-  class DirectedPointFactory
-  {
-    private int gapHorizontal;
-    private int gapVertical;
-    static int[] COLS = new int[] { 44, 95, 176, 258, 340, 423, 504, 588, 666, 720 };
-    static int[] ROWS = new int[] { 44, 148, 228, 312, 392, 474, 556, 636, 716, 798 };
-    public DirectedPoint Point(int row, int col, int direction)
-    {
-      int top = DirectedPointFactory.ROWS[row] + this.gapVertical;
-      int left = DirectedPointFactory.COLS[col] + this.gapHorizontal;
-
-      DirectedPoint point = new DirectedPoint(row, col, left, top, direction);
-
-      return point;
-    }
-    public DirectedPointFactory(int gapHorizontal, int gapVertical)
-    {
-      this.gapHorizontal = gapHorizontal;
-      this.gapVertical = gapVertical;
-    }
-  }
   class DirectedPoint
   {
     private int row;
