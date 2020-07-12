@@ -7,13 +7,13 @@ namespace MainNamespace
 {
   class Avatar : PictureBox
   {
-    private int direction;
+    protected int direction;
     public int CurrentDirection { get => this.direction; }
     public int OppositeDirection { get => Direction.GetOpposite(this.direction); }
-    private int stepSize;
-    private int col = -1;
+    protected int stepSize;
+    protected int col = -1;
     public int Col { get => this.col; }
-    private int row = -1;
+    protected int row = -1;
     public int Row { get => this.row; }
     public Box GetBox()
     {
@@ -85,17 +85,18 @@ namespace MainNamespace
 
       return false;
     }
+    protected virtual void AfterTurn() { }
     public void Turn(int direction)
     {
       this.direction = direction;
+      this.AfterTurn();
     }
     public void Spawn(Control parent)
     {
       this.Parent = parent;
     }
-    public Avatar(int left, int top, int row, int col, int direction, int step, string img)
+    public Avatar(int left, int top, int row, int col, int direction, int step)
     {
-      this.Image = Image.FromFile(img);
       this.SizeMode = PictureBoxSizeMode.StretchImage;
 
       this.Left = left;

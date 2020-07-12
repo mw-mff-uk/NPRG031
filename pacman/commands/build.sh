@@ -5,6 +5,7 @@ root="$dir/.."
 
 csc \
   "$root/src/utils/*.cs" \
+  "$root/src/avatars/*.cs" \
   "$root/src/*.cs" \
   -r:System.Windows.Forms.dll \
   -r:System.Drawing.dll \

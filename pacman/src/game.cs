@@ -18,9 +18,10 @@ namespace MainNamespace
     private Form board;
     private LinkedList<Control> toDispose;
     private Settings settings;
-    private Avatar pacman;
-    private Avatar[] monsters;
+    private Pacman pacman;
+    private Monster[] monsters;
     private Map map;
+    private ScoreBoard scoreBoard;
     private Timer timer;
     private KeyboardHandler keyboardHandler;
     private int gapVertical;
@@ -32,16 +33,22 @@ namespace MainNamespace
       this.map.Spawn(this.board);
       this.toDispose.InsertLast(this.map);
     }
+    private void InitScoreBoard()
+    {
+      this.scoreBoard = new ScoreBoard(this.gapHorizontal, 5);
+
+      this.scoreBoard.Spawn(this.board);
+      this.toDispose.InsertLast(this.scoreBoard);
+    }
     private void InitPacman()
     {
-      this.pacman = new Avatar(
+      this.pacman = new Pacman(
         this.map.PacmanInitialLeft,
         this.map.PacmanInitialTop,
         this.map.PacmanInitialRow,
         this.map.PacmanInitialCol,
         this.map.PacmanInitialDirection,
-        this.settings.PlayerSpeed,
-        "/home/wiki/School/NPRG031/pacman/src/images/pacman.jpg"
+        this.settings.PlayerSpeed
       );
 
       this.pacman.Spawn(this.map);
@@ -49,10 +56,10 @@ namespace MainNamespace
     }
     private void InitMonsters()
     {
-      this.monsters = new Avatar[this.settings.Monsters];
+      this.monsters = new Monster[this.settings.Monsters];
       for (int i = 0; i < this.settings.Monsters; i++)
       {
-        this.monsters[i] = new Avatar(
+        this.monsters[i] = new Monster(
           this.map.MonsterInitialLeft,
           this.map.MonsterInitialTop,
           this.map.MonsterInitialRow,
@@ -63,7 +70,7 @@ namespace MainNamespace
         );
       }
 
-      foreach (Avatar monster in this.monsters)
+      foreach (Monster monster in this.monsters)
       {
         monster.Spawn(this.map);
         this.toDispose.InsertFirst(monster);
@@ -87,6 +94,7 @@ namespace MainNamespace
     }
     private void GameScreen()
     {
+      this.InitScoreBoard();
       this.InitMap();
       this.InitPacman();
       this.InitMonsters();
@@ -127,7 +135,7 @@ namespace MainNamespace
     }
     private void MonstersMovement()
     {
-      foreach (Avatar monster in this.monsters)
+      foreach (Monster monster in this.monsters)
       {
         int step = monster.MaybeMove(this.map.StoppingPoints);
         int speed = this.settings.MonsterSpeed;
@@ -165,14 +173,14 @@ namespace MainNamespace
         {
           collectedSome = true;
           collectible.Collect();
-          // todo: add score
+          this.scoreBoard.AddPoint();
         }
       }
 
       if (collectedSome && this.map.CollectedAll)
       {
         this.map.ResetCollectibles();
-        this.map.SpawnCollectibles(); // todo: make this faster
+        this.map.SpawnCollectibles();
       }
     }
     private void Tick(object sender, EventArgs e)
