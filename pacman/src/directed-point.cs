@@ -34,9 +34,9 @@ namespace MainNamespace
 
       // Less strict direction
       if (Direction.IsHorizontal(direction))
-        yCollision = this.top >= box.Top && this.top <= box.Top + box.Height;
+        yCollision = this.top >= box.Top && this.top <= box.Bottom;
       else
-        xCollision = this.left >= box.Left && this.left <= box.Left + box.Width;
+        xCollision = this.left >= box.Left && this.left <= box.Right;
 
       if (!(yCollision && xCollision))
         return false;

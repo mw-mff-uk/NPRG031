@@ -19,15 +19,16 @@ namespace MainNamespace
     {
       return new Box(this.Width, this.Height, this.Left, this.Top);
     }
-    public int GetEmptyDistance(DirectedPoint[] stoppingPoints)
+    public int GetEmptyDistance(LinkedList<DirectedPoint> stoppingPoints)
     {
       for (int d = 0; d < this.stepSize; d++)
       {
         Box box = this.GetBox();
         box.Left += d;
 
-        foreach (var point in stoppingPoints)
-          if (point.HasCollision(this.direction, box, this.stepSize))
+        var iterator = stoppingPoints.Iterator();
+        while (!iterator.Done)
+          if (iterator.Next().Value.HasCollision(this.direction, box, this.stepSize))
             return d;
       }
 
@@ -57,13 +58,13 @@ namespace MainNamespace
           break;
       }
     }
-    public int MaybeMove(DirectedPoint[] stoppingPoints)
+    public int MaybeMove(LinkedList<DirectedPoint> stoppingPoints)
     {
       int step = this.GetEmptyDistance(stoppingPoints);
       this.Move(step);
       return step;
     }
-    public bool CanTurn(int direction, DirectedPoint[] turningPoints)
+    public bool CanTurn(int direction, LinkedList<DirectedPoint> turningPoints)
     {
       if (Direction.IsInvalid(direction))
         return false;
@@ -73,9 +74,14 @@ namespace MainNamespace
 
       Box box = this.GetBox();
 
-      foreach (var point in turningPoints)
+      var iterator = turningPoints.Iterator();
+      while (!iterator.Done)
+      {
+        DirectedPoint point = iterator.Next().Value;
+
         if (point.HasDirection(Direction.GetOpposite(direction)) && point.HasCollision(this.direction, box, this.stepSize))
           return true;
+      }
 
       return false;
     }
@@ -83,7 +89,7 @@ namespace MainNamespace
     {
       this.direction = direction;
     }
-    public void Spawn(Form parent)
+    public void Spawn(Control parent)
     {
       this.Parent = parent;
     }

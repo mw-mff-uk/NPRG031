@@ -5,7 +5,9 @@ namespace MainNamespace
     public int Width;
     public int Height;
     public int Left;
+    public int Right { get => this.Left + this.Width; }
     public int Top;
+    public int Bottom { get => this.Top + this.Height; }
     public int YCenter { get => this.Top + this.Height / 2; }
     public int XCenter { get => this.Left + this.Width / 2; }
     public Box(int width, int height, int left, int top)

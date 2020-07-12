@@ -28,6 +28,9 @@ namespace MainNamespace
     private void InitMap()
     {
       this.map = new Map(this.gapHorizontal, this.gapVertical);
+
+      this.map.Spawn(this.board);
+      this.toDispose.InsertLast(this.map);
     }
     private void InitPacman()
     {
@@ -40,11 +43,15 @@ namespace MainNamespace
         this.settings.PlayerSpeed,
         "/home/wiki/School/NPRG031/pacman/src/images/pacman.jpg"
       );
+
+      this.pacman.Spawn(this.map);
+      this.toDispose.InsertLast(this.pacman);
     }
     private void InitMonsters()
     {
       this.monsters = new Avatar[this.settings.Monsters];
       for (int i = 0; i < this.settings.Monsters; i++)
+      {
         this.monsters[i] = new Avatar(
           this.map.MonsterInitialLeft,
           this.map.MonsterInitialTop,
@@ -54,6 +61,13 @@ namespace MainNamespace
           this.settings.MonsterSpeed,
           "/home/wiki/School/NPRG031/pacman/src/images/monster-" + (i + 1) + ".jpg"
         );
+      }
+
+      foreach (Avatar monster in this.monsters)
+      {
+        monster.Spawn(this.map);
+        this.toDispose.InsertFirst(monster);
+      }
     }
     private void NextState(object sender = null, EventArgs e = null)
     {
@@ -76,16 +90,6 @@ namespace MainNamespace
       this.InitMap();
       this.InitPacman();
       this.InitMonsters();
-
-      this.pacman.Spawn(this.board);
-      foreach (Avatar monster in this.monsters)
-        monster.Spawn(this.board);
-      this.map.Spawn(this.board);
-
-      this.toDispose.InsertLast(this.map);
-      this.toDispose.InsertLast(this.pacman);
-      foreach (Avatar monster in this.monsters)
-        this.toDispose.InsertFirst(monster);
 
       this.keyboardHandler.Focus();
 
@@ -147,6 +151,30 @@ namespace MainNamespace
         }
       }
     }
+    private void CheckCollectibles()
+    {
+      Box box = this.pacman.GetBox();
+      bool collectedSome = false;
+
+      var iterator = this.map.Collectibles.Iterator();
+      while (!iterator.Done)
+      {
+        Collectible collectible = iterator.Next().Value;
+
+        if (!collectible.Collected && collectible.HasCollision(box))
+        {
+          collectedSome = true;
+          collectible.Collect();
+          // todo: add score
+        }
+      }
+
+      if (collectedSome && this.map.CollectedAll)
+      {
+        this.map.ResetCollectibles();
+        this.map.SpawnCollectibles();
+      }
+    }
     private void Tick(object sender, EventArgs e)
     {
       if (this.state == Game.STATE_PLAYING)
@@ -155,6 +183,7 @@ namespace MainNamespace
 
         this.PlayerMovement();
         this.MonstersMovement();
+        this.CheckCollectibles();
 
         MainClass.stopwatch.Stop();
         Console.Write("{0}ms\r", MainClass.stopwatch.Milliseconds);
