@@ -7,8 +7,11 @@ namespace MainNamespace
 {
   class Map : PictureBox
   {
-    private int[] cols = new int[] { 44, 95, 176, 258, 340, 423, 504, 588, 666, 720 };
-    private int[] rows = new int[] { 44, 148, 228, 312, 392, 474, 556, 636, 716, 798 };
+    private const int COLLECTIBLE_EXCLUDE_FIRST = 1;
+    private const int COLLECTIBLE_EXCLUDE_LAST = 1 << 1;
+    private const int COLLECTIBLES_GAP = 17;
+    private int[] cols = new int[] { 44, 95, 180, 265, 340, 425, 503, 586, 666, 724 };
+    private int[] rows = new int[] { 44, 146, 231, 314, 392, 474, 554, 639, 720, 800 };
     private int gapHorizontal;
     private int gapVertical;
     private LinkedList<DirectedPoint> stoppingPoints;
@@ -99,6 +102,32 @@ namespace MainNamespace
 
       this.collectibles.InsertLast(collectible);
     }
+    private void AddCollectibleRow(int row, int colFrom, int colTo, int options = 0)
+    {
+      int step = Map.COLLECTIBLES_GAP;
+
+      bool excludeFirst = (options & Map.COLLECTIBLE_EXCLUDE_FIRST) > 0;
+      int start = this.cols[colFrom] + (excludeFirst ? step : 0);
+
+      bool excludeLast = (options & Map.COLLECTIBLE_EXCLUDE_LAST) > 0;
+      int end = this.cols[colTo] - (excludeLast ? step : 0);
+
+      for (int x = start; x <= end; x += step)
+        this.AddCollectible(x, this.rows[row]);
+    }
+    private void AddCollectibleCol(int col, int rowFrom, int rowTo, int options = 0)
+    {
+      int step = Map.COLLECTIBLES_GAP;
+
+      bool excludeFirst = (options & Map.COLLECTIBLE_EXCLUDE_FIRST) > 0;
+      int start = this.rows[rowFrom] + (excludeFirst ? step : 0);
+
+      bool excludeLast = (options & Map.COLLECTIBLE_EXCLUDE_LAST) > 0;
+      int end = this.rows[rowTo] - (excludeLast ? step : 0);
+
+      for (int y = start; y <= end; y += step)
+        this.AddCollectible(this.cols[col], y);
+    }
     public void Spawn(Form parent)
     {
       this.SpawnCollectibles();
@@ -112,9 +141,9 @@ namespace MainNamespace
     }
     public void ResetCollectibles()
     {
-      this.collectibles = new LinkedList<Collectible>();
-      for (int x = 0; x < this.cols[4] - 25; x += 25)
-        this.AddCollectible(this.cols[0] + x, this.rows[0]);
+      var iterator = this.collectibles.Iterator();
+      while (!iterator.Done)
+        iterator.Next().Value.Reset();
     }
     public Map(int gapHorizontal, int gapVertical)
     {
@@ -284,6 +313,58 @@ namespace MainNamespace
       this.AddTurningPoint(9, 4, l | r | d); // 62
       this.AddTurningPoint(9, 5, l | r | d); // 63
       this.AddTurningPoint(9, 9, r | d);     // 64
+      #endregion
+
+      #region collectibles
+      this.collectibles = new LinkedList<Collectible>();
+
+      this.AddCollectibleRow(0, 0, 4);
+      this.AddCollectibleRow(0, 5, 9);
+      this.AddCollectibleRow(1, 0, 9);
+      this.AddCollectibleRow(2, 0, 2);
+      this.AddCollectibleRow(2, 3, 4);
+      this.AddCollectibleRow(2, 5, 6);
+      this.AddCollectibleRow(2, 7, 9);
+      this.AddCollectibleRow(3, 3, 6);
+      this.AddCollectibleRow(4, 2, 3, COLLECTIBLE_EXCLUDE_FIRST | COLLECTIBLE_EXCLUDE_LAST);
+      this.AddCollectibleRow(4, 6, 7, COLLECTIBLE_EXCLUDE_FIRST);
+      this.AddCollectibleRow(5, 3, 6, COLLECTIBLE_EXCLUDE_FIRST | COLLECTIBLE_EXCLUDE_LAST);
+      this.AddCollectibleRow(6, 0, 4);
+      this.AddCollectibleRow(6, 5, 9);
+      this.AddCollectibleRow(7, 0, 1);
+      this.AddCollectibleRow(7, 2, 7);
+      this.AddCollectibleRow(7, 8, 9);
+      this.AddCollectibleRow(8, 0, 2);
+      this.AddCollectibleRow(8, 3, 4);
+      this.AddCollectibleRow(8, 5, 6);
+      this.AddCollectibleRow(8, 7, 9);
+      this.AddCollectibleRow(9, 0, 9);
+
+      this.AddCollectibleCol(0, 0, 2);
+      this.AddCollectibleCol(0, 6, 7);
+      this.AddCollectibleCol(0, 8, 9);
+      this.AddCollectibleCol(1, 7, 8);
+      this.AddCollectibleCol(2, 0, 8);
+      this.AddCollectibleCol(3, 1, 2);
+      this.AddCollectibleCol(3, 3, 6, COLLECTIBLE_EXCLUDE_LAST);
+      this.AddCollectibleCol(3, 7, 8);
+      this.AddCollectibleCol(4, 0, 1, COLLECTIBLE_EXCLUDE_LAST);
+      this.AddCollectibleCol(4, 2, 3);
+      this.AddCollectibleCol(4, 6, 7, COLLECTIBLE_EXCLUDE_LAST);
+      this.AddCollectibleCol(4, 8, 9);
+      this.AddCollectibleCol(5, 0, 1, COLLECTIBLE_EXCLUDE_LAST);
+      this.AddCollectibleCol(5, 2, 3);
+      this.AddCollectibleCol(5, 6, 7, COLLECTIBLE_EXCLUDE_LAST);
+      this.AddCollectibleCol(5, 8, 9);
+      this.AddCollectibleCol(6, 1, 2);
+      this.AddCollectibleCol(6, 3, 6, COLLECTIBLE_EXCLUDE_LAST);
+      this.AddCollectibleCol(6, 7, 8);
+      this.AddCollectibleCol(7, 0, 6, COLLECTIBLE_EXCLUDE_FIRST | COLLECTIBLE_EXCLUDE_LAST);
+      this.AddCollectibleCol(7, 6, 8, COLLECTIBLE_EXCLUDE_FIRST);
+      this.AddCollectibleCol(8, 7, 8);
+      this.AddCollectibleCol(9, 0, 2);
+      this.AddCollectibleCol(9, 6, 7);
+      this.AddCollectibleCol(9, 8, 9);
       #endregion
 
       this.ResetCollectibles();

@@ -9,7 +9,7 @@ namespace MainNamespace
   {
     public const int WIDTH = 763;
     public const int HEIGHT = 843;
-    public const int AVATAR_SIZE = 40;
+    public const int AVATAR_SIZE = 36;
     private const int N_STATES = 3;
     private const int STATE_BEFORE_START = 0;
     private const int STATE_PLAYING = 1;
@@ -172,7 +172,7 @@ namespace MainNamespace
       if (collectedSome && this.map.CollectedAll)
       {
         this.map.ResetCollectibles();
-        this.map.SpawnCollectibles();
+        this.map.SpawnCollectibles(); // todo: make this faster
       }
     }
     private void Tick(object sender, EventArgs e)
@@ -183,6 +183,7 @@ namespace MainNamespace
 
         this.PlayerMovement();
         this.MonstersMovement();
+
         this.CheckCollectibles();
 
         MainClass.stopwatch.Stop();
@@ -217,7 +218,7 @@ namespace MainNamespace
       this.keyboardHandler.Focus();
 
       this.timer = new Timer();
-      timer.Interval = 20;
+      timer.Interval = this.settings.TickPeriod;
       timer.Tick += new System.EventHandler(this.Tick);
       timer.Enabled = false;
     }

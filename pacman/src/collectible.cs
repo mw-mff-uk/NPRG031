@@ -18,10 +18,17 @@ namespace MainNamespace
     public bool IsCherry { get => this.isCherry; }
     private bool collected = false;
     public bool Collected { get => this.collected; }
+    public void Reset()
+    {
+      this.collected = false;
+      this.Left = this.xCenter - this.Width / 2;
+      this.Top = this.yCenter - this.Height / 2;
+    }
     public void Collect()
     {
       this.collected = true;
-      this.Dispose();
+      this.Left = 9999;
+      this.Top = 9999;
     }
     public bool HasCollision(Box box)
     {
