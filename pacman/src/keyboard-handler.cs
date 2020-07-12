@@ -8,7 +8,6 @@ namespace MainNamespace
   class KeyboardHandler : TextBox
   {
     const int KEY_PRESSED_DURATION = 400;
-    private TextBox el;
     private Keys activeKey;
     public Keys ActiveKey { get => this.activeKey; }
     private DateTime pressedTimestamp;

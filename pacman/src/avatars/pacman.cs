@@ -16,7 +16,6 @@ namespace MainNamespace
     public bool CanMove(DirectedPoint[] stoppingPoints)
     {
       Box box = this.GetBox();
-      bool yCollision, xCollision;
 
       foreach (var point in stoppingPoints)
         if (point.HasCollision(this.direction, box))

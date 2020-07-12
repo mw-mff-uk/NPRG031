@@ -31,8 +31,18 @@ namespace MainNamespace
     {
       this.Parent = parent;
     }
-    private void GenerateStoppingPoints()
+    public Map(int gapHorizontal, int gapVertical)
     {
+      this.gapHorizontal = gapHorizontal;
+      this.gapVertical = gapVertical;
+
+      this.Width = Game.WIDTH;
+      this.Height = Game.HEIGHT;
+      this.Top = this.gapVertical;
+      this.Left = this.gapHorizontal;
+      this.Image = Image.FromFile("/home/wiki/School/NPRG031/pacman/src/images/background.jpg");
+      this.SizeMode = PictureBoxSizeMode.StretchImage;
+
       int r = Direction.RIGHT;
       int l = Direction.LEFT;
       int u = Direction.UP;
@@ -99,20 +109,9 @@ namespace MainNamespace
         this.Point( 7, 3, u ),     // 57
         this.Point( 7, 6, u )      // 58
       };
-    }
-    public Map(int gapHorizontal, int gapVertical)
-    {
-      this.gapHorizontal = gapHorizontal;
-      this.gapVertical = gapVertical;
 
-      this.Width = Game.WIDTH;
-      this.Height = Game.HEIGHT;
-      this.Top = this.gapVertical;
-      this.Left = this.gapHorizontal;
-      this.Image = Image.FromFile("/home/wiki/School/NPRG031/pacman/src/images/background.jpg");
-      this.SizeMode = PictureBoxSizeMode.StretchImage;
-
-      this.GenerateStoppingPoints();
+      this.turningPoints = new DirectedPoint[] {
+      };
     }
   }
 }

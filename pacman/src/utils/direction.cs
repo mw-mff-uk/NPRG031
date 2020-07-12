@@ -8,10 +8,10 @@ namespace MainNamespace
   static class Direction
   {
     public const int INVALID = -1;
-    public const int LEFT = 1 << 1;
-    public const int RIGHT = 1 << 2;
-    public const int UP = 1 << 3;
-    public const int DOWN = 1 << 4;
+    public const int LEFT = 1;
+    public const int RIGHT = 1 << 1;
+    public const int UP = 1 << 2;
+    public const int DOWN = 1 << 3;
     public static bool IsVertical(int dir) => dir == Direction.UP || dir == Direction.DOWN;
     public static bool IsHorizontal(int dir) => dir == Direction.LEFT || dir == Direction.RIGHT;
     public static int GetOpposite(int dir)
