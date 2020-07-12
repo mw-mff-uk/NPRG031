@@ -5,10 +5,12 @@ using System.Drawing;
 
 namespace MainNamespace
 {
-  class Pacman : PictureBox
+  class Avatar : PictureBox
   {
     private int direction;
-    private int stepSize = 5;
+    public int CurrentDirection { get => this.direction; }
+    public int OppositeDirection { get => Direction.GetOpposite(this.direction); }
+    private int stepSize;
     private int col = -1;
     public int Col { get => this.col; }
     private int row = -1;
@@ -25,7 +27,7 @@ namespace MainNamespace
         box.Left += d;
 
         foreach (var point in stoppingPoints)
-          if (point.HasCollision(this.direction, box))
+          if (point.HasCollision(this.direction, box, this.stepSize))
             return d;
       }
 
@@ -55,6 +57,12 @@ namespace MainNamespace
           break;
       }
     }
+    public int MaybeMove(DirectedPoint[] stoppingPoints)
+    {
+      int step = this.GetEmptyDistance(stoppingPoints);
+      this.Move(step);
+      return step;
+    }
     public bool CanTurn(int direction, DirectedPoint[] turningPoints)
     {
       if (Direction.IsInvalid(direction))
@@ -66,7 +74,7 @@ namespace MainNamespace
       Box box = this.GetBox();
 
       foreach (var point in turningPoints)
-        if (point.HasDirection(Direction.GetOpposite(direction)) && point.HasCollision(this.direction, box))
+        if (point.HasDirection(Direction.GetOpposite(direction)) && point.HasCollision(this.direction, box, this.stepSize))
           return true;
 
       return false;
@@ -79,9 +87,9 @@ namespace MainNamespace
     {
       this.Parent = parent;
     }
-    public Pacman(int left, int top, int row, int col, int direction)
+    public Avatar(int left, int top, int row, int col, int direction, int step, string img)
     {
-      this.Image = Image.FromFile("/home/wiki/School/NPRG031/pacman/src/images/pacman.jpg");
+      this.Image = Image.FromFile(img);
       this.SizeMode = PictureBoxSizeMode.StretchImage;
 
       this.Left = left;
@@ -89,6 +97,7 @@ namespace MainNamespace
       this.row = row;
       this.col = col;
       this.direction = direction;
+      this.stepSize = step;
 
       this.Width = Game.AVATAR_SIZE;
       this.Height = Game.AVATAR_SIZE;

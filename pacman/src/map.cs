@@ -20,6 +20,11 @@ namespace MainNamespace
     public int PacmanInitialDirection { get => Direction.RIGHT; }
     public int PacmanInitialRow { get => 4; }
     public int PacmanInitialCol { get => -1; }
+    public int MonsterInitialLeft { get => 740 + this.gapHorizontal; }
+    public int MonsterInitialTop { get => 374 + this.gapVertical; }
+    public int MonsterInitialDirection { get => Direction.LEFT; }
+    public int MonsterInitialRow { get => -1; }
+    public int MonsterInitialCol { get => -1; }
     private DirectedPoint Point(int row, int col, int direction)
     {
       int top = this.rows[row] + this.gapVertical;

@@ -46,5 +46,12 @@ namespace MainNamespace
 
       return Direction.INVALID;
     }
+    public static int[] GetShuffledDirections()
+    {
+      int[] directions = new int[] { Direction.LEFT, Direction.RIGHT, Direction.UP, Direction.DOWN };
+      A.Shuffle(directions, MainClass.rnd);
+
+      return directions;
+    }
   }
 }

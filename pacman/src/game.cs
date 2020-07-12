@@ -17,12 +17,44 @@ namespace MainNamespace
     private int state = Game.STATE_BEFORE_START;
     private Form board;
     private LinkedList<Control> toDispose;
-    private Pacman pacman;
+    private Settings settings;
+    private Avatar pacman;
+    private Avatar[] monsters;
     private Map map;
     private Timer timer;
     private KeyboardHandler keyboardHandler;
     private int gapVertical;
     private int gapHorizontal;
+    private void InitMap()
+    {
+      this.map = new Map(this.gapHorizontal, this.gapVertical);
+    }
+    private void InitPacman()
+    {
+      this.pacman = new Avatar(
+        this.map.PacmanInitialLeft,
+        this.map.PacmanInitialTop,
+        this.map.PacmanInitialRow,
+        this.map.PacmanInitialCol,
+        this.map.PacmanInitialDirection,
+        this.settings.PlayerSpeed,
+        "/home/wiki/School/NPRG031/pacman/src/images/pacman.jpg"
+      );
+    }
+    private void InitMonsters()
+    {
+      this.monsters = new Avatar[this.settings.Monsters];
+      for (int i = 0; i < this.settings.Monsters; i++)
+        this.monsters[i] = new Avatar(
+          this.map.MonsterInitialLeft,
+          this.map.MonsterInitialTop,
+          this.map.MonsterInitialRow,
+          this.map.MonsterInitialCol,
+          this.map.MonsterInitialDirection,
+          this.settings.MonsterSpeed,
+          "/home/wiki/School/NPRG031/pacman/src/images/monster-" + (i + 1) + ".jpg"
+        );
+    }
     private void NextState(object sender = null, EventArgs e = null)
     {
       while (!this.toDispose.Empty)
@@ -41,20 +73,19 @@ namespace MainNamespace
     }
     private void GameScreen()
     {
-      this.map = new Map(this.gapHorizontal, this.gapVertical);
-      this.pacman = new Pacman(
-        this.map.PacmanInitialLeft,
-        this.map.PacmanInitialTop,
-        this.map.PacmanInitialRow,
-        this.map.PacmanInitialCol,
-        this.map.PacmanInitialDirection
-      );
+      this.InitMap();
+      this.InitPacman();
+      this.InitMonsters();
 
       this.pacman.Spawn(this.board);
+      foreach (Avatar monster in this.monsters)
+        monster.Spawn(this.board);
       this.map.Spawn(this.board);
 
       this.toDispose.InsertLast(this.map);
       this.toDispose.InsertLast(this.pacman);
+      foreach (Avatar monster in this.monsters)
+        this.toDispose.InsertFirst(monster);
 
       this.keyboardHandler.Focus();
 
@@ -79,21 +110,51 @@ namespace MainNamespace
     {
 
     }
+    private void PlayerMovement()
+    {
+      this.pacman.MaybeMove(this.map.StoppingPoints);
+
+      if (this.keyboardHandler.IsPressed)
+      {
+        int direction = Direction.FromKeyCode(this.keyboardHandler.ActiveKey);
+        if (this.pacman.CanTurn(direction, this.map.TurningPoints))
+          this.pacman.Turn(direction);
+      }
+    }
+    private void MonstersMovement()
+    {
+      foreach (Avatar monster in this.monsters)
+      {
+        int step = monster.MaybeMove(this.map.StoppingPoints);
+        int speed = this.settings.MonsterSpeed;
+
+        // Calculate the probability of skipping rotation based on step
+        if (MainClass.rnd.NextDouble() > (double)(speed * 2 - step) / (double)(speed * 2))
+          continue;
+
+        foreach (int direction in Direction.GetShuffledDirections())
+        {
+          // Make sure the monster does not turn around randomly
+          // Allow this only when in corner (ie. if step is smaller the speed, expr. is false)
+          if (step == this.settings.MonsterSpeed && direction == monster.OppositeDirection)
+            continue;
+
+          if (monster.CanTurn(direction, this.map.TurningPoints))
+          {
+            monster.Turn(direction);
+            break;
+          }
+        }
+      }
+    }
     private void Tick(object sender, EventArgs e)
     {
       if (this.state == Game.STATE_PLAYING)
       {
         MainClass.stopwatch.Reset().Start();
 
-        int step = this.pacman.GetEmptyDistance(this.map.StoppingPoints);
-        this.pacman.Move(step);
-
-        if (this.keyboardHandler.IsPressed)
-        {
-          int direction = Direction.FromKeyCode(this.keyboardHandler.ActiveKey);
-          if (this.pacman.CanTurn(direction, this.map.TurningPoints))
-            this.pacman.Turn(direction);
-        }
+        this.PlayerMovement();
+        this.MonstersMovement();
 
         MainClass.stopwatch.Stop();
         Console.Write("{0}ms\r", MainClass.stopwatch.Milliseconds);
@@ -115,6 +176,8 @@ namespace MainNamespace
     }
     public Game()
     {
+      this.settings = new Settings();
+
       this.toDispose = new LinkedList<Control>();
 
       this.board = new Form();
