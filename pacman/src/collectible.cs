@@ -25,6 +25,9 @@ namespace MainNamespace
     public bool Collected { get => this.collected; }
     public void Reset()
     {
+      this.isCherry = false;
+      this.isHeart = false;
+
       this.collected = false;
 
       this.MaybeMakeBonus();

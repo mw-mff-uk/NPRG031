@@ -203,12 +203,15 @@ namespace MainNamespace
 
           if (collectible.IsCherry)
           {
-            this.pacman.StartFrenzyMode();
+            if (!this.pacman.FrenzyMode)
+            {
+              this.pacman.StartFrenzyMode();
 
-            this.clock.PlanEvent(
-              new StopFrenzyModeEvent(this.pacman),
-              this.settings.FrenzyModeDuration * (MainClass.rnd.NextDouble() + 0.5)
-            );
+              this.clock.PlanEvent(
+                new StopFrenzyModeEvent(this.pacman),
+                this.settings.FrenzyModeDuration * (MainClass.rnd.NextDouble() + 0.5)
+              );
+            }
           }
           else if (collectible.IsHeart)
           {
@@ -218,7 +221,6 @@ namespace MainNamespace
           {
             this.scoreBoard.AddPoint();
           }
-
         }
       }
 
@@ -234,17 +236,24 @@ namespace MainNamespace
       {
         foreach (Monster monster in this.monsters)
         {
-          if (Box.HasCollision(this.pacman.BBox, monster.BBox))
+          if (monster.IsAlive && Box.HasCollision(this.pacman.BBox, monster.BBox))
           {
             monster.Kill();
 
-            this.livesTracker.RemoveLive();
-            this.pacman.StartInvincibility();
+            if (this.pacman.FrenzyMode)
+            {
+              this.scoreBoard.AddPoint(50);
+            }
+            else
+            {
+              this.livesTracker.RemoveLive();
+              this.pacman.StartInvincibility();
 
-            this.clock.PlanEvent(
-              new StopInvincibilityEvent(this.pacman),
-              this.settings.InvincibilityDuration
-            );
+              this.clock.PlanEvent(
+                new StopInvincibilityEvent(this.pacman),
+                this.settings.InvincibilityDuration
+              );
+            }
 
             this.clock.PlanEvent(
               new ReviveMonsterEvent(monster),

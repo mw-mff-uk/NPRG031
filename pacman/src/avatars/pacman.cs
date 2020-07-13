@@ -26,15 +26,16 @@ namespace MainNamespace
     }
     public void StartFrenzyMode()
     {
+      this.isInvincible = false;
       this.frenzyMode = true;
-      this.stepSize *= 1.5;
+      this.stepSize *= 1.15;
 
       this.RefreshImage();
     }
     public void StopFrenzyMode()
     {
       this.frenzyMode = false;
-      this.stepSize /= 1.5;
+      this.stepSize /= 1.15;
 
       this.RefreshImage();
     }

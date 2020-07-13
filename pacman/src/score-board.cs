@@ -12,7 +12,7 @@ namespace MainNamespace
     public void AddPoint(int inc = 1)
     {
       this.score += inc;
-      this.Text = (this.score < 100 ? "0" : "") + (this.score < 10 ? "0" : "") + this.score + " POINTS";
+      this.Text = this.score + " POINTS";
     }
     public void Spawn(Control parent)
     {
@@ -26,7 +26,7 @@ namespace MainNamespace
       this.Width = 200;
       this.Height = 20;
 
-      this.Text = "000 POINTS";
+      this.Text = "0 POINTS";
 
       this.Font = new Font("monospace", 16, FontStyle.Bold);
       this.ForeColor = Color.White;
