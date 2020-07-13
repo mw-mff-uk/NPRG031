@@ -27,6 +27,7 @@ namespace MainNamespace
     private Timer timer;
     private KeyboardHandler keyboardHandler;
     private GameClock clock;
+    private Highscore highscore;
     private int gapVertical;
     private int gapHorizontal;
     private void InitScoreBoard()
@@ -167,6 +168,8 @@ namespace MainNamespace
     }
     private void GameOverScreen()
     {
+      this.highscore.Submit(this.scoreBoard.Score);
+
       Label gameOver = new Label();
       gameOver.Text = "GAME OVER";
       gameOver.ForeColor = Color.FromArgb(245, 245, 245);
@@ -179,7 +182,7 @@ namespace MainNamespace
       this.toDispose.InsertLast(gameOver);
 
       Label score = new Label();
-      score.Text = "You've earner " + this.scoreBoard.Score + " points\n\n\nHIGH SCORE\n\n1. 0000\n2. 0000\n3. 0000";
+      score.Text = "You've earner " + this.scoreBoard.Score + " points\n\n\n" + this.highscore.Text;
       score.TextAlign = ContentAlignment.MiddleCenter;
       score.ForeColor = Color.FromArgb(245, 245, 245);
       score.Font = new Font("monospace", 16, FontStyle.Bold);
@@ -366,6 +369,7 @@ namespace MainNamespace
     public Game()
     {
       this.settings = new Settings();
+      this.highscore = new Highscore();
 
       this.toDispose = new LinkedList<Control>();
 
