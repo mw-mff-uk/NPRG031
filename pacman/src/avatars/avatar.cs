@@ -98,6 +98,7 @@ namespace MainNamespace
     public Avatar(int left, int top, int row, int col, int direction, int step)
     {
       this.SizeMode = PictureBoxSizeMode.StretchImage;
+      this.BackColor = Color.Transparent;
 
       this.Left = left;
       this.Top = top;

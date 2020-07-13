@@ -67,7 +67,7 @@ namespace MainNamespace
           this.map.MonsterInitialCol,
           this.map.MonsterInitialDirection,
           this.settings.MonsterSpeed,
-          "/home/wiki/School/NPRG031/pacman/src/images/monster-" + (i + 1) + ".jpg"
+          "/home/wiki/School/NPRG031/pacman/src/images/monster-" + (i + 1) + ".png"
         );
       }
 
@@ -95,9 +95,11 @@ namespace MainNamespace
     }
     private void GameScreen()
     {
+      this.InitScoreBoard();
+      this.InitLivesTracker();
+
       this.map = new Map(this.gapHorizontal, this.gapVertical);
 
-      this.InitScoreBoard();
       this.InitPacman();
       this.InitMonsters();
 

@@ -34,10 +34,10 @@ namespace MainNamespace
     }
     public Pacman(int left, int top, int row, int col, int direction, int step) : base(left, top, row, col, direction, step)
     {
-      this.imgRight = Image.FromFile("/home/wiki/School/NPRG031/pacman/src/images/pacman-right.jpg");
-      this.imgLeft = Image.FromFile("/home/wiki/School/NPRG031/pacman/src/images/pacman-left.jpg");
-      this.imgUp = Image.FromFile("/home/wiki/School/NPRG031/pacman/src/images/pacman-up.jpg");
-      this.imgDown = Image.FromFile("/home/wiki/School/NPRG031/pacman/src/images/pacman-down.jpg");
+      this.imgRight = Image.FromFile("/home/wiki/School/NPRG031/pacman/src/images/pacman-right.png");
+      this.imgLeft = Image.FromFile("/home/wiki/School/NPRG031/pacman/src/images/pacman-left.png");
+      this.imgUp = Image.FromFile("/home/wiki/School/NPRG031/pacman/src/images/pacman-up.png");
+      this.imgDown = Image.FromFile("/home/wiki/School/NPRG031/pacman/src/images/pacman-down.png");
 
       this.AfterTurn();
     }
