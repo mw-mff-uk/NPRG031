@@ -1,0 +1,76 @@
+using System;
+
+namespace MainNamespace
+{
+  class GameClock
+  {
+    private const int TICK_DURATION_HISTORY_LENGTH = 30;
+    private LinkedList<GameClockEvent> events;
+    private bool isActive = false;
+    public bool IsActive { get => this.isActive; }
+    private Stopwatch stopwatch;
+    public double Elapsed { get => this.stopwatch.Milliseconds; }
+    private double lastTick = 0;
+    private LinkedList<double> ticksHistory;
+    private double[] tickDurationHistory;
+    private int tickDurationHistoryCursor = 0;
+    public double TickDuration
+    {
+      get
+      {
+        double sum = 0.0;
+
+        for (int i = 0; i < this.tickDurationHistory.Length; i++)
+          sum += this.tickDurationHistory[i];
+
+        return sum / this.tickDurationHistory.Length;
+      }
+    }
+    public double TickStart()
+    {
+      double elapsed = this.Elapsed;
+      double sinceLastTick = elapsed - this.lastTick;
+      this.lastTick = elapsed;
+
+      return sinceLastTick;
+    }
+    public double TickEnd()
+    {
+      double elapsed = this.Elapsed;
+      double sinceTickStart = elapsed - this.lastTick;
+      this.lastTick = elapsed;
+
+      this.tickDurationHistory[this.tickDurationHistoryCursor] = sinceTickStart;
+      this.tickDurationHistoryCursor = (this.tickDurationHistoryCursor + 1) % this.tickDurationHistory.Length;
+
+      return sinceTickStart;
+    }
+    // public int PlanEvent(GameClockEvent event)
+    // {
+    //   this.events.InsertLast(event);
+    // }
+    public void Reset()
+    {
+      this.lastTick = 0;
+      this.stopwatch.Start().Stop().Reset();
+
+      for (int i = 0; i < this.tickDurationHistory.Length; i++)
+        this.tickDurationHistory[i] = 0.0;
+    }
+    public void Stop()
+    {
+      this.stopwatch.Stop();
+    }
+    public void Start()
+    {
+      this.stopwatch.Start();
+    }
+    public GameClock()
+    {
+      this.stopwatch = new Stopwatch();
+      this.tickDurationHistory = new double[TICK_DURATION_HISTORY_LENGTH];
+
+      this.Reset();
+    }
+  }
+}

@@ -23,8 +23,10 @@ namespace MainNamespace
     private Map map;
     private ScoreBoard scoreBoard;
     private LivesTracker livesTracker;
+    private FpsTracker fpsTracker;
     private Timer timer;
     private KeyboardHandler keyboardHandler;
+    private GameClock clock;
     private int gapVertical;
     private int gapHorizontal;
     private void InitScoreBoard()
@@ -36,10 +38,17 @@ namespace MainNamespace
     }
     private void InitLivesTracker()
     {
-      this.livesTracker = new LivesTracker(this.gapHorizontal, Game.HEIGHT + this.gapVertical);
+      this.livesTracker = new LivesTracker(this.gapHorizontal, Game.HEIGHT + this.gapVertical + 5);
 
       this.livesTracker.Spawn(this.board);
       this.toDispose.InsertLast(this.livesTracker);
+    }
+    private void InitFpsTracker()
+    {
+      this.fpsTracker = new FpsTracker(this.gapHorizontal + 675, Game.HEIGHT + this.gapVertical + 5);
+
+      this.fpsTracker.Spawn(this.board);
+      this.toDispose.InsertLast(this.fpsTracker);
     }
     private void InitPacman()
     {
@@ -97,6 +106,7 @@ namespace MainNamespace
     {
       this.InitScoreBoard();
       this.InitLivesTracker();
+      this.InitFpsTracker();
 
       this.map = new Map(this.gapHorizontal, this.gapVertical);
 
@@ -108,7 +118,8 @@ namespace MainNamespace
 
       this.keyboardHandler.Focus();
 
-      timer.Enabled = true;
+      this.clock.Start();
+      this.timer.Enabled = true;
     }
     private void WelcomeScreen()
     {
@@ -144,6 +155,9 @@ namespace MainNamespace
     {
       foreach (Monster monster in this.monsters)
       {
+        if (!monster.IsAlive)
+          continue;
+
         int step = monster.MaybeMove(this.map.StoppingPoints);
         int speed = this.settings.MonsterSpeed;
 
@@ -194,15 +208,18 @@ namespace MainNamespace
     {
       if (this.state == Game.STATE_PLAYING)
       {
-        MainClass.stopwatch.Reset().Start();
+        this.clock.TickStart();
 
         this.PlayerMovement();
         this.MonstersMovement();
 
         this.CheckCollectibles();
 
-        MainClass.stopwatch.Stop();
-        Console.Write("{0}ms\r", MainClass.stopwatch.Milliseconds);
+        this.fpsTracker.Update(this.clock.Elapsed);
+
+        this.clock.TickEnd();
+
+        Console.Write("{0}ms   \r", Math.Round(this.clock.TickDuration * 100) / 100);
       }
     }
     public void Run()
@@ -233,9 +250,11 @@ namespace MainNamespace
       this.keyboardHandler.Focus();
 
       this.timer = new Timer();
-      timer.Interval = this.settings.TickPeriod;
-      timer.Tick += new System.EventHandler(this.Tick);
-      timer.Enabled = false;
+      this.timer.Interval = this.settings.TickPeriod;
+      this.timer.Tick += this.Tick;
+      this.timer.Enabled = false;
+
+      this.clock = new GameClock();
     }
   }
 }
