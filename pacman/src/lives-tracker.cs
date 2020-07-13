@@ -28,7 +28,7 @@ namespace MainNamespace
       this.Left = left;
       this.Top = top;
 
-      this.Width = 200;
+      this.Width = 150;
       this.Height = 20;
 
       this.Text = "3 LIVES";

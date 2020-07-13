@@ -34,18 +34,8 @@ namespace MainNamespace
     public int MonsterInitialDirection { get => Direction.LEFT; }
     public int MonsterInitialRow { get => -1; }
     public int MonsterInitialCol { get => -1; }
-    public bool CollectedAll
-    {
-      get
-      {
-        var iterator = this.collectibles.Iterator();
-        while (!iterator.Done)
-          if (!iterator.Next().Value.Collected)
-            return false;
-
-        return true;
-      }
-    }
+    public int Collected = 0;
+    public bool CollectedAll { get => this.Collected == this.collectibles.Length; }
     private void AddStoppingPoint(int row, int col, int direction)
     {
       int top = this.rows[row];
@@ -141,6 +131,8 @@ namespace MainNamespace
     }
     public void ResetCollectibles()
     {
+      this.Collected = 0;
+
       var iterator = this.collectibles.Iterator();
       while (!iterator.Done)
         iterator.Next().Value.Reset();

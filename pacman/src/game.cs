@@ -24,6 +24,7 @@ namespace MainNamespace
     private ScoreBoard scoreBoard;
     private LivesTracker livesTracker;
     private FpsTracker fpsTracker;
+    private SpeedTracker speedTracker;
     private Timer timer;
     private KeyboardHandler keyboardHandler;
     private GameClock clock;
@@ -50,6 +51,13 @@ namespace MainNamespace
 
       this.fpsTracker.Spawn(this.board);
       this.toDispose.InsertLast(this.fpsTracker);
+    }
+    private void InitSpeedTracker()
+    {
+      this.speedTracker = new SpeedTracker(this.gapHorizontal + 340, Game.HEIGHT + this.gapVertical + 5);
+
+      this.speedTracker.Spawn(this.board);
+      this.toDispose.InsertLast(this.speedTracker);
     }
     private void InitPacman()
     {
@@ -116,6 +124,7 @@ namespace MainNamespace
       this.InitScoreBoard();
       this.InitLivesTracker();
       this.InitFpsTracker();
+      this.InitSpeedTracker();
 
       this.map = new Map(this.gapHorizontal, this.gapVertical);
 
@@ -268,6 +277,7 @@ namespace MainNamespace
         {
           collectedSome = true;
           collectible.Collect();
+          this.map.Collected++;
 
           if (collectible.IsCherry)
           {
@@ -347,6 +357,9 @@ namespace MainNamespace
         this.CheckMonsterCollisions();
 
         this.fpsTracker.Update(this.clock.Elapsed);
+        this.speedTracker.Update(this.clock.Elapsed, this.pacman.StepSize * Math.Min(Avatar.MAX_STEP_MULTIPLIER, this.clock.LastTickDuration));
+
+        // Console.Write("{0}FPS    \r", this.fpsTracker.Fps);
 
         if (this.livesTracker.GameOver)
           this.NextState();

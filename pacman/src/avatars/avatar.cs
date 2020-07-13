@@ -12,6 +12,7 @@ namespace MainNamespace
     public int CurrentDirection { get => this.direction; }
     public int OppositeDirection { get => Direction.GetOpposite(this.direction); }
     protected double stepSize;
+    public double StepSize { get => this.stepSize; }
     protected int col = -1;
     public int Col { get => this.col; }
     protected int row = -1;
