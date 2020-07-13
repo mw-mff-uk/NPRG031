@@ -8,7 +8,8 @@ namespace MainNamespace
 
   class ScoreBoard : Label
   {
-    int score = 0;
+    private int score = 0;
+    public int Score { get => this.score; }
     public void AddPoint(int inc = 1)
     {
       this.score += inc;

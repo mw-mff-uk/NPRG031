@@ -132,21 +132,86 @@ namespace MainNamespace
     private void WelcomeScreen()
     {
       Button btn = new Button();
-
-      btn.Text = "New Game";
-
-      btn.Left = this.board.ClientRectangle.Width / 2 - 50;
-      btn.Top = this.board.ClientRectangle.Height / 2 - 20;
-      btn.Width = 100;
+      btn.Text = "PLAY";
+      btn.BackColor = Color.FromArgb(255, 131, 4);
+      btn.Font = new Font("monospace", 18, FontStyle.Bold);
+      btn.Width = 150;
       btn.Height = 40;
+      btn.Left = (this.board.ClientRectangle.Width - btn.Width) / 2;
+      btn.Top = (this.board.ClientRectangle.Height - btn.Height) / 2 + 50;
       btn.Parent = this.board;
       btn.Click += this.NextState;
-
       this.toDispose.InsertLast(btn);
+
+      PictureBox banner = new PictureBox();
+      banner.Image = Image.FromFile("/home/wiki/School/NPRG031/pacman/src/images/banner.png");
+      banner.SizeMode = PictureBoxSizeMode.StretchImage;
+      banner.BackColor = Color.Transparent;
+      banner.Width = 600;
+      banner.Height = 200;
+      banner.Left = (this.board.ClientRectangle.Width - banner.Width) / 2;
+      banner.Top = (this.board.ClientRectangle.Height - banner.Height) / 2 - 100;
+      banner.Parent = this.board;
+      this.toDispose.InsertLast(banner);
+
+      Label author = new Label();
+      author.Text = "2020 | Milan Wikarski";
+      author.ForeColor = Color.FromArgb(245, 245, 245);
+      author.Font = new Font("monospace", 13, FontStyle.Bold);
+      author.Width = 215;
+      author.Height = 40;
+      author.Left = (this.board.ClientRectangle.Width - author.Width) / 2;
+      author.Top = this.board.ClientRectangle.Height - 40;
+      author.Parent = this.board;
+      this.toDispose.InsertLast(author);
     }
     private void GameOverScreen()
     {
+      Label gameOver = new Label();
+      gameOver.Text = "GAME OVER";
+      gameOver.ForeColor = Color.FromArgb(245, 245, 245);
+      gameOver.Font = new Font("monospace", 30, FontStyle.Bold);
+      gameOver.Width = 220;
+      gameOver.Height = 45;
+      gameOver.Left = (this.board.ClientRectangle.Width - gameOver.Width) / 2;
+      gameOver.Top = (this.board.ClientRectangle.Width - gameOver.Height) / 2 - 75;
+      gameOver.Parent = this.board;
+      this.toDispose.InsertLast(gameOver);
 
+      Label score = new Label();
+      score.Text = "You've earner " + this.scoreBoard.Score + " points\n\n\nHIGH SCORE\n\n1. 0000\n2. 0000\n3. 0000";
+      score.TextAlign = ContentAlignment.MiddleCenter;
+      score.ForeColor = Color.FromArgb(245, 245, 245);
+      score.Font = new Font("monospace", 16, FontStyle.Bold);
+      score.Width = 400;
+      score.Height = 220;
+      score.Left = (this.board.ClientRectangle.Width - score.Width) / 2;
+      score.Top = (this.board.ClientRectangle.Width - score.Height) / 2 + 65;
+      score.Parent = this.board;
+      this.toDispose.InsertLast(score);
+
+      Button btn = new Button();
+      btn.Text = "PLAY AGAIN";
+      btn.BackColor = Color.FromArgb(255, 131, 4);
+      btn.Font = new Font("monospace", 18, FontStyle.Bold);
+      btn.Width = 175;
+      btn.Height = 40;
+      btn.Left = (this.board.ClientRectangle.Width - btn.Width) / 2;
+      btn.Top = (this.board.ClientRectangle.Height - btn.Height) / 2 + 175;
+      btn.Parent = this.board;
+      btn.Click += this.NextState;
+      this.toDispose.InsertLast(btn);
+
+      Label author = new Label();
+      author.Text = "2020 | Milan Wikarski";
+      author.ForeColor = Color.FromArgb(245, 245, 245);
+      author.Font = new Font("monospace", 13, FontStyle.Bold);
+      author.Width = 215;
+      author.Height = 40;
+      author.Left = (this.board.ClientRectangle.Width - author.Width) / 2;
+      author.Top = this.board.ClientRectangle.Height - 40;
+      author.Parent = this.board;
+      this.toDispose.InsertLast(author);
     }
     private void PlayerMovement()
     {

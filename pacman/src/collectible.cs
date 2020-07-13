@@ -11,10 +11,10 @@ namespace MainNamespace
     private const int HEIGHT = 6;
     private const int CHERRY_WIDTH = 30;
     private const int CHERRY_HEIGHT = 30;
-    private const double CHERRY_CHANCE = 0.0025;
+    private const double CHERRY_CHANCE = 0.002;
     private const int HEART_WIDTH = 30;
     private const int HEART_HEIGHT = 30;
-    private const double HEART_CHANCE = 0.001;
+    private const double HEART_CHANCE = 0.0005;
     private int xCenter;
     private int yCenter;
     private bool isCherry = false;
