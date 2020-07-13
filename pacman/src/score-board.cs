@@ -9,9 +9,9 @@ namespace MainNamespace
   class ScoreBoard : Label
   {
     int score = 0;
-    public void AddPoint()
+    public void AddPoint(int inc = 1)
     {
-      this.score++;
+      this.score += inc;
       this.Text = (this.score < 100 ? "0" : "") + (this.score < 10 ? "0" : "") + this.score + " POINTS";
     }
     public void Spawn(Control parent)

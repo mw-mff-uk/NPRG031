@@ -239,7 +239,7 @@ namespace MainNamespace
             monster.Kill();
 
             this.livesTracker.RemoveLive();
-            this.pacman.MakeInvincible();
+            this.pacman.StartInvincibility();
 
             this.clock.PlanEvent(
               new StopInvincibilityEvent(this.pacman),

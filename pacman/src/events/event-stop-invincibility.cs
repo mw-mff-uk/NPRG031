@@ -5,7 +5,7 @@ namespace MainNamespace
     private Pacman pacman;
     public override void Execute()
     {
-      this.pacman.IsInvincible = false;
+      this.pacman.StopInvincibility();
     }
     public StopInvincibilityEvent(Pacman pacman)
     {

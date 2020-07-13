@@ -7,53 +7,78 @@ namespace MainNamespace
 {
   class Pacman : Avatar
   {
-    private Image imgRight;
-    private Image imgLeft;
-    private Image imgUp;
-    private Image imgDown;
-    public bool IsInvincible = false;
-    public bool FrenzyMode = false;
-    public void MakeInvincible()
+    private ImageSet normalImages;
+    private ImageSet frenzyImages;
+    private ImageSet invincibleImages;
+    private bool isInvincible = false;
+    public bool IsInvincible { get => this.isInvincible; }
+    private bool frenzyMode = false;
+    public bool FrenzyMode { get => this.frenzyMode; }
+    public void StartInvincibility()
     {
-      this.IsInvincible = true;
+      this.isInvincible = true;
+      this.RefreshImage();
+    }
+    public void StopInvincibility()
+    {
+      this.isInvincible = false;
+      this.RefreshImage();
     }
     public void StartFrenzyMode()
     {
-      this.FrenzyMode = true;
+      this.frenzyMode = true;
+      this.stepSize *= 1.5;
+
+      this.RefreshImage();
     }
     public void StopFrenzyMode()
     {
-      this.FrenzyMode = false;
+      this.frenzyMode = false;
+      this.stepSize /= 1.5;
+
+      this.RefreshImage();
+    }
+    private void RefreshImage()
+    {
+      ImageSet imgSet;
+
+      if (this.frenzyMode)
+        imgSet = this.frenzyImages;
+      else if (this.isInvincible)
+        imgSet = this.invincibleImages;
+      else
+        imgSet = this.normalImages;
+
+      this.Image = imgSet.FromDirection(this.direction);
     }
     protected override void AfterTurn()
     {
-      switch (this.direction)
-      {
-        case Direction.RIGHT:
-          this.Image = this.imgRight;
-          break;
-
-        case Direction.LEFT:
-          this.Image = this.imgLeft;
-          break;
-
-        case Direction.UP:
-          this.Image = this.imgUp;
-          break;
-
-        case Direction.DOWN:
-          this.Image = this.imgDown;
-          break;
-      }
+      this.RefreshImage();
     }
     public Pacman(int left, int top, int row, int col, int direction, double step) : base(left, top, row, col, direction, step)
     {
-      this.imgRight = Image.FromFile("/home/wiki/School/NPRG031/pacman/src/images/pacman-right.png");
-      this.imgLeft = Image.FromFile("/home/wiki/School/NPRG031/pacman/src/images/pacman-left.png");
-      this.imgUp = Image.FromFile("/home/wiki/School/NPRG031/pacman/src/images/pacman-up.png");
-      this.imgDown = Image.FromFile("/home/wiki/School/NPRG031/pacman/src/images/pacman-down.png");
+      this.normalImages = new ImageSet(
+        Image.FromFile("/home/wiki/School/NPRG031/pacman/src/images/pacman-up.png"),
+        Image.FromFile("/home/wiki/School/NPRG031/pacman/src/images/pacman-down.png"),
+        Image.FromFile("/home/wiki/School/NPRG031/pacman/src/images/pacman-left.png"),
+        Image.FromFile("/home/wiki/School/NPRG031/pacman/src/images/pacman-right.png")
+      );
 
-      this.AfterTurn();
+      this.frenzyImages = new ImageSet(
+        Image.FromFile("/home/wiki/School/NPRG031/pacman/src/images/pacman-up-frenzy.png"),
+        Image.FromFile("/home/wiki/School/NPRG031/pacman/src/images/pacman-down-frenzy.png"),
+        Image.FromFile("/home/wiki/School/NPRG031/pacman/src/images/pacman-left-frenzy.png"),
+        Image.FromFile("/home/wiki/School/NPRG031/pacman/src/images/pacman-right-frenzy.png")
+      );
+
+      this.invincibleImages = new ImageSet(
+        Image.FromFile("/home/wiki/School/NPRG031/pacman/src/images/pacman-up-invincible.png"),
+        Image.FromFile("/home/wiki/School/NPRG031/pacman/src/images/pacman-down-invincible.png"),
+        Image.FromFile("/home/wiki/School/NPRG031/pacman/src/images/pacman-left-invincible.png"),
+        Image.FromFile("/home/wiki/School/NPRG031/pacman/src/images/pacman-right-invincible.png")
+      );
+
+      this.RefreshImage();
     }
   }
 }
