@@ -7,62 +7,63 @@ namespace MainNamespace
 {
   class Avatar : PictureBox
   {
+    public const double MAX_STEP_MULTIPLIER = 40.0;
     protected int direction;
     public int CurrentDirection { get => this.direction; }
     public int OppositeDirection { get => Direction.GetOpposite(this.direction); }
-    protected int stepSize;
+    protected double stepSize;
     protected int col = -1;
     public int Col { get => this.col; }
     protected int row = -1;
     public int Row { get => this.row; }
-    public Box GetBox()
+    private Box bBox;
+    public Box BBox { get => this.bBox; }
+    public bool CanMove(LinkedList<DirectedPoint> stoppingPoints, double multiplier)
     {
-      return new Box(this.Width, this.Height, this.Left, this.Top);
-    }
-    public int GetEmptyDistance(LinkedList<DirectedPoint> stoppingPoints)
-    {
-      for (int d = 0; d < this.stepSize; d++)
-      {
-        Box box = this.GetBox();
-        box.Left += d;
+      double step = this.stepSize * Math.Min(MAX_STEP_MULTIPLIER, multiplier);
 
-        var iterator = stoppingPoints.Iterator();
-        while (!iterator.Done)
-          if (iterator.Next().Value.HasCollision(this.direction, box, this.stepSize))
-            return d;
-      }
+      var iterator = stoppingPoints.Iterator();
+      while (!iterator.Done)
+        if (iterator.Next().Value.HasCollision(this.direction, this.bBox, step))
+          return false;
 
-      return this.stepSize;
+      return true;
     }
-    public new void Move(int step = -1)
+    public new void Move(double multiplier)
     {
-      if (step <= -1)
-        step = this.stepSize;
+      double step = this.stepSize * Math.Min(MAX_STEP_MULTIPLIER, multiplier);
 
       switch (this.direction)
       {
         case Direction.LEFT:
-          this.Left -= step;
+          this.bBox.Left -= step;
           break;
 
         case Direction.RIGHT:
-          this.Left += step;
+          this.bBox.Left += step;
           break;
 
         case Direction.UP:
-          this.Top -= step;
+          this.bBox.Top -= step;
           break;
 
         case Direction.DOWN:
-          this.Top += step;
+          this.bBox.Top += step;
           break;
       }
+
+      this.Left = (int)Math.Round(this.bBox.Left);
+      this.Top = (int)Math.Round(this.bBox.Top);
     }
-    public int MaybeMove(LinkedList<DirectedPoint> stoppingPoints)
+    public bool MaybeMove(LinkedList<DirectedPoint> stoppingPoints, double multiplier)
     {
-      int step = this.GetEmptyDistance(stoppingPoints);
-      this.Move(step);
-      return step;
+      if (this.CanMove(stoppingPoints, multiplier))
+      {
+        this.Move(multiplier);
+        return true;
+      }
+
+      return false;
     }
     public bool CanTurn(int direction, LinkedList<DirectedPoint> turningPoints)
     {
@@ -72,14 +73,15 @@ namespace MainNamespace
       if (Direction.IsOpposite(this.direction, direction))
         return true;
 
-      Box box = this.GetBox();
-
       var iterator = turningPoints.Iterator();
       while (!iterator.Done)
       {
         DirectedPoint point = iterator.Next().Value;
 
-        if (point.HasDirection(Direction.GetOpposite(direction)) && point.HasCollision(this.direction, box, this.stepSize))
+        if (!point.HasDirection(Direction.GetOpposite(direction)))
+          continue;
+
+        if (point.HasCollision(this.direction, this.bBox, this.stepSize))
           return true;
       }
 
@@ -95,7 +97,7 @@ namespace MainNamespace
     {
       this.Parent = parent;
     }
-    public Avatar(int left, int top, int row, int col, int direction, int step)
+    public Avatar(int left, int top, int row, int col, int direction, double step)
     {
       this.SizeMode = PictureBoxSizeMode.StretchImage;
       this.BackColor = Color.Transparent;
@@ -109,6 +111,8 @@ namespace MainNamespace
 
       this.Width = Game.AVATAR_SIZE;
       this.Height = Game.AVATAR_SIZE;
+
+      this.bBox = new Box(this.Width, this.Height, this.Left, this.Top);
     }
   }
 }

@@ -151,7 +151,7 @@ namespace MainNamespace
     }
     private void PlayerMovement()
     {
-      this.pacman.MaybeMove(this.map.StoppingPoints);
+      this.pacman.MaybeMove(this.map.StoppingPoints, this.clock.LastTickDuration);
 
       if (this.keyboardHandler.IsPressed)
       {
@@ -167,18 +167,17 @@ namespace MainNamespace
         if (!monster.IsAlive)
           continue;
 
-        int step = monster.MaybeMove(this.map.StoppingPoints);
-        int speed = this.settings.MonsterSpeed;
+        bool hasMoved = monster.MaybeMove(this.map.StoppingPoints, this.clock.LastTickDuration);
 
-        // Calculate the probability of skipping rotation based on step
-        if (MainClass.rnd.NextDouble() > (double)(speed * 2 - step) / (double)(speed * 2))
+        // If not moved make sure the monster turns
+        if (MainClass.rnd.NextDouble() > (hasMoved ? 0.5 : 1.0))
           continue;
 
         foreach (int direction in Direction.GetShuffledDirections())
         {
           // Make sure the monster does not turn around randomly
           // Allow this only when in corner (ie. if step is smaller the speed, expr. is false)
-          if (step == this.settings.MonsterSpeed && direction == monster.OppositeDirection)
+          if (hasMoved && direction == monster.OppositeDirection)
             continue;
 
           if (monster.CanTurn(direction, this.map.TurningPoints))
@@ -191,7 +190,6 @@ namespace MainNamespace
     }
     private void CheckCollectibles()
     {
-      Box box = this.pacman.GetBox();
       bool collectedSome = false;
 
       var iterator = this.map.Collectibles.Iterator();
@@ -199,7 +197,7 @@ namespace MainNamespace
       {
         Collectible collectible = iterator.Next().Value;
 
-        if (!collectible.Collected && collectible.HasCollision(box))
+        if (!collectible.Collected && collectible.HasCollision(pacman.BBox))
         {
           collectedSome = true;
           collectible.Collect();
@@ -217,7 +215,10 @@ namespace MainNamespace
     {
       if (this.state == Game.STATE_PLAYING)
       {
-        this.clock.TickStart();
+        this.clock.Tick();
+
+        double multiplier = Math.Min(Avatar.MAX_STEP_MULTIPLIER, this.clock.LastTickDuration);
+        double speed = this.settings.PlayerSpeed * multiplier;
 
         this.clock.ExecuteEvents();
 
@@ -228,9 +229,7 @@ namespace MainNamespace
 
         this.fpsTracker.Update(this.clock.Elapsed);
 
-        this.clock.TickEnd();
-
-        Console.Write("{0}ms   \r", Math.Round(this.clock.TickDuration * 100) / 100);
+        Console.Write("{0}   \r", Math.Round(speed * 100) / 100);
       }
     }
     public void Run()

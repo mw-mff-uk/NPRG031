@@ -10,7 +10,6 @@ namespace MainNamespace
     private const double FPS_HISTORY = 1000.0;
     private LinkedList<double> ticks;
     double fps = 0.0;
-    public double FPS { get => this.fps; }
     public void Update(double elapsed)
     {
       int count = 0;
@@ -33,9 +32,7 @@ namespace MainNamespace
         duration = Math.Max(duration, elapsed - item.Value);
       }
 
-      this.fps = ((double)count / duration) * 1000;
-
-      this.Text = (int)Math.Round(this.fps) + " FPS";
+      this.Text = (int)Math.Round(((double)count / duration) * 1000) + " FPS";
     }
     public void Spawn(Control parent)
     {

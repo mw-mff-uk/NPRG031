@@ -32,7 +32,7 @@ namespace MainNamespace
           break;
       }
     }
-    public Pacman(int left, int top, int row, int col, int direction, int step) : base(left, top, row, col, direction, step)
+    public Pacman(int left, int top, int row, int col, int direction, double step) : base(left, top, row, col, direction, step)
     {
       this.imgRight = Image.FromFile("/home/wiki/School/NPRG031/pacman/src/images/pacman-right.png");
       this.imgLeft = Image.FromFile("/home/wiki/School/NPRG031/pacman/src/images/pacman-left.png");

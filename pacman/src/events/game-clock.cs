@@ -11,6 +11,8 @@ namespace MainNamespace
     private Stopwatch stopwatch;
     public double Elapsed { get => this.stopwatch.Milliseconds; }
     private double lastTick = 0;
+    private double lastTickDuration = 0;
+    public double LastTickDuration { get => this.lastTickDuration; }
     private LinkedList<double> ticksHistory;
     private double[] tickDurationHistory;
     private int tickDurationHistoryCursor = 0;
@@ -26,24 +28,16 @@ namespace MainNamespace
         return sum / this.tickDurationHistory.Length;
       }
     }
-    public double TickStart()
+    public double Tick()
     {
       double elapsed = this.Elapsed;
-      double sinceLastTick = elapsed - this.lastTick;
+      this.lastTickDuration = elapsed - this.lastTick;
       this.lastTick = elapsed;
 
-      return sinceLastTick;
-    }
-    public double TickEnd()
-    {
-      double elapsed = this.Elapsed;
-      double sinceTickStart = elapsed - this.lastTick;
-      this.lastTick = elapsed;
-
-      this.tickDurationHistory[this.tickDurationHistoryCursor] = sinceTickStart;
+      this.tickDurationHistory[this.tickDurationHistoryCursor] = this.lastTickDuration;
       this.tickDurationHistoryCursor = (this.tickDurationHistoryCursor + 1) % this.tickDurationHistory.Length;
 
-      return sinceTickStart;
+      return this.lastTickDuration;
     }
     public int PlanEvent(GameClockEvent e, double executeAfter)
     {
@@ -75,6 +69,7 @@ namespace MainNamespace
     public void Reset()
     {
       this.lastTick = 0;
+      this.lastTickDuration = 0;
       this.stopwatch.Start().Stop().Reset();
 
       for (int i = 0; i < this.tickDurationHistory.Length; i++)

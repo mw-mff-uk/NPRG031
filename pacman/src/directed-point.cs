@@ -7,7 +7,7 @@ namespace MainNamespace
 {
   class DirectedPoint
   {
-    private const int COLLISION_TOLERANCE = 0;
+    private const double COLLISION_TOLERANCE = 6.0;
     private int row;
     public int Row { get => this.row; }
     private int col;
@@ -22,7 +22,7 @@ namespace MainNamespace
 
       return (this.direction & direction) > 0;
     }
-    public bool HasCollision(int direction, Box box, int step)
+    public bool HasCollision(int direction, Box box, double step)
     {
       if (!this.HasDirection(direction))
         return false;

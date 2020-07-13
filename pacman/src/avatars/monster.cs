@@ -17,7 +17,7 @@ namespace MainNamespace
     {
       this.isAlive = true;
     }
-    public Monster(int left, int top, int row, int col, int direction, int step, string img) : base(left, top, row, col, direction, step)
+    public Monster(int left, int top, int row, int col, int direction, double step, string img) : base(left, top, row, col, direction, step)
     {
       this.Image = Image.FromFile(img);
     }
