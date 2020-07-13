@@ -18,6 +18,9 @@ namespace MainNamespace
     public int Row { get => this.row; }
     private Box bBox;
     public Box BBox { get => this.bBox; }
+    private int initialLeft;
+    private int initialTop;
+    private int initialDirection;
     public bool CanMove(LinkedList<DirectedPoint> stoppingPoints, double multiplier)
     {
       double step = this.stepSize * Math.Min(MAX_STEP_MULTIPLIER, multiplier);
@@ -97,16 +100,30 @@ namespace MainNamespace
     {
       this.Parent = parent;
     }
+    public void ResetPosition()
+    {
+      this.Left = this.initialLeft;
+      this.bBox.Left = this.initialLeft;
+      this.Top = this.initialTop;
+      this.bBox.Top = this.initialTop;
+      this.direction = this.initialDirection;
+    }
     public Avatar(int left, int top, int row, int col, int direction, double step)
     {
       this.SizeMode = PictureBoxSizeMode.StretchImage;
       this.BackColor = Color.Transparent;
 
       this.Left = left;
+      this.initialLeft = left;
       this.Top = top;
+      this.initialTop = top;
+
       this.row = row;
       this.col = col;
+
       this.direction = direction;
+      this.initialDirection = direction;
+
       this.stepSize = step;
 
       this.Width = Game.AVATAR_SIZE;

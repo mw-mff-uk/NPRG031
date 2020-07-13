@@ -89,9 +89,8 @@ namespace MainNamespace
       double lastMonster = 0.0;
       for (int i = 0; i < this.monsters.Length; i++)
       {
-        ReviveMonsterEvent e = new ReviveMonsterEvent(this.monsters[i]);
         double thisMonster = lastMonster + 1000.0 + MainClass.rnd.NextDouble() * 1000.0;
-        this.clock.PlanEvent(e, thisMonster);
+        this.clock.PlanEvent(new ReviveMonsterEvent(this.monsters[i]), thisMonster);
         lastMonster = thisMonster;
       }
     }
@@ -201,7 +200,25 @@ namespace MainNamespace
         {
           collectedSome = true;
           collectible.Collect();
-          this.scoreBoard.AddPoint();
+
+          if (collectible.IsCherry)
+          {
+            this.pacman.StartFrenzyMode();
+
+            this.clock.PlanEvent(
+              new StopFrenzyModeEvent(this.pacman),
+              this.settings.FrenzyModeDuration * (MainClass.rnd.NextDouble() + 0.5)
+            );
+          }
+          else if (collectible.IsHeart)
+          {
+            this.livesTracker.AddLive();
+          }
+          else
+          {
+            this.scoreBoard.AddPoint();
+          }
+
         }
       }
 
@@ -211,14 +228,37 @@ namespace MainNamespace
         this.map.SpawnCollectibles();
       }
     }
+    private void CheckMonsterCollisions()
+    {
+      if (!this.pacman.IsInvincible)
+      {
+        foreach (Monster monster in this.monsters)
+        {
+          if (Box.HasCollision(this.pacman.BBox, monster.BBox))
+          {
+            monster.Kill();
+
+            this.livesTracker.RemoveLive();
+            this.pacman.MakeInvincible();
+
+            this.clock.PlanEvent(
+              new StopInvincibilityEvent(this.pacman),
+              this.settings.InvincibilityDuration
+            );
+
+            this.clock.PlanEvent(
+              new ReviveMonsterEvent(monster),
+              this.settings.InvincibilityDuration * 2 * MainClass.rnd.NextDouble()
+            );
+          }
+        }
+      }
+    }
     private void Tick(object sender, EventArgs e)
     {
       if (this.state == Game.STATE_PLAYING)
       {
         this.clock.Tick();
-
-        double multiplier = Math.Min(Avatar.MAX_STEP_MULTIPLIER, this.clock.LastTickDuration);
-        double speed = this.settings.PlayerSpeed * multiplier;
 
         this.clock.ExecuteEvents();
 
@@ -227,9 +267,12 @@ namespace MainNamespace
 
         this.CheckCollectibles();
 
+        this.CheckMonsterCollisions();
+
         this.fpsTracker.Update(this.clock.Elapsed);
 
-        Console.Write("{0}   \r", Math.Round(speed * 100) / 100);
+        if (this.livesTracker.GameOver)
+          this.NextState();
       }
     }
     public void Run()

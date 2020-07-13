@@ -11,6 +11,20 @@ namespace MainNamespace
     private Image imgLeft;
     private Image imgUp;
     private Image imgDown;
+    public bool IsInvincible = false;
+    public bool FrenzyMode = false;
+    public void MakeInvincible()
+    {
+      this.IsInvincible = true;
+    }
+    public void StartFrenzyMode()
+    {
+      this.FrenzyMode = true;
+    }
+    public void StopFrenzyMode()
+    {
+      this.FrenzyMode = false;
+    }
     protected override void AfterTurn()
     {
       switch (this.direction)
