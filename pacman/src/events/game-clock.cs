@@ -45,10 +45,33 @@ namespace MainNamespace
 
       return sinceTickStart;
     }
-    // public int PlanEvent(GameClockEvent event)
-    // {
-    //   this.events.InsertLast(event);
-    // }
+    public int PlanEvent(GameClockEvent e, double executeAfter)
+    {
+      e.ExecutionTimestamp = this.Elapsed + executeAfter;
+      this.events.InsertLast(e);
+
+      return this.events.Length;
+    }
+    public int ExecuteEvents()
+    {
+      int executed = 0;
+
+      var iterator = this.events.Iterator();
+      while (!iterator.Done)
+      {
+        LinkedListItem<GameClockEvent> item = iterator.Next();
+        GameClockEvent e = item.Value;
+
+        if (e.ExecutionTimestamp <= this.Elapsed)
+        {
+          e.Execute();
+          executed++;
+          this.events.RemoveItem(item);
+        }
+      }
+
+      return executed;
+    }
     public void Reset()
     {
       this.lastTick = 0;
@@ -56,6 +79,8 @@ namespace MainNamespace
 
       for (int i = 0; i < this.tickDurationHistory.Length; i++)
         this.tickDurationHistory[i] = 0.0;
+
+      this.events.Wipe();
     }
     public void Stop()
     {
@@ -69,6 +94,7 @@ namespace MainNamespace
     {
       this.stopwatch = new Stopwatch();
       this.tickDurationHistory = new double[TICK_DURATION_HISTORY_LENGTH];
+      this.events = new LinkedList<GameClockEvent>();
 
       this.Reset();
     }

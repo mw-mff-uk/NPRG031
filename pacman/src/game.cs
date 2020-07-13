@@ -85,6 +85,15 @@ namespace MainNamespace
         monster.Spawn(this.map);
         this.toDispose.InsertFirst(monster);
       }
+
+      double lastMonster = 0.0;
+      for (int i = 0; i < this.monsters.Length; i++)
+      {
+        ReviveMonsterEvent e = new ReviveMonsterEvent(this.monsters[i]);
+        double thisMonster = lastMonster + 1000.0 + MainClass.rnd.NextDouble() * 1000.0;
+        this.clock.PlanEvent(e, thisMonster);
+        lastMonster = thisMonster;
+      }
     }
     private void NextState(object sender = null, EventArgs e = null)
     {
@@ -209,6 +218,8 @@ namespace MainNamespace
       if (this.state == Game.STATE_PLAYING)
       {
         this.clock.TickStart();
+
+        this.clock.ExecuteEvents();
 
         this.PlayerMovement();
         this.MonstersMovement();

@@ -134,6 +134,11 @@ namespace MainNamespace
 
       return false;
     }
+    public void Wipe()
+    {
+      this.first = null;
+      this.length = 0;
+    }
     public LinkedList(params T[] args)
     {
       for (int i = 0; i < args.Length; i++)
