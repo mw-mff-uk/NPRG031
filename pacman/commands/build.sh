@@ -9,3 +9,6 @@ csc \
   "$root/src/events/*.cs" \
   "$root/src/*.cs" \
   -out:"$root/pacman.exe"
+
+rm "$root/pacman.tar.gz"
+tar -zcvf "$root/pacman.tar.gz" "$root"
