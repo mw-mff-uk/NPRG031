@@ -148,7 +148,7 @@ namespace MainNamespace
       this.Top = this.gapVertical;
       this.Left = this.gapHorizontal;
 
-      this.Image = Image.FromFile("/home/wiki/School/NPRG031/pacman/src/images/background.jpg");
+      this.Image = Image.FromFile(FileManager.GetImage("background.jpg"));
       this.SizeMode = PictureBoxSizeMode.StretchImage;
 
       int r = Direction.RIGHT;

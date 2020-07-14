@@ -85,7 +85,7 @@ namespace MainNamespace
           this.map.MonsterInitialCol,
           this.map.MonsterInitialDirection,
           this.settings.MonsterSpeed,
-          "/home/wiki/School/NPRG031/pacman/src/images/monster-" + (i + 1) + ".png"
+          FileManager.GetImage("monster-" + (i + 1) + ".png")
         );
       }
 
@@ -154,7 +154,7 @@ namespace MainNamespace
       this.toDispose.InsertLast(btn);
 
       PictureBox banner = new PictureBox();
-      banner.Image = Image.FromFile("/home/wiki/School/NPRG031/pacman/src/images/banner.png");
+      banner.Image = Image.FromFile(FileManager.GetImage("banner.png"));
       banner.SizeMode = PictureBoxSizeMode.StretchImage;
       banner.BackColor = Color.Transparent;
       banner.Width = 600;

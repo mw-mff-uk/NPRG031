@@ -61,7 +61,7 @@ namespace MainNamespace
         this.Width = CHERRY_WIDTH;
         this.Height = CHERRY_HEIGHT;
 
-        this.Image = Image.FromFile("/home/wiki/School/NPRG031/pacman/src/images/cherry.png");
+        this.Image = Image.FromFile(FileManager.GetImage("cherry.png"));
       }
       else if (MainClass.rnd.NextDouble() < HEART_CHANCE)
       {
@@ -70,14 +70,14 @@ namespace MainNamespace
         this.Width = HEART_WIDTH;
         this.Height = HEART_HEIGHT;
 
-        this.Image = Image.FromFile("/home/wiki/School/NPRG031/pacman/src/images/heart.png");
+        this.Image = Image.FromFile(FileManager.GetImage("heart.png"));
       }
       else
       {
         this.Width = WIDTH;
         this.Height = HEIGHT;
 
-        this.Image = Image.FromFile("/home/wiki/School/NPRG031/pacman/src/images/point.png");
+        this.Image = Image.FromFile(FileManager.GetImage("point.png"));
       }
     }
     public Collectible(int left, int top)

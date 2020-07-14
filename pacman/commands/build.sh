@@ -1,6 +1,6 @@
 #!/bin/sh
 
-dir=$( dirname "$(realpath "$0")" )
+dir="$( cd "$(dirname "$0")" > /dev/null 2>&1 ; pwd -P )"
 root="$dir/.."
 
 csc \
@@ -8,4 +8,4 @@ csc \
   "$root/src/avatars/*.cs" \
   "$root/src/events/*.cs" \
   "$root/src/*.cs" \
-  -out:out/pacman.exe
+  -out:"$root/pacman.exe"

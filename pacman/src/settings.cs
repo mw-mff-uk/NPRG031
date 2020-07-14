@@ -6,7 +6,7 @@ class Settings
   public double PlayerSpeed { get => this.playerSpeed; }
   private double monsterSpeed = 0.17;
   public double MonsterSpeed { get => this.monsterSpeed; }
-  private int tickPeriod = 10;
+  private int tickPeriod = 16;
   public int TickPeriod { get => this.tickPeriod; }
   private bool friendlyMode = false;
   public bool FriendlyMode { get => this.friendlyMode; }

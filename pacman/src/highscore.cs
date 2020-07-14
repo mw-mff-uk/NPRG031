@@ -5,7 +5,7 @@ namespace MainNamespace
 {
   class Highscore
   {
-    private string path = "/home/wiki/School/NPRG031/pacman/data/highscore.txt";
+    private string path = FileManager.GetData("highscore.txt");
     private int[] scores;
     public int First { get => this.scores[0]; set { this.scores[0] = value; } }
     public int Second { get => this.scores[1]; set { this.scores[1] = value; } }
