@@ -10,8 +10,8 @@ csc \
   "$root/src/*.cs" \
   -out:"$root/pacman.exe"
 
-rm "$root/pacman.tar.gz"
-tar -zcvf "$root/pacman.tar.gz" "$root"
+# rm "$root/pacman.tar.gz"
+# tar -zcvf "$root/pacman.tar.gz" "$root"
 
-rm "$root/documentation.pdf"
-mdpdf "$root/readme.md" "$root/documentation.pdf"
+# rm "$root/documentation.pdf"
+# mdpdf "$root/readme.md" "$root/documentation.pdf"

@@ -2,6 +2,7 @@ using System;
 using System.Windows;
 using System.Windows.Forms;
 using System.Drawing;
+using System.Windows.Input;
 
 namespace MainNamespace
 {
@@ -121,6 +122,8 @@ namespace MainNamespace
     }
     private void GameScreen()
     {
+      // this.board.Cursor = Cursors.None;
+
       this.InitScoreBoard();
       this.InitLivesTracker();
       this.InitFpsTracker();
@@ -177,6 +180,8 @@ namespace MainNamespace
     }
     private void GameOverScreen()
     {
+      this.board.Cursor = Cursors.Default;
+
       this.highscore.Submit(this.scoreBoard.Score);
 
       Label gameOver = new Label();
